@@ -444,6 +444,18 @@ const PRODUCTS = [
   }
 ];
 
+const CI_CHILD_NEED = 1000000;
+const EDU_COST_PER_YEAR = 200000; // HK uni + living
+
+function medScoreFromSet(s) {
+  if (s.has('high')) return 100;
+  if (s.has('basic')) return s.has('company') ? 75 : 55;
+  if (s.has('company')) return 35;
+  return 0;
+}
+
+function gapBarColor(p) { return p >= 80 ? '#639922' : p >= 40 ? '#EF9F27' : '#E24B4A'; }
+
 function fmt(n) {
   if (!n) return '$0';
   if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
@@ -463,11 +475,7 @@ function toggleMed(val, btn) {
 }
 
 function getMedScore() {
-  const s = state.medSet;
-  if (s.has('high')) return 100;
-  if (s.has('basic')) return s.has('company') ? 75 : 55;
-  if (s.has('company')) return 35;
-  return 0;
+  return medScoreFromSet(state.medSet);
 }
 
 function getMedLabel() {
@@ -520,9 +528,9 @@ function renderChildInputs() {
       <div class="row">
         <label>醫療計劃</label>
         <div class="seg multi" id="c${i}-med-seg">
-          <button data-v="company" onclick="toggleChildMed(${i},'company',this)" \${c.medSet&&c.medSet.has('company')?'class="active"':''}>公司</button>
-          <button data-v="basic" onclick="toggleChildMed(${i},'basic',this)" \${c.medSet&&c.medSet.has('basic')?'class="active"':''}>基本</button>
-          <button data-v="high" onclick="toggleChildMed(${i},'high',this)" \${c.medSet&&c.medSet.has('high')?'class="active"':''}>高端</button>
+          <button data-v="company" onclick="toggleChildMed(${i},'company',this)" ${c.medSet&&c.medSet.has('company')?'class="active"':''}>公司</button>
+          <button data-v="basic" onclick="toggleChildMed(${i},'basic',this)" ${c.medSet&&c.medSet.has('basic')?'class="active"':''}>基本</button>
+          <button data-v="high" onclick="toggleChildMed(${i},'high',this)" ${c.medSet&&c.medSet.has('high')?'class="active"':''}>高端</button>
         </div>
       </div>
     </div>`).join('');
@@ -571,7 +579,6 @@ function calc() {
     <div class="metric"><div class="metric-label">退休儲蓄目標</div><div class="metric-val">${fmt(savingsNeed)}</div><div class="metric-sub">${years} 年後退休目標</div></div>
   `;
 
-  const bc = p => p >= 80 ? '#639922' : p >= 40 ? '#EF9F27' : '#E24B4A';
   document.getElementById('gaps').innerHTML = [
     ['危疾保障', ciPct, fmt(ciGap)],
     ['人壽保障', lifePct, dep===0?'(無需要)':'缺口 '+fmt(lifeGap)],
@@ -580,21 +587,18 @@ function calc() {
   ].map(([l,p,s])=>`
     <div class="gap-row">
       <div class="gap-bar-label"><span>${l}</span><span>${p}% · ${s}</span></div>
-      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${p}%;background:${bc(p)}"></div></div>
+      <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${p}%;background:${gapBarColor(p)}"></div></div>
     </div>`).join('');
 
   // Child gaps
   let childGapsHtml = '';
   if (state.hasChild === 'yes' && state.children.length > 0) {
-    const CI_CHILD_NEED = 1000000;
-    const EDU_COST_PER_YEAR = 200000; // HK uni + living
-    const bc2 = p => p >= 80 ? '#639922' : p >= 40 ? '#EF9F27' : '#E24B4A';
     childGapsHtml = '<div class="child-gap-section">';
     state.children.forEach((c, i) => {
       const ciChildGap = Math.max(0, CI_CHILD_NEED - c.ci);
       const ciChildPct = Math.min(100, Math.round(c.ci / CI_CHILD_NEED * 100));
       const cms = c.medSet || new Set();
-      const medChildScore = cms.has('high') ? 100 : cms.has('basic') ? (cms.has('company') ? 75 : 55) : cms.has('company') ? 35 : 0;
+      const medChildScore = medScoreFromSet(cms);
       const yearsToUni = Math.max(0, 18 - c.age);
       const eduNeed = EDU_COST_PER_YEAR * 4;
       const childLabel = `👶 子女 ${i+1}（${c.age} 歲）`;
@@ -606,7 +610,7 @@ function calc() {
       ].map(([l,p,s])=>`
         <div class="gap-row">
           <div class="gap-bar-label"><span>${l}</span><span>${p > 0 ? p+'% · ' : ''}${s}</span></div>
-          ${p > 0 ? `<div class="gap-bar-track"><div class="gap-bar-fill" style="width:${p}%;background:${bc2(p)}"></div></div>` : ''}
+          ${p > 0 ? `<div class="gap-bar-track"><div class="gap-bar-fill" style="width:${p}%;background:${gapBarColor(p)}"></div></div>` : ''}
         </div>`).join('');
     });
     childGapsHtml += '</div>';
@@ -614,6 +618,7 @@ function calc() {
   document.getElementById('child-gaps').innerHTML = childGapsHtml;
 
   const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet};
+  state.lastCalc = g;
   const matched = PRODUCTS.filter(p => p.trigger(g));
 
   document.getElementById('recommendations').innerHTML = matched.length === 0
@@ -645,25 +650,17 @@ function calc() {
 
 function sendSummaryToWhatsApp() {
   var clientName = document.getElementById('client-name').value.trim();
-  var age = +document.getElementById('age').value;
-  var income = +document.getElementById('income').value;
-  var dep = +state.dep;
+  var g = state.lastCalc || {};
+  var age = g.age;
+  var income = g.income;
+  var dep = g.dep;
   var gender = state.gender;
-  var ciHave = +document.getElementById('ci-have').value;
-  var savings = +document.getElementById('savings').value;
-  var annualIncome = income * 12;
-  var ciNeed = annualIncome * 5;
-  var ciGap = Math.max(0, ciNeed - ciHave);
-  var ciPct = Math.min(100, Math.round(ciHave / Math.max(ciNeed,1) * 100));
-  var savingsNeed = Math.round(income * 0.15) * 12 * 20;
-  var savingsGap = Math.max(0, savingsNeed - savings);
   var medLabel = getMedLabel() + (state.medSet.has('company') && state.medSet.size === 1 ? '（離職後失保）' : '');
   var genderLabel = gender === 'male' ? '男' : '女';
   var nameLine = clientName ? '👤 稱呼：' + clientName + '\n' : '';
+  var lifeLine = dep > 0 ? '👪 人壽缺口：' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%）\n' : '';
   var childLines = '';
   if (state.hasChild === 'yes' && state.children && state.children.length > 0) {
-    var CI_CHILD_NEED = 1000000;
-    var EDU_COST_PER_YEAR = 200000;
     var childMedMap = {company:'公司醫療',basic:'基本',high:'高端'};
     childLines = '\n' + state.children.map(function(c, i) {
       var cms = c.medSet || new Set();
@@ -679,9 +676,9 @@ function sendSummaryToWhatsApp() {
     nameLine + '⚧ 性別：' + genderLabel,
     '🎂 年齡：' + age + ' 歲｜月入：' + fmt(income),
     '👨‍👩‍👧 家庭負擔：' + (dep === 0 ? '暫無' : dep + ' 人') + childLines,
-    '📊 危疾缺口：' + fmt(ciGap) + '（現有保障 ' + ciPct + '%）',
-    '🏥 醫療保障：' + medLabel,
-    '💰 退休儲蓄缺口：' + fmt(savingsGap),
+    '📊 危疾缺口：' + fmt(g.ciGap) + '（現有保障 ' + g.ciPct + '%）',
+    lifeLine + '🏥 醫療保障：' + medLabel,
+    '💰 退休儲蓄缺口：' + fmt(g.savingsGap),
     '📌 想了解更多，請問可以聯絡你嗎？'
   ];
   var msg = lines.join('\n');
