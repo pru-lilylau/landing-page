@@ -398,7 +398,7 @@
   <!-- 右欄：產品建議 + CTA -->
   <div class="col-right">
 
-  <div class="card">
+  <div class="card" id="rec-card" style="display:none">
     <div class="rec-title">
       <svg viewBox="0 0 24 24" fill="none" stroke="#C9956B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -410,7 +410,7 @@
 
   <div class="cta-card">
     <div class="cta-text">
-      <strong>想深入了解以上產品？</strong>
+      <strong>想了解邊個方案啱你？</strong>
       <p>Lily 為你免費分析最適合方案<br>會計師 × 保險顧問雙重視角</p>
     </div>
     <a class="cta-btn" href="https://wa.me/85260133108?text=你好Lily，我想了解保險規劃" target="_blank" rel="noopener">WhatsApp 諮詢</a>
@@ -442,6 +442,22 @@
 
 <script>
 const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set() };
+
+// 產品建議只想 Lily 自己睇到：帶住 ?key=... 開一次呢個頁面就會用 localStorage 記住解鎖狀態
+// （純粹遮擋一般客人，唔係真正加密 — 識睇原始碼一樣搵到，唔適合防有心人）
+const REC_UNLOCK_KEY = 'lily-vip-2026';
+const REC_UNLOCK_STORAGE = 'lily_rec_unlocked';
+(function initRecUnlock() {
+  const params = new URLSearchParams(location.search);
+  if (params.get('key') === REC_UNLOCK_KEY) {
+    localStorage.setItem(REC_UNLOCK_STORAGE, '1');
+    params.delete('key');
+    const qs = params.toString();
+    history.replaceState({}, '', location.pathname + (qs ? '?' + qs : ''));
+  }
+})();
+const recsUnlocked = localStorage.getItem(REC_UNLOCK_STORAGE) === '1';
+if (recsUnlocked) document.getElementById('rec-card').style.display = '';
 
 const PRODUCTS = [
   {
@@ -758,6 +774,8 @@ function calc() {
 
   const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet,spouse};
   state.lastCalc = g;
+  if (!recsUnlocked) return;
+
   const matched = PRODUCTS.filter(p => p.trigger(g));
 
   document.getElementById('recommendations').innerHTML = matched.length === 0
