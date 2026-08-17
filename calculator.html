@@ -82,6 +82,19 @@
     border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
   }
   .row .val { font-size: 15px; font-weight: 500; color: #3D2B1A; min-width: 85px; text-align: right; }
+  .row .val-wrap { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+  .row .val-input {
+    font-size: 15px; font-weight: 500; color: #3D2B1A;
+    width: 92px; text-align: right;
+    border: 1px solid #E8DDD0; border-radius: 8px;
+    padding: 4px 8px; font-family: inherit;
+    background: #FFFCF8; outline: none;
+    -moz-appearance: textfield;
+  }
+  .row .val-input:focus { border-color: #C9956B; }
+  .row .val-input::-webkit-outer-spin-button,
+  .row .val-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .row .val-unit { font-size: 13px; color: #8B6347; flex-shrink: 0; }
 
   .seg { display: flex; gap: 5px; flex: 1; flex-wrap: wrap; }
   .seg.multi button { border-radius: 8px; }
@@ -138,8 +151,8 @@
   /* ── Child section ── */
   .child-block { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #F0E8DF; }
   .child-block-title { font-size: 13px; font-weight: 600; color: #C9956B; margin-bottom: 0.7rem; }
-  .child-gap-section { margin-top: 1rem; }
-  .child-gap-title { font-size: 13px; font-weight: 600; color: #8B6347; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+  .child-gap-section, .spouse-gap-section { margin-top: 1rem; }
+  .child-gap-title, .spouse-gap-title { font-size: 13px; font-weight: 600; color: #8B6347; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
 
   /* ── CTA ── */
   .cta-card {
@@ -218,6 +231,7 @@
     .col-right { position: static; }
     .row label { width: 95px; font-size: 14px; }
     .row .val { font-size: 14px; min-width: 75px; }
+    .row .val-input { font-size: 14px; width: 78px; }
   }
 </style>
 </head>
@@ -254,12 +268,12 @@
     <div class="row">
       <label>年齡</label>
       <input type="range" id="age" min="22" max="60" value="35" step="1">
-      <span class="val" id="age-out">35 歲</span>
+      <div class="val-wrap"><input type="number" class="val-input" id="age-num" min="22" max="60" step="1" value="35"><span class="val-unit">歲</span></div>
     </div>
     <div class="row">
       <label>月入（港元）</label>
       <input type="range" id="income" min="10000" max="300000" value="30000" step="1000">
-      <span class="val" id="income-out">$30,000</span>
+      <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="income-num" min="10000" max="300000" step="1000" value="30000"></div>
     </div>
     <div class="row">
       <label>家庭負擔</label>
@@ -273,7 +287,7 @@
     <div class="row">
       <label>現有儲蓄</label>
       <input type="range" id="savings" min="0" max="10000000" value="100000" step="50000">
-      <span class="val" id="savings-out">$100,000</span>
+      <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="savings-num" min="0" max="10000000" step="50000" value="100000"></div>
     </div>
   </div>
 
@@ -282,7 +296,7 @@
     <div class="row">
       <label>危疾保額</label>
       <input type="range" id="ci-have" min="0" max="10000000" value="0" step="50000">
-      <span class="val" id="ci-have-out">$0</span>
+      <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="ci-have-num" min="0" max="10000000" step="50000" value="0"></div>
     </div>
     <div class="row">
       <label>醫療計劃</label>
@@ -296,7 +310,48 @@
     <div class="row">
       <label>人壽保額</label>
       <input type="range" id="life-have" min="0" max="20000000" value="0" step="100000">
-      <span class="val" id="life-have-out">$0</span>
+      <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="life-have-num" min="0" max="20000000" step="100000" value="0"></div>
+    </div>
+  </div>
+
+  <div class="card" id="spouse-card">
+    <div class="section-title">配偶資料</div>
+    <div class="row">
+      <label>婚姻狀況</label>
+      <div class="seg" id="marital-seg">
+        <button data-v="single" onclick="setSeg('marital',this)" class="active">未婚</button>
+        <button data-v="married" onclick="setSeg('marital',this)">已婚</button>
+      </div>
+    </div>
+    <div id="spouse-details" style="display:none">
+      <div class="row" style="margin-top:0.8rem">
+        <label>配偶年齡</label>
+        <input type="range" id="sp-age" min="22" max="70" value="35" step="1">
+        <div class="val-wrap"><input type="number" class="val-input" id="sp-age-num" min="22" max="70" step="1" value="35"><span class="val-unit">歲</span></div>
+      </div>
+      <div class="row">
+        <label>配偶月入</label>
+        <input type="range" id="sp-income" min="0" max="300000" value="0" step="1000">
+        <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="sp-income-num" min="0" max="300000" step="1000" value="0"></div>
+      </div>
+      <div class="row">
+        <label>配偶危疾保額</label>
+        <input type="range" id="sp-ci-have" min="0" max="10000000" value="0" step="50000">
+        <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="sp-ci-have-num" min="0" max="10000000" step="50000" value="0"></div>
+      </div>
+      <div class="row">
+        <label>配偶人壽保額</label>
+        <input type="range" id="sp-life-have" min="0" max="20000000" value="0" step="100000">
+        <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="sp-life-have-num" min="0" max="20000000" step="100000" value="0"></div>
+      </div>
+      <div class="row">
+        <label>配偶醫療計劃</label>
+        <div class="seg multi" id="sp-med-seg">
+          <button data-v="company" onclick="toggleSpouseMed('company',this)">公司</button>
+          <button data-v="basic" onclick="toggleSpouseMed('basic',this)">基本</button>
+          <button data-v="high" onclick="toggleSpouseMed('high',this)">高端</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -328,6 +383,7 @@
     <div class="section-title">估算結果</div>
     <div class="results-grid" id="results"></div>
     <div id="gaps"></div>
+    <div id="spouse-gaps"></div>
     <div id="child-gaps"></div>
     <button class="wa-summary-btn" onclick="sendSummaryToWhatsApp()">
       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;flex-shrink:0;">
@@ -385,7 +441,7 @@
 </a>
 
 <script>
-const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [] };
+const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set() };
 
 const PRODUCTS = [
   {
@@ -456,6 +512,13 @@ function medScoreFromSet(s) {
 
 function gapBarColor(p) { return p >= 80 ? '#639922' : p >= 40 ? '#EF9F27' : '#E24B4A'; }
 
+function getMedStatusLabel(score) {
+  if (score >= 70) return '保障充足';
+  if (score >= 40) return '保障一般，建議加強';
+  if (score > 0) return '保障不足，建議加強';
+  return '未有保障，建議盡快跟進';
+}
+
 function fmt(n) {
   if (!n) return '$0';
   if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
@@ -476,6 +539,17 @@ function toggleMed(val, btn) {
 
 function getMedScore() {
   return medScoreFromSet(state.medSet);
+}
+
+function toggleSpouseMed(val, btn) {
+  if (state.spouseMedSet.has(val)) {
+    state.spouseMedSet.delete(val);
+    btn.classList.remove('active');
+  } else {
+    state.spouseMedSet.add(val);
+    btn.classList.add('active');
+  }
+  calc();
 }
 
 function getMedLabel() {
@@ -503,7 +577,34 @@ function setSeg(key, btn) {
     if (show) renderChildInputs();
   }
   if (key === 'childCount') renderChildInputs();
+  if (key === 'marital') {
+    document.getElementById('spouse-details').style.display = btn.dataset.v === 'married' ? '' : 'none';
+  }
   calc();
+}
+
+function bindSlider(rangeId, numId, onChange) {
+  const range = document.getElementById(rangeId);
+  const num = document.getElementById(numId);
+  const min = +range.min, max = +range.max;
+  range.addEventListener('input', () => {
+    num.value = range.value;
+    onChange(+range.value);
+  });
+  num.addEventListener('input', () => {
+    if (num.value === '') return;
+    const v = +num.value;
+    if (!isNaN(v) && v >= min && v <= max) range.value = v;
+    onChange(isNaN(v) ? 0 : v);
+  });
+  num.addEventListener('blur', () => {
+    let v = +num.value;
+    if (num.value === '' || isNaN(v)) v = min;
+    v = Math.min(max, Math.max(min, v));
+    num.value = v;
+    range.value = v;
+    onChange(v);
+  });
 }
 
 function renderChildInputs() {
@@ -517,13 +618,13 @@ function renderChildInputs() {
       <div class="child-block-title">👶 子女 ${i+1}</div>
       <div class="row">
         <label>年齡</label>
-        <input type="range" id="c${i}-age" min="0" max="17" value="${c.age}" step="1" oninput="updateChild(${i},'age',+this.value);document.getElementById('c${i}-age-out').textContent=this.value+' 歲'">
-        <span class="val" id="c${i}-age-out">${c.age} 歲</span>
+        <input type="range" id="c${i}-age" min="0" max="17" value="${c.age}" step="1">
+        <div class="val-wrap"><input type="number" class="val-input" id="c${i}-age-num" min="0" max="17" step="1" value="${c.age}"><span class="val-unit">歲</span></div>
       </div>
       <div class="row">
         <label>危疾保額</label>
-        <input type="range" id="c${i}-ci" min="0" max="3000000" value="${c.ci}" step="50000" oninput="updateChild(${i},'ci',+this.value);document.getElementById('c${i}-ci-out').textContent='$'+Number(this.value).toLocaleString('en-US')">
-        <span class="val" id="c${i}-ci-out">$${Number(c.ci).toLocaleString('en-US')}</span>
+        <input type="range" id="c${i}-ci" min="0" max="3000000" value="${c.ci}" step="50000">
+        <div class="val-wrap"><span class="val-unit">$</span><input type="number" class="val-input" id="c${i}-ci-num" min="0" max="3000000" step="50000" value="${c.ci}"></div>
       </div>
       <div class="row">
         <label>醫療計劃</label>
@@ -534,6 +635,10 @@ function renderChildInputs() {
         </div>
       </div>
     </div>`).join('');
+  state.children.forEach((c, i) => {
+    bindSlider(`c${i}-age`, `c${i}-age-num`, v => updateChild(i, 'age', v));
+    bindSlider(`c${i}-ci`, `c${i}-ci-num`, v => updateChild(i, 'ci', v));
+  });
 }
 
 function toggleChildMed(i, val, btn) {
@@ -550,11 +655,11 @@ function updateChild(i, key, val) {
 }
 
 function calc() {
-  const age = +document.getElementById('age').value;
-  const income = +document.getElementById('income').value;
-  const savings = +document.getElementById('savings').value;
-  const ciHave = +document.getElementById('ci-have').value;
-  const lifeHave = +document.getElementById('life-have').value;
+  const age = Number(document.getElementById('age-num').value) || 0;
+  const income = Number(document.getElementById('income-num').value) || 0;
+  const savings = Number(document.getElementById('savings-num').value) || 0;
+  const ciHave = Number(document.getElementById('ci-have-num').value) || 0;
+  const lifeHave = Number(document.getElementById('life-have-num').value) || 0;
   const dep = +state.dep;
   const medScore = getMedScore();
   const med = [...state.medSet];
@@ -575,14 +680,14 @@ function calc() {
   document.getElementById('results').innerHTML = `
     <div class="metric"><div class="metric-label">危疾建議保額</div><div class="metric-val">${fmt(ciNeed)}</div><div class="metric-sub">年入 × 5 倍</div></div>
     <div class="metric"><div class="metric-label">人壽建議保額</div><div class="metric-val">${dep>0?fmt(lifeNeed):'—'}</div><div class="metric-sub">${dep>0?'有家庭負擔':'暫無需要'}</div></div>
-    <div class="metric"><div class="metric-label">醫療保障程度</div><div class="metric-val">${medScore}%</div><div class="metric-sub">${getMedSubLabel()}</div></div>
+    <div class="metric"><div class="metric-label">醫療保障</div><div class="metric-val" style="font-size:16px;color:${gapBarColor(medScore)}">${getMedStatusLabel(medScore)}</div><div class="metric-sub">現有：${getMedSubLabel()}（評分 ${medScore}%）</div></div>
     <div class="metric"><div class="metric-label">退休儲蓄目標</div><div class="metric-val">${fmt(savingsNeed)}</div><div class="metric-sub">${years} 年後退休目標</div></div>
   `;
 
   document.getElementById('gaps').innerHTML = [
     ['危疾保障', ciPct, fmt(ciGap)],
     ['人壽保障', lifePct, dep===0?'(無需要)':'缺口 '+fmt(lifeGap)],
-    ['醫療保障', medScore, '保障程度'],
+    ['醫療保障', medScore, getMedStatusLabel(medScore)],
     ['退休儲蓄', savPct, '缺口 '+fmt(savingsGap)]
   ].map(([l,p,s])=>`
     <div class="gap-row">
@@ -605,7 +710,7 @@ function calc() {
       childGapsHtml += `<div class="child-gap-title">${childLabel}</div>`;
       childGapsHtml += [
         ['危疾保障', ciChildPct, ciChildGap > 0 ? '缺口 '+fmt(ciChildGap) : '足夠'],
-        ['醫療保障', medChildScore, '保障程度'],
+        ['醫療保障', medChildScore, getMedStatusLabel(medChildScore)],
         ['教育儲備', 0, '大學需約 '+fmt(eduNeed)+'（'+yearsToUni+'年後）'],
       ].map(([l,p,s])=>`
         <div class="gap-row">
@@ -617,7 +722,41 @@ function calc() {
   }
   document.getElementById('child-gaps').innerHTML = childGapsHtml;
 
-  const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet};
+  // Spouse gaps
+  let spouse = null;
+  if (state.marital === 'married') {
+    const spAge = Number(document.getElementById('sp-age-num').value) || 0;
+    const spIncome = Number(document.getElementById('sp-income-num').value) || 0;
+    const spCiHave = Number(document.getElementById('sp-ci-have-num').value) || 0;
+    const spLifeHave = Number(document.getElementById('sp-life-have-num').value) || 0;
+    const spAnnualIncome = spIncome * 12;
+    const spCiNeed = spAnnualIncome * 5;
+    const spCiGap = Math.max(0, spCiNeed - spCiHave);
+    const spCiPct = Math.min(100, Math.round(spCiHave / Math.max(spCiNeed,1) * 100));
+    const spLifeNeed = dep > 0 ? spAnnualIncome * (dep + 2) : 0;
+    const spLifeGap = Math.max(0, spLifeNeed - spLifeHave);
+    const spLifePct = dep > 0 ? Math.min(100, Math.round(spLifeHave / Math.max(spLifeNeed,1) * 100)) : 100;
+    const spMedScore = medScoreFromSet(state.spouseMedSet);
+    spouse = {age:spAge, income:spIncome, ciGap:spCiGap, ciPct:spCiPct, lifeGap:spLifeGap, lifePct:spLifePct, medScore:spMedScore};
+
+    document.getElementById('spouse-gaps').innerHTML = `
+      <div class="spouse-gap-section">
+        <div class="spouse-gap-title">💍 配偶（${spAge} 歲）</div>
+        ${[
+          ['危疾保障', spCiPct, spCiGap > 0 ? '缺口 '+fmt(spCiGap) : '足夠'],
+          ['人壽保障', spLifePct, dep===0 ? '(無需要)' : (spLifeGap > 0 ? '缺口 '+fmt(spLifeGap) : '足夠')],
+          ['醫療保障', spMedScore, getMedStatusLabel(spMedScore)],
+        ].map(([l,p,s])=>`
+          <div class="gap-row">
+            <div class="gap-bar-label"><span>${l}</span><span>${p}% · ${s}</span></div>
+            <div class="gap-bar-track"><div class="gap-bar-fill" style="width:${p}%;background:${gapBarColor(p)}"></div></div>
+          </div>`).join('')}
+      </div>`;
+  } else {
+    document.getElementById('spouse-gaps').innerHTML = '';
+  }
+
+  const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet,spouse};
   state.lastCalc = g;
   const matched = PRODUCTS.filter(p => p.trigger(g));
 
@@ -638,14 +777,8 @@ function calc() {
       </div>`).join('');
 }
 
-['age','income','savings','ci-have','life-have'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',function(){
-    const v=+this.value;
-    const o=document.getElementById(id+'-out');
-    if(id==='age') o.textContent=v+' 歲';
-    else o.textContent='$'+v.toLocaleString();
-    calc();
-  });
+['age','income','savings','ci-have','life-have','sp-age','sp-income','sp-ci-have','sp-life-have'].forEach(id=>{
+  bindSlider(id, id+'-num', calc);
 });
 
 function sendSummaryToWhatsApp() {
@@ -657,31 +790,52 @@ function sendSummaryToWhatsApp() {
   var gender = state.gender;
   var medLabel = getMedLabel() + (state.medSet.has('company') && state.medSet.size === 1 ? '（離職後失保）' : '');
   var genderLabel = gender === 'male' ? '男' : '女';
-  var nameLine = clientName ? '👤 稱呼：' + clientName + '\n' : '';
-  var lifeLine = dep > 0 ? '👪 人壽缺口：' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%）\n' : '';
-  var childLines = '';
+  var childMedMap = {company:'公司醫療',basic:'基本',high:'高端'};
+
+  var sections = [];
+  sections.push('你好 Lily，以下係我嘅保險需要分析結果：');
+
+  var basicLines = ['【基本資料】'];
+  if (clientName) basicLines.push('稱呼：' + clientName);
+  basicLines.push('性別：' + genderLabel + '｜年齡：' + age + ' 歲｜月入：' + fmt(income));
+  basicLines.push('家庭負擔：' + (dep === 0 ? '暫無' : dep + ' 人'));
+  sections.push(basicLines.join('\n'));
+
+  var gapLines = ['【保障缺口】'];
+  gapLines.push('• 危疾：缺口 ' + fmt(g.ciGap) + '（現有保障 ' + g.ciPct + '%）');
+  gapLines.push('• 人壽：' + (dep === 0 ? '暫無需要' : '缺口 ' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%）'));
+  gapLines.push('• 醫療：現有 ' + medLabel + ' － ' + getMedStatusLabel(g.medScore));
+  gapLines.push('• 退休儲蓄：缺口 ' + fmt(g.savingsGap));
+  sections.push(gapLines.join('\n'));
+
+  if (g.spouse) {
+    var sp = g.spouse;
+    var spMedLabel = state.spouseMedSet.size === 0 ? '未有醫療保障' : Array.from(state.spouseMedSet).map(function(v){ return childMedMap[v]||v; }).join(' + ');
+    var spLines = ['【配偶保障】（' + sp.age + ' 歲）'];
+    spLines.push('• 危疾：' + (sp.ciGap > 0 ? '缺口 ' + fmt(sp.ciGap) + '（現有保障 ' + sp.ciPct + '%）' : '足夠'));
+    spLines.push('• 人壽：' + (dep === 0 ? '暫無需要' : (sp.lifeGap > 0 ? '缺口 ' + fmt(sp.lifeGap) + '（現有保障 ' + sp.lifePct + '%）' : '足夠')));
+    spLines.push('• 醫療：現有 ' + spMedLabel + ' － ' + getMedStatusLabel(sp.medScore));
+    sections.push(spLines.join('\n'));
+  }
+
   if (state.hasChild === 'yes' && state.children && state.children.length > 0) {
-    var childMedMap = {company:'公司醫療',basic:'基本',high:'高端'};
-    childLines = '\n' + state.children.map(function(c, i) {
+    var childLines = ['【子女保障】'];
+    state.children.forEach(function(c, i) {
       var cms = c.medSet || new Set();
       var ciChildGap = Math.max(0, CI_CHILD_NEED - c.ci);
       var yearsToUni = Math.max(0, 18 - c.age);
       var medChildLabel = cms.size === 0 ? '未有' : Array.from(cms).map(function(v){ return childMedMap[v]||v; }).join('+');
-      return '👶 子女'+(i+1)+'（'+c.age+'歲）：危疾缺口 '+fmt(ciChildGap)+' ｜ 醫療：'+medChildLabel+' ｜ 教育儲備：'+fmt(EDU_COST_PER_YEAR*4)+'（'+yearsToUni+'年後）';
-    }).join('\n');
+      childLines.push('👶 子女' + (i+1) + '（' + c.age + ' 歲）');
+      childLines.push('• 危疾缺口：' + fmt(ciChildGap));
+      childLines.push('• 醫療：' + medChildLabel);
+      childLines.push('• 教育儲備：' + fmt(EDU_COST_PER_YEAR*4) + '（' + yearsToUni + ' 年後）');
+    });
+    sections.push(childLines.join('\n'));
   }
-  var lines = [
-    '你好 Lily，以下係我嘅保險需要分析結果：',
-    '',
-    nameLine + '⚧ 性別：' + genderLabel,
-    '🎂 年齡：' + age + ' 歲｜月入：' + fmt(income),
-    '👨‍👩‍👧 家庭負擔：' + (dep === 0 ? '暫無' : dep + ' 人') + childLines,
-    '📊 危疾缺口：' + fmt(g.ciGap) + '（現有保障 ' + g.ciPct + '%）',
-    lifeLine + '🏥 醫療保障：' + medLabel,
-    '💰 退休儲蓄缺口：' + fmt(g.savingsGap),
-    '📌 想了解更多，請問可以聯絡你嗎？'
-  ];
-  var msg = lines.join('\n');
+
+  sections.push('📌 想了解更多，請問可以聯絡你嗎？');
+
+  var msg = sections.join('\n\n');
   var url = 'https://wa.me/85260133108?text=' + encodeURIComponent(msg);
   window.open(url, '_blank');
 }
