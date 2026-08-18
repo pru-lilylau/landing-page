@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保誠精選「業主寶」｜Lily Lau</title>
+<meta name="description" content="出租物業保障一覽 — 保誠精選「業主寶」四大保障、計劃對比、保費參考。香港持牌會計師 × 保誠保險顧問 Lily Lau。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0;
+    --coral:#C9956B;
+    --coral-deep:#B8845A;
+    --mint:#D6E8D5;
+    --mint-deep:#2A5A2E;
+    --butter:#FAEEDA;
+    --butter-deep:#633806;
+    --lavender:#E6F1FB;
+    --lavender-deep:#0C447C;
+    --terracotta:#A85D42;
+    --ink:#3D2B1A;
+    --ink-soft:#6B4E35;
+    --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08);
+    --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  img{max-width:100%;}
+
+  /* ---------- floating guide ---------- */
+  #guide{
+    position:fixed;
+    right:18px; bottom:18px;
+    z-index:50;
+    width:60px; height:60px;
+    border-radius:50%;
+    background:#25D366;
+    box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center;
+    font-size:26px;
+    cursor:pointer;
+    text-decoration:none;
+    border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  /* ---------- hero ---------- */
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{
+    display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px;
+    font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(28px,7vw,38px); margin:0 0 12px; font-weight:900; line-height:1.35;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  /* ---------- pillars ---------- */
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillar{
+    background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow);
+  }
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:13.5px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} .pillar .txt{font-size:12px;} }
+
+  /* ---------- section shell ---------- */
+  section{padding:20px 0;}
+  .section-head{margin-bottom:16px;}
+  .section-head .tag{
+    font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;
+  }
+
+  /* ---------- comparison card ---------- */
+  .cmp-card{background:var(--white); border-radius:22px; padding:22px; box-shadow:var(--shadow); margin-bottom:16px;}
+  table.cmp{width:100%; border-collapse:collapse;}
+  table.cmp th{font-size:13.5px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0;}
+  table.cmp th:first-child{text-align:left;}
+  table.cmp td{padding:13px 0; border-bottom:1px solid #F0EAE0; vertical-align:middle;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  .item-name{font-size:15.5px; font-weight:700;}
+  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:nowrap;}
+  .amt.hi{color:var(--coral-deep);}
+
+  /* ---------- accordion (click to expand 四大保障) ---------- */
+  details.acc{
+    background:var(--white); border-radius:20px; box-shadow:var(--shadow);
+    margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;
+  }
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{
+    list-style:none; cursor:pointer; padding:18px 20px;
+    display:flex; align-items:center; gap:14px;
+  }
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{
+    width:38px; height:38px; border-radius:11px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);
+  }
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{
+    width:26px; height:26px; border-radius:50%; background:var(--cream);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    transition:transform .3s ease; font-size:13px; color:var(--ink-soft);
+  }
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .acc-extra-title{font-size:13px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:13.5px; line-height:1.85;}
+  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:13.5px; margin-top:10px;}
+
+  /* ---------- tip ---------- */
+  .tip{background:var(--butter); border-radius:14px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px;}
+
+  /* ---------- premium table ---------- */
+  table.premium{width:100%; border-collapse:collapse; font-size:14px;}
+  table.premium th, table.premium td{padding:10px 4px; text-align:right; border-bottom:1px solid #F0EAE0;}
+  table.premium th:first-child, table.premium td:first-child{text-align:left; color:var(--ink-soft);}
+  table.premium th{font-weight:700;}
+
+  /* ---------- flags ---------- */
+  .flags{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;}
+  .flag{border-radius:16px; padding:16px;}
+  .flag.ok{background:var(--mint);}
+  .flag.no{background:var(--cream); border:1px solid #E8DCC8;}
+  .flag-title{font-size:14px; font-weight:700; margin-bottom:6px;}
+  .flag.ok .flag-title{color:var(--mint-deep);}
+  .flag.no .flag-title{color:var(--ink-soft);}
+  .flag-text{font-size:13px; line-height:1.7;}
+  .flag.ok .flag-text{color:var(--mint-deep);}
+  .flag.no .flag-text{color:var(--ink-soft);}
+
+  /* ---------- final cta ---------- */
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px;
+    font-weight:700; font-size:15px; text-decoration:none; border:none;
+  }
+  .disclaimer{font-size:12.5px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    .cmp-card, details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%A5%AD%E4%B8%BB%E5%AF%B6%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">🏠 業主保障計劃</div>
+    <h1>保誠精選<br><span>「業主寶」</span></h1>
+    <p class="sub">出租層樓，你可能唔知自己有幾大風險</p>
+  </div>
+
+  <!-- PILLARS -->
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">🔧</div><div class="txt">租客整爛嘢<br>維修費邊個俾？</div></div>
+    <div class="pillar"><div class="emoji">💸</div><div class="txt">租客走佬<br>租金點算？</div></div>
+    <div class="pillar"><div class="emoji">⚖️</div><div class="txt">有人受傷<br>要負法律責任？</div></div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <section>
+    <div class="section-head"><span class="tag">四大保障・計劃對比</span></div>
+    <div class="cmp-card">
+      <table class="cmp">
+        <tr><th></th><th>計劃1</th><th>計劃2</th></tr>
+        <tr>
+          <td><div class="item-name">家居財物保障</div><div class="item-sub">傢俬電器裝修損毀</div></td>
+          <td class="amt">$500,000</td>
+          <td class="amt hi">$1,500,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">租金損失保障</div><div class="item-sub">最長6個月</div></td>
+          <td class="amt">$120,000</td>
+          <td class="amt hi">$240,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">業主法律責任</div><div class="item-sub">第三者受傷／財物損失</div></td>
+          <td class="amt">$10,000,000</td>
+          <td class="amt">$10,000,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">樓宇結構保障</div><div class="item-sub">自選，可獨立投保</div></td>
+          <td class="amt" colspan="2" style="font-size:13.5px;">投保額（最少$500,000）</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tip">💡 每年續保「家居財物保障」自動加$50,000保額，唔論索償記錄，最高累積$200,000</div>
+  </section>
+
+  <!-- ACCORDION: 四大保障詳情，撳開睇 -->
+  <section>
+    <div class="section-head"><span class="tag">撳開睇詳細內容</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🔧</div>
+        <div class="acc-head">
+          <div class="acc-title">項目一・家居財物保障</div>
+          <div class="acc-amt">計劃1：$500,000　計劃2：$1,500,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>全險保障，「以新易舊」方式賠償。保傢俬、家居用品、電器，以及業主自行添置嘅室內裝修（油漆、牆紙、地板）。連消防員執行任務造成嘅損毀、租客惡意破壞（需報警證明）都保埋。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">額外保障</div>
+          <div class="acc-extra-body">
+            • 發展商／前業主添置嘅室內裝修<br>
+            • 裝修期間意外（工程費&lt;$300,000且&lt;60日）<br>
+            • 短暫寄存（&lt;30日）<br>
+            • 更換門鎖及門匙<br>
+            • 清理瓦礫
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">💸</div>
+        <div class="acc-head">
+          <div class="acc-title">項目二・租金損失保障</div>
+          <div class="acc-amt">計劃1：$120,000　計劃2：$240,000（最長6個月）</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p style="font-weight:700; margin-bottom:8px;">保障以下情況引致嘅租金損失：</p>
+        <div class="acc-extra">
+          <div class="acc-extra-body">
+            • 物業因意外損毀不能居住<br>
+            • 租客喺屋企自殺或被謀殺身亡<br>
+            • 香港司法機構命令連續10日以上不能進出<br>
+            • 租客拖租，法庭判決後1個月仍未追回
+          </div>
+        </div>
+        <p style="margin-top:10px; color:var(--ink-soft); font-size:13.5px;">額外保障：追討租金及收回受保住所嘅實際法律費用</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">⚖️</div>
+        <div class="acc-head">
+          <div class="acc-title">項目三・業主法律責任保障</div>
+          <div class="acc-amt">兩個計劃同樣保$10,000,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>保障業主因疏忽，導致第三者意外身體受傷或財物損失時，所需負上嘅法律責任。例如漏水滴到樓下單位，需要賠償對方損失。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">🏗️</div>
+        <div class="acc-head">
+          <div class="acc-title">項目四・樓宇結構保障</div>
+          <div class="acc-amt">自選項目，投保額最少$500,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>為樓宇結構提供全險保障，包括火災、爆炸、惡意破壞、盜竊、水浸、地陷、山泥傾瀉、落雹等所引致嘅結構損毀。</p>
+        <div class="acc-note">💡 可獨立投保，毋須連同基本保障，仲免費送埋業主法律責任保障</div>
+
+        <div class="acc-extra">
+          <div class="acc-extra-title">投保額點計？兩個簡易方法</div>
+          <div class="acc-extra-body">
+            <b>方法一・按揭投保法</b>（最常用，唔使計數）<br>
+            • 新買樓／啱批按揭：用「總按揭貸款額」<br>
+            • 供緊樓／轉按：用「尚餘按揭貸款額」<br>
+            • 銀行話幾多就幾多，最方便，但借得少可能保額唔夠、借得多會多付咗保費
+          </div>
+        </div>
+
+        <div class="acc-extra" style="margin-top:10px;">
+          <div class="acc-extra-body">
+            <b>方法二・面積成本法</b>（貼近實際重建費）<br>
+            建築面積（呎）× $3,500 = 建議保額<br>
+            <span style="color:var(--ink-soft); font-size:12.5px;">例：600呎單位 → 600 × $3,500 = $2,100,000</span><br>
+            <span style="color:var(--ink-soft); font-size:12.5px;">豪裝／獨立屋／村屋可將基數調升至 $4,500–$5,500</span>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <!-- PREMIUM TABLE -->
+  <section>
+    <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考（未連徵費）</span></div>
+    <div class="cmp-card">
+      <table class="premium">
+        <tr><th>實用面積(呎)</th><th>計劃1</th><th>計劃2</th></tr>
+        <tr><td>560或以下</td><td>$590</td><td>$840</td></tr>
+        <tr><td>561–960</td><td>$800</td><td>$1,060</td></tr>
+        <tr><td>961–1,600</td><td>不適用</td><td>$1,400</td></tr>
+      </table>
+      <div style="margin-top:16px; padding-top:14px; border-top:1px solid #F0EAE0;">
+        <div style="font-size:13.5px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障（自選）</div>
+        <div style="font-size:14px; line-height:1.85;">
+          • 與基本保障同時投保：投保額 × 0.07%<br>
+          • 單獨投保：投保額 × 0.09%（毋須額外費用，仲送埋業主法律責任保障）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section>
+    <div class="flags">
+      <div class="flag ok">
+        <div class="flag-title">✅ 啱買</div>
+        <div class="flag-text">私人樓／公屋<br>居屋／村屋(40年內)</div>
+      </div>
+      <div class="flag no">
+        <div class="flag-title">❌ 唔啱買</div>
+        <div class="flag-text">寮屋／劏房<br>商業物業</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>想深入了解邊個保障啱你？</h2>
+    <p>撳下面個按鈕聯絡我</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%A5%AD%E4%B8%BB%E5%AF%B6%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。實際保障以保單條款正本為準。</div>
+
+</div>
+
+</body>
+</html>
