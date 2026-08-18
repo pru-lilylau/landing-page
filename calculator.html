@@ -461,7 +461,7 @@ if (recsUnlocked) document.getElementById('rec-card').style.display = '';
 
 // 客人撳「傳送結果俾 Lily」時，靜靜雞將完整資料 POST 去 Lily 自己嘅 Google 試算表存底
 // 未貼上你自己嘅 Apps Script Web App 網址前，呢個 function 乜都唔會做（唔會出錯）
-const BACKEND_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxv4hqMG7QeJsodX02pSkA5NmRqq0OdUd8pxysnUu7Y-ooq0PippMWf9fMs_23X63kXyA/exec';
 function logToBackend(payload) {
   if (!BACKEND_URL || BACKEND_URL.indexOf('PASTE_YOUR') === 0) return;
   try {
