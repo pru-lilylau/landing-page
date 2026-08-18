@@ -459,6 +459,21 @@ const REC_UNLOCK_STORAGE = 'lily_rec_unlocked';
 const recsUnlocked = localStorage.getItem(REC_UNLOCK_STORAGE) === '1';
 if (recsUnlocked) document.getElementById('rec-card').style.display = '';
 
+// 客人撳「傳送結果俾 Lily」時，靜靜雞將完整資料 POST 去 Lily 自己嘅 Google 試算表存底
+// 未貼上你自己嘅 Apps Script Web App 網址前，呢個 function 乜都唔會做（唔會出錯）
+const BACKEND_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+function logToBackend(payload) {
+  if (!BACKEND_URL || BACKEND_URL.indexOf('PASTE_YOUR') === 0) return;
+  try {
+    fetch(BACKEND_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  } catch (e) {}
+}
+
 const PRODUCTS = [
   {
     cat:'ci', catLabel:'危疾', catClass:'cat-ci',
@@ -855,6 +870,36 @@ function sendSummaryToWhatsApp() {
 
   var msg = sections.join('\n\n');
   var url = 'https://wa.me/85260133108?text=' + encodeURIComponent(msg);
+
+  logToBackend({
+    name: clientName,
+    gender: genderLabel,
+    age: age,
+    income: income,
+    dep: dep,
+    savings: Number(document.getElementById('savings-num').value) || 0,
+    ciHave: Number(document.getElementById('ci-have-num').value) || 0,
+    lifeHave: Number(document.getElementById('life-have-num').value) || 0,
+    medPlan: medLabel,
+    ciGap: g.ciGap,
+    ciPct: g.ciPct,
+    lifeGap: g.lifeGap,
+    lifePct: g.lifePct,
+    medStatus: getMedStatusLabel(g.medScore),
+    savingsGap: g.savingsGap,
+    marital: state.marital,
+    spouseAge: g.spouse ? g.spouse.age : '',
+    spouseIncome: g.spouse ? (Number(document.getElementById('sp-income-num').value) || 0) : '',
+    spouseMed: g.spouse ? (state.spouseMedSet.size === 0 ? '未有醫療保障' : Array.from(state.spouseMedSet).map(function(v){ return childMedMap[v]||v; }).join(' + ')) : '',
+    spouseCiGap: g.spouse ? g.spouse.ciGap : '',
+    spouseLifeGap: g.spouse ? g.spouse.lifeGap : '',
+    children: (state.hasChild === 'yes' && state.children) ? state.children.map(function(c, i) {
+      var cms = c.medSet || new Set();
+      var medChildLabel = cms.size === 0 ? '未有' : Array.from(cms).map(function(v){ return childMedMap[v]||v; }).join('+');
+      return '子女' + (i+1) + '(' + c.age + '歲) CI缺口:' + fmt(Math.max(0, CI_CHILD_NEED - c.ci)) + ' 醫療:' + medChildLabel;
+    }).join(' | ') : ''
+  });
+
   window.open(url, '_blank');
 }
 
