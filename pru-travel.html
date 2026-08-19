@@ -28,7 +28,7 @@
     --radius: 28px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     margin:0;
     font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
@@ -38,6 +38,8 @@
     line-break:strict;
     word-break:keep-all;
     overflow-wrap:break-word;
+    overflow-x:hidden;
+    max-width:100vw;
   }
   .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
   @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
@@ -65,7 +67,7 @@
   .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
 
   .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
-  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow);}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
   .pillar .emoji{font-size:24px; margin-bottom:8px;}
   .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
   @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
@@ -84,8 +86,8 @@
   table.cmp col.c-amt{width:38%;}
   .item-name{font-size:15.5px; font-weight:700;}
   .item-sub{font-size:14px; color:var(--ink-soft); margin-top:2px;}
-  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:normal; word-break:break-word; padding-left:6px;}
-  @media (max-width:400px){ .amt{font-size:13.5px;} }
+  .amt{text-align:right; font-size:14px; font-weight:900; white-space:normal; word-break:keep-all; overflow-wrap:break-word; padding-left:6px;}
+  @media (max-width:360px){ .amt{font-size:12.5px; padding-left:4px;} }
   .amt.hi{color:var(--coral-deep);}
 
   details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
@@ -255,7 +257,7 @@
             </ul>
           </div>
         </div>
-        <div class="acc-note">⚠️ 如喺旅程期間冇求診，回港後先睇醫生，醫療費用將不受保。任何出發前已知悉或存在嘅病症亦不受保。</div>
+        <div class="acc-note">⚠️ 如喺旅程期間冇求診，回港後先睇醫生，醫療費用將不受保。<br>任何出發前已知悉<br>或存在嘅病症亦不受保。</div>
       </div>
     </details>
 
@@ -314,7 +316,7 @@
         <div class="acc-icon" style="background:var(--terracotta);">🧳</div>
         <div class="acc-head">
           <div class="acc-title">行李、財物、證件保障</div>
-          <div class="acc-amt">行李$20,000 /現金信用卡證件$26,000</div>
+          <div class="acc-amt"><span style="white-space:nowrap;">行李$20,000</span> /<span style="white-space:nowrap;">現金信用卡證件$26,000</span></div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -398,7 +400,7 @@
     <div class="cmp-card">
       <table class="premium">
         <colgroup><col class="p-label"><col class="p-val"><col class="p-val"><col class="p-val"></colgroup>
-        <tr><th>亞洲及指定島嶼</th><th>投保人</th><th>+配偶</th><th>+子女</th></tr>
+        <tr><th>亞洲及<br>指定島嶼</th><th>投保人</th><th>+配偶</th><th>+子女</th></tr>
         <tr><td>3日</td><td>$182</td><td>$364</td><td>$273</td></tr>
         <tr><td>5日</td><td>$235</td><td>$470</td><td>$353</td></tr>
         <tr><td>7日</td><td>$260</td><td>$520</td><td>$390</td></tr>
@@ -444,7 +446,7 @@
 
   <!-- FINAL CTA -->
   <div class="final-cta">
-    <h2>想了解單次定全年旅遊保啱你？</h2>
+    <h2>想了解單次定全年<br>旅遊保啱你？</h2>
     <p>撳下面個按鈕聯絡我</p>
     <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%97%85%E9%81%8A%E6%A8%82%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
   </div>
