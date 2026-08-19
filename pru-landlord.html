@@ -74,8 +74,8 @@
     background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow);
   }
   .pillar .emoji{font-size:24px; margin-bottom:8px;}
-  .pillar .txt{font-size:13.5px; font-weight:700; line-height:1.4;}
-  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} .pillar .txt{font-size:12px;} }
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} .pillar .txt{font-size:14px;} }
 
   /* ---------- section shell ---------- */
   section{padding:20px 0;}
@@ -86,14 +86,17 @@
 
   /* ---------- comparison card ---------- */
   .cmp-card{background:var(--white); border-radius:22px; padding:22px; box-shadow:var(--shadow); margin-bottom:16px;}
-  table.cmp{width:100%; border-collapse:collapse;}
-  table.cmp th{font-size:13.5px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0;}
+  table.cmp{width:100%; border-collapse:collapse; table-layout:fixed;}
+  table.cmp th{font-size:14px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0;}
   table.cmp th:first-child{text-align:left;}
   table.cmp td{padding:13px 0; border-bottom:1px solid #F0EAE0; vertical-align:middle;}
   table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp col.c-name{width:42%;}
+  table.cmp col.c-amt{width:29%;}
   .item-name{font-size:15.5px; font-weight:700;}
-  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
-  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:nowrap;}
+  .item-sub{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:normal; word-break:break-word; padding-left:6px;}
+  @media (max-width:400px){ .amt{font-size:13.5px;} }
   .amt.hi{color:var(--coral-deep);}
 
   /* ---------- accordion (click to expand 四大保障) ---------- */
@@ -113,22 +116,22 @@
   }
   .acc-head{flex:1; min-width:0;}
   .acc-title{font-size:16px; font-weight:700;}
-  .acc-amt{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
   .chevron{
     width:26px; height:26px; border-radius:50%; background:var(--cream);
     display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    transition:transform .3s ease; font-size:13px; color:var(--ink-soft);
+    transition:transform .3s ease; font-size:14px; color:var(--ink-soft);
   }
   details.acc[open] .chevron{transform:rotate(180deg);}
   .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
   .acc-body p{margin:0 0 12px;}
   .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
-  .acc-extra-title{font-size:13px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
-  .acc-extra-body{font-size:13.5px; line-height:1.85;}
-  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:13.5px; margin-top:10px;}
+  .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
 
   /* ---------- tip ---------- */
-  .tip{background:var(--butter); border-radius:14px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px;}
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
 
   /* ---------- premium table ---------- */
   table.premium{width:100%; border-collapse:collapse; font-size:14px;}
@@ -140,13 +143,13 @@
   .flags{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;}
   .flag{border-radius:16px; padding:16px;}
   .flag.ok{background:var(--mint);}
-  .flag.no{background:var(--cream); border:1px solid #E8DCC8;}
+  .flag.no{background:#F3DCD3; border:1px solid #E8C4B6;}
   .flag-title{font-size:14px; font-weight:700; margin-bottom:6px;}
   .flag.ok .flag-title{color:var(--mint-deep);}
-  .flag.no .flag-title{color:var(--ink-soft);}
-  .flag-text{font-size:13px; line-height:1.7;}
+  .flag.no .flag-title{color:var(--terracotta);}
+  .flag-text{font-size:14px; line-height:1.7;}
   .flag.ok .flag-text{color:var(--mint-deep);}
-  .flag.no .flag-text{color:var(--ink-soft);}
+  .flag.no .flag-text{color:var(--terracotta);}
 
   /* ---------- final cta ---------- */
   .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
@@ -157,7 +160,7 @@
     background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px;
     font-weight:700; font-size:15px; text-decoration:none; border:none;
   }
-  .disclaimer{font-size:12.5px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
 
   @media (max-width:640px){
     .hero{padding:36px 0 6px;}
@@ -193,6 +196,7 @@
     <div class="section-head"><span class="tag">四大保障・計劃對比</span></div>
     <div class="cmp-card">
       <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"></colgroup>
         <tr><th></th><th>計劃1</th><th>計劃2</th></tr>
         <tr>
           <td><div class="item-name">家居財物保障</div><div class="item-sub">傢俬電器裝修損毀</div></td>
@@ -211,7 +215,7 @@
         </tr>
         <tr>
           <td><div class="item-name">樓宇結構保障</div><div class="item-sub">自選，可獨立投保</div></td>
-          <td class="amt" colspan="2" style="font-size:13.5px;">投保額（最少$500,000）</td>
+          <td class="amt" colspan="2" style="font-size:14px;">投保額（最少$500,000）</td>
         </tr>
       </table>
     </div>
@@ -265,7 +269,7 @@
             • 租客拖租，法庭判決後1個月仍未追回
           </div>
         </div>
-        <p style="margin-top:10px; color:var(--ink-soft); font-size:13.5px;">額外保障：追討租金及收回受保住所嘅實際法律費用</p>
+        <p style="margin-top:10px; color:var(--ink-soft); font-size:14px;">額外保障：追討租金及收回受保住所嘅實際法律費用</p>
       </div>
     </details>
 
@@ -310,8 +314,8 @@
           <div class="acc-extra-body">
             <b>方法二・面積成本法</b>（貼近實際重建費）<br>
             建築面積（呎）× $3,500 = 建議保額<br>
-            <span style="color:var(--ink-soft); font-size:12.5px;">例：600呎單位 → 600 × $3,500 = $2,100,000</span><br>
-            <span style="color:var(--ink-soft); font-size:12.5px;">豪裝／獨立屋／村屋可將基數調升至 $4,500–$5,500</span>
+            <span style="color:var(--ink-soft); font-size:14px;">例：600呎單位 → 600 × $3,500 = $2,100,000</span><br>
+            <span style="color:var(--ink-soft); font-size:14px;">豪裝／獨立屋／村屋可將基數調升至 $4,500–$5,500</span>
           </div>
         </div>
       </div>
@@ -329,7 +333,7 @@
         <tr><td>961–1,600</td><td>不適用</td><td>$1,400</td></tr>
       </table>
       <div style="margin-top:16px; padding-top:14px; border-top:1px solid #F0EAE0;">
-        <div style="font-size:13.5px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障（自選）</div>
+        <div style="font-size:14px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障（自選）</div>
         <div style="font-size:14px; line-height:1.85;">
           • 與基本保障同時投保：投保額 × 0.07%<br>
           • 單獨投保：投保額 × 0.09%（毋須額外費用，仲送埋業主法律責任保障）
