@@ -28,13 +28,17 @@
     --radius: 28px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
   body{
     margin:0;
     font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
     background:var(--cream);
     color:var(--ink);
     line-height:1.7;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    overflow-x:hidden;
+    max-width:100vw;
   }
   .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
   img{max-width:100%;}
@@ -84,7 +88,7 @@
   /* ---------- pillars ---------- */
   .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
   .pillar{
-    background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow);
+    background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;
   }
   .pillar .emoji{font-size:24px; margin-bottom:8px;}
   .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
@@ -141,7 +145,8 @@
   .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
   .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
   .acc-extra-body{font-size:14px; line-height:1.85;}
-  .bullet{padding-left:1.1em; text-indent:-1.1em;}
+  .bullet-list{margin:0; padding-left:1.2em;}
+  .bullet-list li{padding-left:0.2em;}
   .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
 
   /* ---------- tip ---------- */
@@ -155,7 +160,7 @@
 
   /* ---------- flags ---------- */
   .flags{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;}
-  .flag{border-radius:16px; padding:16px;}
+  .flag{border-radius:16px; padding:16px; min-width:0;}
   .flag.ok{background:var(--mint);}
   .flag.no{background:#F3DCD3; border:1px solid #E8C4B6;}
   .flag-title{font-size:14px; font-weight:700; margin-bottom:6px;}
@@ -223,13 +228,13 @@
           <td class="amt hi">$240,000</td>
         </tr>
         <tr>
-          <td><div class="item-name">業主法律責任</div><div class="item-sub">第三者受傷／財物損失</div></td>
+          <td><div class="item-name">業主法律責任</div><div class="item-sub">第三者受傷/財物損失</div></td>
           <td class="amt">$10,000,000</td>
           <td class="amt">$10,000,000</td>
         </tr>
         <tr>
           <td><div class="item-name">樓宇結構保障</div><div class="item-sub">自選，可獨立投保</div></td>
-          <td class="amt" colspan="2" style="font-size:14px;">投保額（最少$500,000）</td>
+          <td class="amt" colspan="2" style="font-size:14px;">投保額<span style="white-space:nowrap;">（最少$500,000）</span></td>
         </tr>
       </table>
     </div>
@@ -250,15 +255,17 @@
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>全險保障，「以新易舊」方式賠償。保傢俬、家居用品、電器，以及業主自行添置嘅室內裝修（油漆、牆紙、地板）。連消防員執行任務造成嘅損毀、租客惡意破壞（需報警證明）都保埋。</p>
+        <p>全險保障，「以新易舊」方式賠償。保傢俬、家居用品、電器，以及業主自行添置嘅室內裝修（油漆、牆紙、地板）。連消防員執行任務造成嘅損毀、租客惡意破壞<span style="white-space:nowrap;">（需報警證明）</span>都保埋。</p>
         <div class="acc-extra">
           <div class="acc-extra-title">額外保障</div>
           <div class="acc-extra-body">
-            <div class="bullet">• 發展商／前業主添置嘅室內裝修</div>
-            <div class="bullet">• 裝修期間意外（工程費&lt;$300,000且&lt;60日）</div>
-            <div class="bullet">• 短暫寄存（&lt;30日）</div>
-            <div class="bullet">• 更換門鎖及門匙</div>
-            <div class="bullet">• 清理瓦礫</div>
+            <ul class="bullet-list">
+              <li>發展商/前業主添置嘅室內裝修</li>
+              <li>裝修期間意外<span style="white-space:nowrap;">（工程費&lt;$300,000且&lt;60日）</span></li>
+              <li>短暫寄存<span style="white-space:nowrap;">（&lt;30日）</span></li>
+              <li>更換門鎖及門匙</li>
+              <li>清理瓦礫</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -269,7 +276,7 @@
         <div class="acc-icon" style="background:var(--mint-deep);">💸</div>
         <div class="acc-head">
           <div class="acc-title">項目二・租金損失保障</div>
-          <div class="acc-amt"><span style="white-space:nowrap;">計劃1：$120,000</span>　<span style="white-space:nowrap;">計劃2：$240,000</span>（最長6個月）</div>
+          <div class="acc-amt"><span style="white-space:nowrap;">計劃1：$120,000</span>　<span style="white-space:nowrap;">計劃2：$240,000</span><span style="white-space:nowrap;">（最長6個月）</span></div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -277,10 +284,12 @@
         <p style="font-weight:700; margin-bottom:8px;">保障以下情況引致嘅租金損失：</p>
         <div class="acc-extra">
           <div class="acc-extra-body">
-            <div class="bullet">• 物業因意外損毀不能居住</div>
-            <div class="bullet">• 租客喺屋企自殺或被謀殺身亡</div>
-            <div class="bullet">• 香港司法機構命令連續10日以上不能進出</div>
-            <div class="bullet">• 租客拖租，法庭判決後1個月仍未追回</div>
+            <ul class="bullet-list">
+              <li>物業因意外損毀不能居住</li>
+              <li>租客喺屋企自殺或被謀殺身亡</li>
+              <li>香港司法機構命令連續10日以上不能進出</li>
+              <li>租客拖租，法庭判決後1個月仍未追回</li>
+            </ul>
           </div>
         </div>
         <p style="margin-top:10px; color:var(--ink-soft); font-size:14px;">額外保障：追討租金及收回受保住所嘅實際法律費用</p>
@@ -317,19 +326,21 @@
         <div class="acc-extra">
           <div class="acc-extra-title">投保額點計？兩個簡易方法</div>
           <div class="acc-extra-body">
-            <b>方法一・按揭投保法</b>（最常用，唔使計數）
-            <div class="bullet">• 新買樓／啱批按揭：用「總按揭貸款額」</div>
-            <div class="bullet">• 供緊樓／轉按：用「尚餘按揭貸款額」</div>
-            <div class="bullet">• 銀行話幾多就幾多，最方便，但借得少可能保額唔夠、借得多會多付咗保費</div>
+            <b>方法一・按揭投保法</b><span style="white-space:nowrap;">（最常用，唔使計數）</span>
+            <ul class="bullet-list">
+              <li>新買樓/啱批按揭：用「總按揭貸款額」</li>
+              <li>供緊樓/轉按：用「尚餘按揭貸款額」</li>
+              <li>銀行話幾多就幾多，最方便，但借得少可能保額唔夠、借得多會多付咗保費</li>
+            </ul>
           </div>
         </div>
 
         <div class="acc-extra" style="margin-top:10px;">
           <div class="acc-extra-body">
-            <b>方法二・面積成本法</b>（貼近實際重建費）<br>
-            建築面積（呎）× $3,500 = 建議保額<br>
-            <span style="color:var(--ink-soft); font-size:14px;">例：600呎單位 → 600 × $3,500 = $2,100,000</span><br>
-            <span style="color:var(--ink-soft); font-size:14px;">豪裝／獨立屋／村屋可將基數調升至 $4,500–$5,500</span>
+            <b>方法二・面積成本法</b><span style="white-space:nowrap;">（貼近實際重建費）</span><br>
+            建築面積<span style="white-space:nowrap;">（呎）×$3,500</span> = 建議保額<br>
+            <span style="color:var(--ink-soft); font-size:14px;">例：600呎單位 → 600×$3,500 = $2,100,000</span><br>
+            <span style="color:var(--ink-soft); font-size:14px;">豪裝/獨立屋/村屋可將基數調升至 $4,500–$5,500</span>
           </div>
         </div>
       </div>
@@ -338,7 +349,7 @@
 
   <!-- PREMIUM TABLE -->
   <section>
-    <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考（未連徵費）</span></div>
+    <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考<span style="white-space:nowrap;">（未連徵費）</span></span></div>
     <div class="cmp-card">
       <table class="premium">
         <tr><th>實用面積(呎)</th><th>計劃1</th><th>計劃2</th></tr>
@@ -347,10 +358,12 @@
         <tr><td>961–1,600</td><td>不適用</td><td>$1,400</td></tr>
       </table>
       <div style="margin-top:16px; padding-top:14px; border-top:1px solid #F0EAE0;">
-        <div style="font-size:14px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障（自選）</div>
+        <div style="font-size:14px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障<span style="white-space:nowrap;">（自選）</span></div>
         <div style="font-size:14px; line-height:1.85;">
-          <div class="bullet">• 與基本保障同時投保：投保額 × 0.07%</div>
-          <div class="bullet">• 單獨投保：投保額 × 0.09%（毋須額外費用，仲送埋業主法律責任保障）</div>
+          <ul class="bullet-list">
+            <li>與基本保障同時投保：投保額<span style="white-space:nowrap;">×0.07%</span></li>
+            <li>單獨投保：投保額<span style="white-space:nowrap;">×0.09%</span><span style="white-space:nowrap;">（毋須額外費用，</span><span style="white-space:nowrap;">仲送埋業主法律責任保障）</span></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -361,11 +374,11 @@
     <div class="flags">
       <div class="flag ok">
         <div class="flag-title">✅ 啱買</div>
-        <div class="flag-text">私人樓／公屋<br>居屋／村屋(40年內)</div>
+        <div class="flag-text">私人樓/公屋<br>居屋/村屋<span style="white-space:nowrap;">(40年內)</span></div>
       </div>
       <div class="flag no">
         <div class="flag-title">❌ 唔啱買</div>
-        <div class="flag-text">寮屋／劏房<br>商業物業</div>
+        <div class="flag-text">寮屋/劏房<br>商業物業</div>
       </div>
     </div>
   </section>
