@@ -104,12 +104,12 @@
   table.cmp th:first-child{text-align:left;}
   table.cmp td{padding:13px 0; border-bottom:1px solid #F0EAE0; vertical-align:middle;}
   table.cmp tr:last-child td{border-bottom:none;}
-  table.cmp col.c-name{width:42%;}
-  table.cmp col.c-amt{width:29%;}
+  table.cmp col.c-name{width:38%;}
+  table.cmp col.c-amt{width:31%;}
   .item-name{font-size:15.5px; font-weight:700;}
   .item-sub{font-size:14px; color:var(--ink-soft); margin-top:2px;}
-  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:normal; word-break:break-word; padding-left:6px;}
-  @media (max-width:400px){ .amt{font-size:13.5px;} }
+  .amt{text-align:right; font-size:14px; font-weight:900; white-space:normal; word-break:keep-all; overflow-wrap:break-word; padding-left:4px;}
+  @media (max-width:360px){ .amt{font-size:12.5px;} }
   .amt.hi{color:var(--coral-deep);}
 
   /* ---------- accordion (click to expand 四大保障) ---------- */
@@ -141,6 +141,7 @@
   .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
   .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
   .acc-extra-body{font-size:14px; line-height:1.85;}
+  .bullet{padding-left:1.1em; text-indent:-1.1em;}
   .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
 
   /* ---------- tip ---------- */
@@ -244,7 +245,7 @@
         <div class="acc-icon" style="background:var(--coral);">🔧</div>
         <div class="acc-head">
           <div class="acc-title">項目一・家居財物保障</div>
-          <div class="acc-amt">計劃1：$500,000　計劃2：$1,500,000</div>
+          <div class="acc-amt"><span style="white-space:nowrap;">計劃1：$500,000</span>　<span style="white-space:nowrap;">計劃2：$1,500,000</span></div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -253,11 +254,11 @@
         <div class="acc-extra">
           <div class="acc-extra-title">額外保障</div>
           <div class="acc-extra-body">
-            • 發展商／前業主添置嘅室內裝修<br>
-            • 裝修期間意外（工程費&lt;$300,000且&lt;60日）<br>
-            • 短暫寄存（&lt;30日）<br>
-            • 更換門鎖及門匙<br>
-            • 清理瓦礫
+            <div class="bullet">• 發展商／前業主添置嘅室內裝修</div>
+            <div class="bullet">• 裝修期間意外（工程費&lt;$300,000且&lt;60日）</div>
+            <div class="bullet">• 短暫寄存（&lt;30日）</div>
+            <div class="bullet">• 更換門鎖及門匙</div>
+            <div class="bullet">• 清理瓦礫</div>
           </div>
         </div>
       </div>
@@ -268,7 +269,7 @@
         <div class="acc-icon" style="background:var(--mint-deep);">💸</div>
         <div class="acc-head">
           <div class="acc-title">項目二・租金損失保障</div>
-          <div class="acc-amt">計劃1：$120,000　計劃2：$240,000（最長6個月）</div>
+          <div class="acc-amt"><span style="white-space:nowrap;">計劃1：$120,000</span>　<span style="white-space:nowrap;">計劃2：$240,000</span>（最長6個月）</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -276,10 +277,10 @@
         <p style="font-weight:700; margin-bottom:8px;">保障以下情況引致嘅租金損失：</p>
         <div class="acc-extra">
           <div class="acc-extra-body">
-            • 物業因意外損毀不能居住<br>
-            • 租客喺屋企自殺或被謀殺身亡<br>
-            • 香港司法機構命令連續10日以上不能進出<br>
-            • 租客拖租，法庭判決後1個月仍未追回
+            <div class="bullet">• 物業因意外損毀不能居住</div>
+            <div class="bullet">• 租客喺屋企自殺或被謀殺身亡</div>
+            <div class="bullet">• 香港司法機構命令連續10日以上不能進出</div>
+            <div class="bullet">• 租客拖租，法庭判決後1個月仍未追回</div>
           </div>
         </div>
         <p style="margin-top:10px; color:var(--ink-soft); font-size:14px;">額外保障：追討租金及收回受保住所嘅實際法律費用</p>
@@ -316,10 +317,10 @@
         <div class="acc-extra">
           <div class="acc-extra-title">投保額點計？兩個簡易方法</div>
           <div class="acc-extra-body">
-            <b>方法一・按揭投保法</b>（最常用，唔使計數）<br>
-            • 新買樓／啱批按揭：用「總按揭貸款額」<br>
-            • 供緊樓／轉按：用「尚餘按揭貸款額」<br>
-            • 銀行話幾多就幾多，最方便，但借得少可能保額唔夠、借得多會多付咗保費
+            <b>方法一・按揭投保法</b>（最常用，唔使計數）
+            <div class="bullet">• 新買樓／啱批按揭：用「總按揭貸款額」</div>
+            <div class="bullet">• 供緊樓／轉按：用「尚餘按揭貸款額」</div>
+            <div class="bullet">• 銀行話幾多就幾多，最方便，但借得少可能保額唔夠、借得多會多付咗保費</div>
           </div>
         </div>
 
@@ -348,8 +349,8 @@
       <div style="margin-top:16px; padding-top:14px; border-top:1px solid #F0EAE0;">
         <div style="font-size:14px; font-weight:700; color:var(--ink-soft); margin-bottom:8px;">樓宇結構保障（自選）</div>
         <div style="font-size:14px; line-height:1.85;">
-          • 與基本保障同時投保：投保額 × 0.07%<br>
-          • 單獨投保：投保額 × 0.09%（毋須額外費用，仲送埋業主法律責任保障）
+          <div class="bullet">• 與基本保障同時投保：投保額 × 0.07%</div>
+          <div class="bullet">• 單獨投保：投保額 × 0.09%（毋須額外費用，仲送埋業主法律責任保障）</div>
         </div>
       </div>
     </div>
@@ -376,7 +377,7 @@
     <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%A5%AD%E4%B8%BB%E5%AF%B6%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
   </div>
 
-  <div class="disclaimer">只作參考及教育用途，不構成保單合約。實際保障以保單條款正本為準。</div>
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。<br>實際保障以保單條款正本為準。</div>
 
 </div>
 
