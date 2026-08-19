@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保誠精選「旅遊樂」｜Lily Lau</title>
+<meta name="description" content="保誠精選「旅遊樂」PRUChoice Travel 旅遊保障計劃 —— 醫療支援、人身意外、24小時緊急支援，出發前一齊了解清楚">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0;
+    --coral:#C9956B;
+    --coral-deep:#B8845A;
+    --mint:#D6E8D5;
+    --mint-deep:#2A5A2E;
+    --butter:#FAEEDA;
+    --butter-deep:#633806;
+    --lavender:#E6F1FB;
+    --lavender-deep:#0C447C;
+    --terracotta:#A85D42;
+    --ink:#3D2B1A;
+    --ink-soft:#6B4E35;
+    --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08);
+    --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    line-break:strict;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
+  @media (min-width:1180px){ .wrap{max-width:880px; padding:0 40px;} }
+  img{max-width:100%;}
+
+  #guide{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+    cursor:pointer; text-decoration:none; border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{
+    display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px;
+    font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(28px,7vw,38px); margin:0 0 12px; font-weight:900; line-height:1.35;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow);}
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
+
+  section{padding:20px 0;}
+  .section-head{margin-bottom:16px;}
+  .section-head .tag{font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;}
+
+  .cmp-card{background:var(--white); border-radius:22px; padding:22px; box-shadow:var(--shadow); margin-bottom:16px;}
+  table.cmp{width:100%; border-collapse:collapse; table-layout:fixed;}
+  table.cmp th{font-size:14px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0;}
+  table.cmp th:first-child{text-align:left;}
+  table.cmp td{padding:13px 0; border-bottom:1px solid #F0EAE0; vertical-align:middle;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp col.c-name{width:62%;}
+  table.cmp col.c-amt{width:38%;}
+  .item-name{font-size:15.5px; font-weight:700;}
+  .item-sub{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .amt{text-align:right; font-size:15.5px; font-weight:900; white-space:normal; word-break:break-word; padding-left:6px;}
+  @media (max-width:400px){ .amt{font-size:13.5px;} }
+  .amt.hi{color:var(--coral-deep);}
+
+  details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:14px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
+  .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
+  .acc-list li{margin-bottom:6px; padding-left:2px;}
+  .acc-list li:last-child{margin-bottom:0;}
+
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
+
+  table.premium{width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed;}
+  table.premium col.p-label{width:34%;}
+  table.premium col.p-val{width:22%;}
+  table.premium th, table.premium td{padding:10px 4px; text-align:right; border-bottom:1px solid #F0EAE0;}
+  table.premium th:first-child, table.premium td:first-child{text-align:left; color:var(--ink-soft);}
+  table.premium th{font-weight:700;}
+  .premium-note{font-size:14px; color:var(--ink-soft); margin-top:10px; line-height:1.6;}
+
+  .flags{display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:16px;}
+  .flag{border-radius:16px; padding:16px;}
+  .flag.ok{background:var(--mint);}
+  .flag.no{background:#F3DCD3; border:1px solid #E8C4B6;}
+  .flag-title{font-size:14px; font-weight:700; margin-bottom:6px;}
+  .flag.ok .flag-title{color:var(--mint-deep);}
+  .flag.no .flag-title{color:var(--terracotta);}
+  .flag-text{font-size:14px; line-height:1.7;}
+  .flag.ok .flag-text{color:var(--mint-deep);}
+  .flag.no .flag-text{color:var(--terracotta);}
+
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    .cmp-card, details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%97%85%E9%81%8A%E6%A8%82%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">✈️ 出發前必睇</div>
+    <h1>出門旅遊唔怕意外<br><span>保誠精選「旅遊樂」</span></h1>
+    <p class="sub">醫療、意外、行李、延誤一次過保障，等你安心去玩</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">🤒</div><div class="txt">旅途中病咗點算？</div></div>
+    <div class="pillar"><div class="emoji">🛫</div><div class="txt">航班延誤/取消點算？</div></div>
+    <div class="pillar"><div class="emoji">🧳</div><div class="txt">行李遺失/損毀點算？</div></div>
+  </div>
+
+  <!-- COVERAGE OVERVIEW TABLE -->
+  <section>
+    <div class="section-head"><span class="tag">保障一覽（每次旅程最高保障額）</span></div>
+    <div class="cmp-card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"></colgroup>
+        <tr><th></th><th>最高保障額</th></tr>
+        <tr>
+          <td><div class="item-name">醫療支援保障</div><div class="item-sub">海外醫療、住院現金、覆診等</div></td>
+          <td class="amt hi">$1,200,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">人身意外保障</div><div class="item-sub">死亡/永久傷殘$120萬＋殮葬$2萬＋親友探望$2萬</div></td>
+          <td class="amt hi">$1,240,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">24小時緊急支援服務</div><div class="item-sub">醫療救援、護送、運送</div></td>
+          <td class="amt">無限額</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">行李及個人財物保障</div></td>
+          <td class="amt">$20,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">個人現金/信用卡/旅遊證件保障</div></td>
+          <td class="amt">$26,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">取消旅程保障</div></td>
+          <td class="amt">$30,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">提早結束旅程保障</div></td>
+          <td class="amt">$50,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">更改行程保障</div></td>
+          <td class="amt">$20,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">旅程延誤保障</div></td>
+          <td class="amt">$3,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">行李延誤保障</div></td>
+          <td class="amt">$1,500</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">個人責任保障</div></td>
+          <td class="amt hi">$1,500,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">租車自負額保障</div></td>
+          <td class="amt">$5,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">中國醫療卡服務</div><div class="item-sub">只適用於全年保障</div></td>
+          <td class="amt">全額入院按金保證</td>
+        </tr>
+      </table>
+    </div>
+    <div class="tip">💡 全年保障續保時可獲10%無索償折扣，連續兩年無索償更可享高達20%折扣；如受保人71歲或以上，醫療支援保障最高保障額調整為$600,000。</div>
+  </section>
+
+  <!-- ACCORDION -->
+  <section>
+    <div class="section-head"><span class="tag">撳開睇詳細內容</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🏥</div>
+        <div class="acc-head">
+          <div class="acc-title">醫療支援保障</div>
+          <div class="acc-amt">最高$1,200,000（71歲或以上為$600,000）</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>喺外地因意外受傷或患病，賠償門診、住院及前往註冊醫院嘅緊急交通費用；亦包括回港後3個月內嘅覆診費用（最高$50,000，包括意外跌打及牙科治療）。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">額外保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>海外住院現金/強制隔離現金津貼：每日$200，最高$10,000（不保家居隔離）</li>
+              <li>親友探望：最高$20,000</li>
+              <li>創傷輔導費用（綁架、恐怖襲擊、搶劫、襲擊或強姦）：最高$50,000</li>
+              <li>醫療器材費用：最高$20,000</li>
+              <li>額外住宿及交通費用：最高$50,000</li>
+              <li>毛孩醫療支援（只適用於同時投保「寵愛寶」）：最高$10,000</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">⚠️ 如喺旅程期間冇求診，回港後先睇醫生，醫療費用將不受保。任何出發前已知悉或存在嘅病症亦不受保。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🩹</div>
+        <div class="acc-head">
+          <div class="acc-title">人身意外保障</div>
+          <div class="acc-amt">合計最高$1,240,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>喺外地因意外、暴力、外在及可見原因而直接引致死亡或永久傷殘，最高賠償$1,200,000，不分年紀，所有年齡受保人享有相同保額。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">額外保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>殮葬費用：如在外地意外身亡，最高$20,000</li>
+              <li>親友探望：如在外地意外身亡，親屬或朋友前往當地善後嘅額外住宿及交通費，最高$20,000</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">三項合計，每次旅程最高保障額為$1,240,000。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">📞</div>
+        <div class="acc-head">
+          <div class="acc-title">24小時緊急支援服務</div>
+          <div class="acc-amt">醫療救援、護送、運送 —— 無限額</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>旅程中如需協助，可致電EAHK救援中心免費獲得以下服務：</p>
+        <div class="acc-extra">
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>醫療救援（無限額）</li>
+              <li>護送回港（無限額）</li>
+              <li>遇事身故後，骨灰或遺體運返原居地（無限額）</li>
+              <li>護送隨行受供養而未能照顧嘅子女返回原居地</li>
+              <li>安排運送所需藥物/醫療器材、派遣醫生診治</li>
+              <li>住院按金保證，最高$39,000</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">🧳</div>
+        <div class="acc-head">
+          <div class="acc-title">行李、財物、證件保障</div>
+          <div class="acc-amt">行李$20,000 /現金信用卡證件$26,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>賠償意外遺失或損毀嘅行李及個人財物（每件/對/套最高$5,000，購入不足兩年以新購價賠償）；另保障隨行現金/旅行支票（最高$3,000）、信用卡被盜用（最高$3,000）同旅遊證件補領費用（最高$20,000）。</p>
+        <div class="acc-note">⚠️ 不保手提電話、易碎物品；發現損失後必須24小時內向當地警方報案，回港後超過48小時先發現亦不受保。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">📅</div>
+        <div class="acc-head">
+          <div class="acc-title">取消/提早結束/更改行程</div>
+          <div class="acc-amt">$30,000 / $50,000 / $20,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>因身故、嚴重受傷/患病、出庭作供、罷工暴動、天災、黑色或紅色外遊警示、居所受嚴重損毀等指明原因，而必須取消、提早結束或更改行程，賠償已繳付而未能退回嘅旅遊費用或額外住宿交通費。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">額外保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>航空公司清盤保障</li>
+              <li>綁架保障（提早結束旅程）</li>
+              <li>如同時投保「寵愛寶」，毛孩身故/患病需手術住院都受保</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">⏱️</div>
+        <div class="acc-head">
+          <div class="acc-title">旅程延誤/行李延誤</div>
+          <div class="acc-amt">$3,000 / $1,500</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>公共交通工具因罷工、天災等延誤超過5小時，首5小時賠$200，其後每延誤8小時賠$400；寄艙行李因劫機或航空公司誤送，抵達目的地8小時後仍未取得，購買必需品可獲賠償。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">⚖️</div>
+        <div class="acc-head">
+          <div class="acc-title">個人責任/租車自負額</div>
+          <div class="acc-amt">$1,500,000 / $5,000</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>保障因疏忽而需對第三者身體損傷或財物損失負上嘅法律責任（需公司預先書面同意）；租用車輛意外碰撞、被盜或停泊時損毀，賠償須負責嘅自負額、免賠額或營業損失賠償(NOC)。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">🇨🇳</div>
+        <div class="acc-head">
+          <div class="acc-title">中國醫療卡服務</div>
+          <div class="acc-amt">只適用於全年保障 —— 全額入院按金保證</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>於中國內地旅遊，如需到指定醫院住院治療，出示任中橫中國醫療卡即可享入院按金保證，毋須先墊支按金。</p>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- PREMIUM TABLE -->
+  <section>
+    <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考（港幣，未連徵費）</span></div>
+    <div class="cmp-card">
+      <table class="premium">
+        <colgroup><col class="p-label"><col class="p-val"><col class="p-val"><col class="p-val"></colgroup>
+        <tr><th>亞洲及指定島嶼</th><th>投保人</th><th>+配偶</th><th>+子女</th></tr>
+        <tr><td>3日</td><td>$182</td><td>$364</td><td>$273</td></tr>
+        <tr><td>5日</td><td>$235</td><td>$470</td><td>$353</td></tr>
+        <tr><td>7日</td><td>$260</td><td>$520</td><td>$390</td></tr>
+      </table>
+      <table class="premium" style="margin-top:16px;">
+        <colgroup><col class="p-label"><col class="p-val"><col class="p-val"><col class="p-val"></colgroup>
+        <tr><th>全球</th><th>投保人</th><th>+配偶</th><th>+子女</th></tr>
+        <tr><td>7日</td><td>$450</td><td>$900</td><td>$675</td></tr>
+        <tr><td>10日</td><td>$515</td><td>$1,030</td><td>$773</td></tr>
+        <tr><td>14日</td><td>$571</td><td>$1,142</td><td>$857</td></tr>
+      </table>
+      <div class="premium-note">全年保障保費：投保人 $2,130 / 投保人及其家人 $4,260（家人指合法配偶及17歲或以下受供養未婚子女）。「亞洲及指定島嶼」涵蓋包括中國內地、日本、南韓、台灣等地區；上列為部分常見旅程日數，完整保費表請向Lily查詢。</div>
+    </div>
+  </section>
+
+  <!-- ELIGIBILITY -->
+  <section>
+    <div class="flags">
+      <div class="flag ok">
+        <div class="flag-title">✅ 啱買</div>
+        <div class="flag-text">
+          <ul class="acc-list">
+            <li>香港出發嘅消閒或公幹（限行政文職）旅程</li>
+            <li>想有全面醫療及意外保障嘅個人或家庭</li>
+            <li>學生/家庭主婦/無業人士</li>
+            <li>想全年多次出遊嘅旅客</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flag no">
+        <div class="flag-title">❌ 唔啱買</div>
+        <div class="flag-text">
+          <ul class="acc-list">
+            <li>香港境內一日遊</li>
+            <li>抵達目的地先至投保</li>
+            <li>職業運動員/特技人/飛機師空中服務員等特定職業（如僅為私人旅程可個別核保）</li>
+            <li>以治病為旅遊目的</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <h2>想了解單次定全年旅遊保啱你？</h2>
+    <p>撳下面個按鈕聯絡我</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%97%85%E9%81%8A%E6%A8%82%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。實際保障以保單條款正本為準，如有查詢請聯絡Lily或參閱保誠官方保單文件。</div>
+
+</div>
+
+</body>
+</html>
