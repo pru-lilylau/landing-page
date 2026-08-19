@@ -39,6 +39,19 @@
   .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
   img{max-width:100%;}
 
+  /* ---------- tablet / iPad landscape auto-scale ---------- */
+  @media (min-width:768px){
+    .wrap{max-width:760px; padding:0 32px;}
+    .hero h1{font-size:44px;}
+    .hero p.sub{font-size:18px;}
+    .pillars{gap:16px;}
+    .pillar .emoji{font-size:28px;}
+    .pillar .txt{font-size:15px;}
+  }
+  @media (min-width:1024px){
+    .wrap{max-width:900px; padding:0 40px;}
+  }
+
   /* ---------- floating guide ---------- */
   #guide{
     position:fixed;
