@@ -755,7 +755,7 @@ function calc() {
   const years = Math.max(65 - age, 10);
   const ciNeed = annualIncome * 5;
   const lifeNeed = dep > 0 ? annualIncome * (dep + 2) : 0;
-  const savingsNeed = Math.round(income * 0.15) * 12 * 20;
+  const savingsNeed = Math.round(income * 0.15) * 12 * years;
   const ciGap = Math.max(0, ciNeed - ciHave);
   const lifeGap = Math.max(0, lifeNeed - lifeHave);
   const savingsGap = Math.max(0, savingsNeed - savings);
