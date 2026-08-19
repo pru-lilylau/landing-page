@@ -70,6 +70,8 @@
   /* ── Form rows ── */
   .row { display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; }
   .row:last-child { margin-bottom: 0; }
+  .row.row-wrap { flex-wrap: wrap; }
+  .med-hint { flex: 1 0 100%; font-size: 12px; color: #B8A090; margin-top: 4px; padding-left: 2px; }
   .row label { font-size: 15px; color: #6B4E35; width: 110px; flex-shrink: 0; }
   .row input[type=range] {
     flex: 1; height: 4px; border-radius: 2px;
@@ -95,6 +97,11 @@
   .row .val-input::-webkit-outer-spin-button,
   .row .val-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
   .row .val-unit { font-size: 13px; color: #8B6347; flex-shrink: 0; }
+  .text-input {
+    flex: 1; border: 1px solid #E8DDD0; border-radius: 8px;
+    padding: 6px 10px; font-size: 14px; font-family: inherit;
+    color: #3D2B1A; background: #FFFCF8; outline: none;
+  }
 
   .seg { display: flex; gap: 5px; flex: 1; flex-wrap: wrap; }
   .seg.multi button { border-radius: 8px; }
@@ -111,6 +118,7 @@
   .metric { background: #FBF8F4; border-radius: 10px; padding: 0.8rem 1rem; }
   .metric-label { font-size: 12px; color: #A08060; margin-bottom: 4px; }
   .metric-val { font-size: 20px; font-weight: 600; color: #3D2B1A; }
+  .metric-val-status { font-size: 16px; }
   .metric-sub { font-size: 11px; color: #B8A090; margin-top: 2px; }
 
   /* ── Gap bars ── */
@@ -164,13 +172,13 @@
   .cta-text strong { display: block; font-size: 16px; font-weight: 500; color: #3D2B1A; margin-bottom: 3px; }
   .cta-text p { font-size: 14px; color: #6B4E35; line-height: 1.5; }
   .cta-btn {
-    background: #25D366; color: #fff; border: none;
+    background: #C9956B; color: #fff; border: none;
     font-size: 15px; font-weight: 500; padding: 10px 20px;
     border-radius: 22px; cursor: pointer; white-space: nowrap;
     font-family: inherit; text-decoration: none; display: inline-block;
     transition: background .15s;
   }
-  .cta-btn:hover { background: #1ebe5d; }
+  .cta-btn:hover { background: #B8845A; }
 
   .footer { text-align: center; font-size: 12px; color: #B8A090; padding: 0 1rem 2rem; line-height: 1.7; }
 
@@ -229,9 +237,38 @@
   @media (max-width: 720px) {
     .page-body { grid-template-columns: 1fr; }
     .col-right { position: static; }
-    .row label { width: 95px; font-size: 14px; }
-    .row .val { font-size: 14px; min-width: 75px; }
-    .row .val-input { font-size: 14px; width: 78px; }
+
+    body { font-size: 17px; }
+    .header-name { font-size: 19px; }
+    .header-sub { font-size: 15px; }
+    .hbadge { font-size: 13px; }
+    .section-title { font-size: 16px; }
+    .row label { width: 95px; font-size: 16px; }
+    .row .val { font-size: 16px; min-width: 75px; }
+    .row .val-input { font-size: 16px; width: 84px; }
+    .row .val-unit { font-size: 14px; }
+    .text-input { font-size: 15px; }
+    .med-hint { font-size: 13px; }
+    .seg button { font-size: 14px; }
+    .metric-label { font-size: 13px; }
+    .metric-val { font-size: 21px; }
+    .metric-val-status { font-size: 17px; }
+    .metric-sub { font-size: 13px; }
+    .gap-bar-label { font-size: 14px; }
+    .rec-title { font-size: 16px; }
+    .prod-name-zh { font-size: 16px; }
+    .prod-name-en { font-size: 13px; }
+    .prod-cat { font-size: 12px; }
+    .prod-desc { font-size: 14px; }
+    .prod-tag { font-size: 12px; }
+    .prod-why { font-size: 14px; }
+    .no-gap { font-size: 16px; }
+    .child-block-title { font-size: 14px; }
+    .child-gap-title, .spouse-gap-title { font-size: 14px; }
+    .cta-text strong { font-size: 17px; }
+    .cta-text p { font-size: 15px; }
+    .cta-btn { font-size: 16px; }
+    .wa-summary-btn { font-size: 1rem; }
   }
 </style>
 </head>
@@ -256,7 +293,7 @@
     <div class="section-title">基本資料</div>
     <div class="row">
       <label>稱呼</label>
-      <input type="text" id="client-name" placeholder="例如：Chris Wong" style="flex:1;border:1px solid #E8DDD0;border-radius:8px;padding:6px 10px;font-size:14px;font-family:inherit;color:#3D2B1A;background:#FFFCF8;outline:none;">
+      <input type="text" id="client-name" class="text-input" placeholder="例如：Chris Wong">
     </div>
     <div class="row">
       <label>性別</label>
@@ -298,14 +335,14 @@
       <input type="range" id="ci-have" min="0" max="10000000" value="0" step="50000">
       <div class="val-wrap"><span class="val-unit">$</span><input type="text" inputmode="numeric" class="val-input" id="ci-have-num" value="0"></div>
     </div>
-    <div class="row">
+    <div class="row row-wrap">
       <label>醫療計劃</label>
       <div class="seg multi" id="med-seg">
         <button data-v="company" onclick="toggleMed('company',this)">公司</button>
         <button data-v="basic" onclick="toggleMed('basic',this)">基本</button>
         <button data-v="high" onclick="toggleMed('high',this)">高端</button>
       </div>
-      <div style="font-size:12px;color:#B8A090;margin-top:4px;padding-left:2px">可多選，未有保障就唔選</div>
+      <div class="med-hint">可多選，未有保障就唔選</div>
     </div>
     <div class="row">
       <label>人壽保額</label>
@@ -344,13 +381,14 @@
         <input type="range" id="sp-life-have" min="0" max="20000000" value="0" step="100000">
         <div class="val-wrap"><span class="val-unit">$</span><input type="text" inputmode="numeric" class="val-input" id="sp-life-have-num" value="0"></div>
       </div>
-      <div class="row">
+      <div class="row row-wrap">
         <label>配偶醫療計劃</label>
         <div class="seg multi" id="sp-med-seg">
           <button data-v="company" onclick="toggleSpouseMed('company',this)">公司</button>
           <button data-v="basic" onclick="toggleSpouseMed('basic',this)">基本</button>
           <button data-v="high" onclick="toggleSpouseMed('high',this)">高端</button>
         </div>
+        <div class="med-hint">可多選，未有保障就唔選</div>
       </div>
     </div>
   </div>
@@ -673,13 +711,14 @@ function renderChildInputs() {
         <input type="range" id="c${i}-edu" min="0" max="2000000" value="${c.edu||0}" step="50000">
         <div class="val-wrap"><span class="val-unit">$</span><input type="text" inputmode="numeric" class="val-input" id="c${i}-edu-num" value="${c.edu||0}"></div>
       </div>
-      <div class="row">
+      <div class="row row-wrap">
         <label>醫療計劃</label>
         <div class="seg multi" id="c${i}-med-seg">
           <button data-v="company" onclick="toggleChildMed(${i},'company',this)" ${c.medSet&&c.medSet.has('company')?'class="active"':''}>公司</button>
           <button data-v="basic" onclick="toggleChildMed(${i},'basic',this)" ${c.medSet&&c.medSet.has('basic')?'class="active"':''}>基本</button>
           <button data-v="high" onclick="toggleChildMed(${i},'high',this)" ${c.medSet&&c.medSet.has('high')?'class="active"':''}>高端</button>
         </div>
+        <div class="med-hint">可多選，未有保障就唔選</div>
       </div>
     </div>`).join('');
   state.children.forEach((c, i) => {
@@ -728,7 +767,7 @@ function calc() {
   document.getElementById('results').innerHTML = `
     <div class="metric"><div class="metric-label">危疾建議保額</div><div class="metric-val">${fmt(ciNeed)}</div><div class="metric-sub">年入 × 5 倍</div></div>
     <div class="metric"><div class="metric-label">人壽建議保額</div><div class="metric-val">${dep>0?fmt(lifeNeed):'—'}</div><div class="metric-sub">${dep>0?'有家庭負擔':'暫無需要'}</div></div>
-    <div class="metric"><div class="metric-label">醫療保障</div><div class="metric-val" style="font-size:16px;color:${gapBarColor(medScore)}">${getMedStatusLabel(medScore)}</div><div class="metric-sub">現有：${getMedSubLabel()}（評分 ${medScore}%）</div></div>
+    <div class="metric"><div class="metric-label">醫療保障</div><div class="metric-val metric-val-status" style="color:${gapBarColor(medScore)}">${getMedStatusLabel(medScore)}</div><div class="metric-sub">現有：${getMedSubLabel()}（評分 ${medScore}%）</div></div>
     <div class="metric"><div class="metric-label">退休儲蓄目標</div><div class="metric-val">${fmt(savingsNeed)}</div><div class="metric-sub">${years} 年後退休目標</div></div>
   `;
 
