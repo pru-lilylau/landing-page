@@ -772,7 +772,7 @@ function calc() {
   `;
 
   document.getElementById('gaps').innerHTML = [
-    ['危疾保障', ciPct, fmt(ciGap)],
+    ['危疾保障', ciPct, ciGap > 0 ? '缺口 '+fmt(ciGap) : '足夠'],
     ['人壽保障', lifePct, dep===0?'(無需要)':'缺口 '+fmt(lifeGap)],
     ['醫療保障', medScore, getMedStatusLabel(medScore)],
     ['退休儲蓄', savPct, '缺口 '+fmt(savingsGap)]
@@ -897,7 +897,7 @@ function sendSummaryToWhatsApp() {
   sections.push(basicLines.join('\n'));
 
   var gapLines = ['【保障缺口】'];
-  gapLines.push('• 危疾：缺口 ' + fmt(g.ciGap) + '（現有保障 ' + g.ciPct + '%）');
+  gapLines.push('• 危疾：' + (g.ciGap > 0 ? '缺口 ' + fmt(g.ciGap) : '足夠') + '（現有保障 ' + g.ciPct + '%）');
   gapLines.push('• 人壽：' + (dep === 0 ? '暫無需要' : '缺口 ' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%）'));
   gapLines.push('• 醫療：現有 ' + medLabel + ' － ' + getMedStatusLabel(g.medScore));
   gapLines.push('• 退休儲蓄：缺口 ' + fmt(g.savingsGap));
