@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2027/28學年 港九16間搶手私立幼稚園報名攻略｜會計師媽媽</title>
+<style>
+@font-face{font-family:'Noto Sans TC';font-weight:400 900;src:local('Noto Sans CJK TC');}
+:root{
+  --cream:#F5EDE0;
+  --coral:#C9956B;
+  --coral-deep:#B8845A;
+  --mint:#D6E8D5;
+  --mint-deep:#2A5A2E;
+  --butter:#FAEEDA;
+  --butter-deep:#633806;
+  --lavender:#E6F1FB;
+  --lavender-deep:#0C447C;
+  --terracotta:#A85D42;
+  --ink:#3D2B1A;
+  --ink-soft:#6B4E35;
+  --white:#FFFCF8;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  font-family:'Noto Sans TC','Noto Sans CJK TC',-apple-system,sans-serif;
+  background:var(--cream);
+  color:var(--ink);
+  line-break:strict;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  padding-bottom:40px;
+}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px;}
+@media (min-width:900px){ .wrap{max-width:760px;padding:0 32px;} }
+@media (min-width:1180px){ .wrap{max-width:880px;padding:0 40px;} }
+
+/* Hero */
+.hero{padding:36px 0 20px;text-align:center;}
+.eyebrow{
+  display:inline-block;background:var(--white);color:var(--coral-deep);
+  font-weight:700;font-size:13px;padding:6px 16px;border-radius:999px;
+  border:1px solid var(--coral);margin-bottom:14px;letter-spacing:.5px;
+}
+.hero h1{font-weight:900;font-size:26px;line-height:1.4;margin:0 0 10px;}
+.hero h1 span{color:var(--coral-deep);}
+.hero p{font-size:15px;color:var(--ink-soft);line-height:1.7;margin:0;}
+
+/* Tip callout */
+.tip{
+  background:var(--lavender);border-left:4px solid var(--lavender-deep);
+  border-radius:10px;padding:16px 18px;margin:18px 0;font-size:14px;
+  line-height:1.75;color:var(--ink);
+}
+.tip b{color:var(--lavender-deep);}
+
+/* Filter tabs */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0 16px;}
+.filter-btn{
+  font-family:inherit;font-weight:700;font-size:13px;padding:8px 14px;
+  border-radius:999px;border:1.5px solid var(--coral);background:var(--white);
+  color:var(--coral-deep);cursor:pointer;transition:all .15s;
+}
+.filter-btn.active{background:var(--coral);color:var(--white);}
+
+/* Section label */
+.section-label{
+  font-weight:900;font-size:14px;color:var(--mint-deep);
+  text-transform:uppercase;letter-spacing:1px;margin:28px 0 12px;
+}
+
+/* Accordion cards */
+.acc{
+  background:var(--white);border-radius:14px;margin-bottom:12px;
+  border:1px solid #EEE0CC;overflow:hidden;
+}
+.acc summary{
+  list-style:none;cursor:pointer;padding:14px 16px;
+  display:flex;align-items:center;gap:12px;
+}
+.acc summary::-webkit-details-marker{display:none;}
+.acc-icon{
+  flex:0 0 auto;width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:14px;color:var(--white);
+}
+.acc-title-wrap{flex:1;min-width:0;}
+.acc-rank{font-size:12px;color:var(--ink-soft);font-weight:700;}
+.acc-name{font-weight:900;font-size:15.5px;line-height:1.4;margin-top:1px;}
+.acc-badge{
+  flex:0 0 auto;font-size:12px;font-weight:700;padding:4px 10px;
+  border-radius:999px;white-space:nowrap;
+}
+.badge-open{background:var(--mint);color:var(--mint-deep);}
+.badge-soon{background:var(--lavender);color:var(--lavender-deep);}
+.badge-tba{background:#F3DCD3;color:var(--terracotta);}
+.chevron{
+  flex:0 0 auto;font-size:14px;color:var(--ink-soft);
+  transition:transform .2s;margin-left:2px;
+}
+.acc[open] .chevron{transform:rotate(180deg);}
+.acc-body{padding:0 16px 18px;font-size:14.5px;line-height:1.75;}
+.acc-row{margin-bottom:10px;}
+.acc-row b{color:var(--ink);}
+.acc-row .lbl{
+  display:inline-block;font-size:12px;font-weight:700;color:var(--ink-soft);
+  margin-bottom:2px;
+}
+.acc-link{
+  display:inline-block;margin-top:6px;background:var(--coral);color:var(--white)!important;
+  text-decoration:none;font-weight:700;font-size:14px;padding:9px 18px;
+  border-radius:999px;
+}
+
+/* Prep timeline table */
+.prep-table{width:100%;border-collapse:collapse;margin:14px 0 6px;font-size:13.5px;table-layout:fixed;}
+.prep-table th,.prep-table td{
+  border:1px solid #EEE0CC;padding:10px;text-align:left;vertical-align:top;
+  line-height:1.6;
+}
+.prep-table th{background:var(--butter);color:var(--butter-deep);font-weight:900;font-size:13px;}
+.prep-table td:first-child{font-weight:700;white-space:nowrap;}
+
+/* Final CTA */
+.final-cta{
+  background:var(--ink);color:var(--white);border-radius:16px;
+  padding:28px 22px;text-align:center;margin:32px 0 20px;
+}
+.final-cta h3{font-weight:900;font-size:18px;margin:0 0 10px;}
+.final-cta p{font-size:14px;line-height:1.7;color:#E9DCC9;margin:0 0 18px;}
+.final-cta a{
+  display:inline-block;background:var(--coral);color:var(--white);
+  text-decoration:none;font-weight:700;font-size:15px;padding:12px 28px;
+  border-radius:999px;
+}
+
+/* Disclaimer */
+.disclaimer{font-size:12px;color:var(--ink-soft);line-height:1.8;margin-top:24px;padding:0 4px;}
+
+/* Floating WhatsApp */
+.fab{
+  position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);z-index:50;animation:bounce 2.2s infinite;
+  text-decoration:none;
+}
+.fab svg{width:28px;height:28px;fill:#fff;}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+</style>
+</head>
+<body>
+
+<a class="fab" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E7%9C%8B%E5%88%B0%E4%BD%A0%E5%80%8B%E5%B9%BC%E7%A8%9A%E5%9C%92%E5%A0%B1%E5%90%8D%E6%94%BB%E7%95%A5%EF%BC%8C%E6%83%B3%E5%82%BE%E5%81%87%E5%A4%9A%E5%98%85" target="_blank" rel="noopener" aria-label="WhatsApp查詢">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.36a9.86 9.86 0 0 0 4.62 1.17h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.15 8.15 0 0 1 2.41 5.82c0 4.55-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.38c0-4.55 3.7-8.24 8.25-8.24m-4.6 4.66c-.15 0-.4.06-.61.3-.21.24-.8.78-.8 1.9 0 1.12.82 2.2.94 2.35.12.16 1.6 2.6 3.97 3.53 1.96.77 2.36.62 2.79.58.42-.04 1.36-.55 1.55-1.09.19-.53.19-.98.13-1.08-.06-.09-.21-.15-.44-.27-.24-.12-1.36-.67-1.57-.75-.21-.08-.36-.11-.51.11-.15.22-.58.75-.72.9-.13.16-.26.17-.49.05-.24-.11-1-.37-1.9-1.17-.7-.62-1.18-1.4-1.31-1.63-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.11-.14.15-.23.23-.39.08-.16.04-.3-.02-.42-.06-.11-.51-1.29-.72-1.75-.18-.44-.37-.39-.51-.4z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <div class="hero">
+    <span class="eyebrow">教育路 · 升學攻略</span>
+    <h1>2027/28學年<br>港九<span>16間</span>搶手私立幼稚園<br>報名攻略</h1>
+    <p>會計師媽媽整理版｜<br>St. Cat、VEO、民生、劍鳴、弘立等<br>報名日期、學費、官方連結一次睇晒</p>
+  </div>
+
+  <div class="tip">
+    <b>邊啲BB啱用呢個攻略？</b><br>
+    2024年出世嘅BB家長要留意喇！如果仔女喺 <b>2023年9月1日至2024年12月31日</b> 出生（按個別學校要求微調），就要開始準備報讀 2027/28 學年 K1（幼兒班）。呢篇已剔除實行免費幼稚園計劃嘅「券校」同已完結報名嘅學校，精選港島及九龍區16間最具代表性、升小實力強勁嘅私立獨立（非學券）名校。
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">全部 16間</button>
+    <button class="filter-btn" data-filter="open">開放中</button>
+    <button class="filter-btn" data-filter="soon">即將開放</button>
+    <button class="filter-btn" data-filter="tba">有待公布</button>
+  </div>
+
+  <div class="section-label">港島及九龍區16間熱門私立幼稚園（排名不分先後）</div>
+
+  <div id="school-list"></div>
+
+  <div class="section-label">小編溫馨提示</div>
+  <table class="prep-table">
+    <colgroup><col style="width:26%"><col style="width:32%"><col style="width:42%"></colgroup>
+    <tr><th>階段</th><th>關鍵時間點</th><th>家長準備策略</th></tr>
+    <tr><td>報名準備</td><td>2026年8月–10月</td><td>預先備妥幼兒證件相（JPEG）、出生證明文件及信用卡／轉數快／PayPal／銀行存入收據。</td></tr>
+    <tr><td>註冊證申請</td><td>2026年9月–11月</td><td>雖然報讀私立學校，仍建議向教育局申請「幼稚園入學註冊證（RC）」作兩手準備。</td></tr>
+    <tr><td>面試應戰</td><td>2026年10月–12月</td><td>密切留意網上系統與電郵通知，訓練幼兒簡單指令回應及親子自然互動。</td></tr>
+  </table>
+
+  <div class="final-cta">
+    <h3>諗緊仔女教育之餘，醫療同儲蓄都要一齊部署</h3>
+    <p>學費要分期供，人生大項開支（醫療保障、教育儲蓄）都值得及早規劃。如果你都想傾吓點樣為囡囡仔仔嘅將來鋪路，隨時WhatsApp搵我，一齊睇吓。</p>
+    <a href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E7%9C%8B%E5%88%B0%E4%BD%A0%E5%80%8B%E5%B9%BC%E7%A8%9A%E5%9C%92%E5%A0%B1%E5%90%8D%E6%94%BB%E7%95%A5%EF%BC%8C%E6%83%B3%E5%82%BE%E5%81%87%E5%A4%9A%E5%98%85" target="_blank" rel="noopener">WhatsApp 傾吓</a>
+  </div>
+
+  <div class="disclaimer">
+    資料整理自 MamiDaily 親子日常（轉載自教育王國 edu-kingdom.com），截至2026年8月14日。報名日期、學費及安排隨時可能因應學校最新公告而更新，實際資料以各校官方網站及通告為準，家長報名前請自行向學校核實。
+  </div>
+
+</div>
+
+<script>
+const schools = [
+{rank:1,name:"國際英文幼稚園（St. Catherine's International Kindergarten，簡稱 ST CAT）",status:"soon",
+ intro:"九龍塘頂級私立名校，以出色的英語及三語環境著稱，升讀本地名校及國際學校網絡極強，是全港家長搶破頭的第一志願。",
+ date:"2026年8月28日（上午10:00）至2026年9月8日（下午5:00）",
+ fee:"K1（幼兒班）2025/26年度學費為$76,780，分11期繳交",
+ url:"https://www.stcatherines.edu.hk/?page_id=287&lang=zh"},
+{rank:2,name:"維多利亞國際幼稚園（Victoria Educational Organisation，簡稱 VEO）",status:"soon",
+ intro:"港島（銅鑼灣、康怡、寶翠園）及九龍（何文田等）設有多個校舍，主打IB PYP雙語／三語國際化課程，探究式學習口碑極佳。",
+ date:"預計2026年9月上旬至10月下旬（參考往年為9月初至10月底）",
+ fee:"K1（幼兒班）2025/26年度學費為$107,668起，分11期繳交",
+ url:"https://www.victoria.edu.hk/"},
+{rank:3,name:"民生書院幼稚園（Munsang College Kindergarten）",status:"soon",
+ intro:"九龍城區傳統私立頂尖名校，享有直升民生書院小學部及中學部的極強優勢，教學紮實，深受家長追捧。",
+ date:"預計2026年10月上旬開放（往年多於10月初開展短暫數天的申請，如2025年10月3日至8日）",
+ fee:"K1（幼兒班）2025/26年度學費為$52,400，分10期繳交",
+ url:"https://kindergarten.munsang.edu.hk/"},
+{rank:4,name:"聖公會幼稚園（Sheng Kung Hui Kindergarten）",status:"soon",
+ intro:"位於港島灣仔／銅鑼灣區的百年私立名校，著重全人發展與基督教品德教育，畢業生升讀港島區頂尖小學表現極佳。",
+ date:"預計2026年9月下旬至10月下旬",
+ fee:"K1（幼兒班）2025/26年度學費為$71,830，分10期繳交",
+ url:"http://www.skhkg.edu.hk/"},
+{rank:5,name:"聖保祿幼稚園（St. Paul's Kindergarten）",status:"soon",
+ intro:"銅鑼灣著名天主教私立幼稚園，提供全日制課程，與聖保祿學校（小學部／中學部）淵源深厚。",
+ date:"預計2026年9月中旬至10月初（往年同樣時段）",
+ fee:"K1（幼兒班）2025/26年度學費為$97,350，分11期繳交",
+ url:"https://apply.spk.edu.hk/"},
+{rank:6,name:"劍鳴幼稚園（Keen Mind Kindergarten）",status:"soon",
+ intro:"位於九龍塘金巴倫道，是極受家長歡迎的私立獨立名校。學術配套齊備，面試訓練專業。",
+ date:"2026年9月2日上午9時至2026年9月9日下午5時",
+ fee:"K1（幼兒班）2025/26年度學費為$73,777，分11期繳交",
+ url:"http://www.keenmind.com.hk/"},
+{rank:7,name:"高主教書院幼稚園部（Raimondi College Kindergarten Section）",status:"soon",
+ intro:"港島半山／北角天主教頂級私立名校，直升高主教書院小學部及中學部的比例高，極具升小吸引力。",
+ date:"預計2026年10月上旬開放（參考2025年10月6日至10月15日）",
+ fee:"K1（幼兒班）2025/26年度學費為$40,800，分10期繳交",
+ url:"https://www.rckg.edu.hk/"},
+{rank:8,name:"學之園幼稚園（Learning Habitat Kindergarten，簡稱LH）",status:"open",
+ intro:"於九龍（大角咀、紅磡等）及港島（北角等）設有分校，以高質素雙語教學及極為優異的升小實力聞名。",
+ date:"即日起至2026年10月16日",
+ fee:"K1（幼兒班）2026/27年度學費為$87,600起，分12期繳交",
+ url:"https://www.learninghabitat.org/"},
+{rank:9,name:"約克國際幼稚園（York International Kindergarten）",status:"open",
+ intro:"位於九龍塘的著名私立英文幼稚園，提供沉浸式英普雙語教學，極受追求語言基礎與國際化教學的家長青睞。",
+ date:"即日起開放報名（採滾動式招收，額滿即止）",
+ fee:"K1（幼兒班）2025/26年度學費為$57,596起，分11期繳交",
+ url:"https://www.york.edu.hk/"},
+{rank:10,name:"文娜雅拔國際幼兒園及幼稚園（Manhabit International Nursery & Kindergarten）",status:"tba",
+ intro:"大部分畢業生會升讀保良局蔡繼有學校、香港浸會大學附屬學校王錦輝中小學或其他國際學校。",
+ date:"有待公布",
+ fee:"K1（幼兒班）2025/26年度學費為$73,568起，分11期繳交",
+ url:"http://manhabit.edu.hk/"},
+{rank:11,name:"多多國際幼稚園（Tutor Time International Nursery & Kindergarten）",status:"tba",
+ intro:"港島（北角半山、半山）及九龍（九龍塘）均設校舍，實行美式國際幼兒教育，注重早期自主學習與幼兒發展。",
+ date:"有待公布",
+ fee:"K1（幼兒班）2025/26年度學費為$154,560起，分12期繳交",
+ url:"https://www.tutortime.com.hk/"},
+{rank:12,name:"京斯敦國際幼稚園（Kingston International Kindergarten）",status:"open",
+ intro:"九龍塘知名IB認證國際幼稚園，採用一英一普雙班主任制，可直接銜接京斯敦國際學校小學部。",
+ date:"即日起接受網上申請",
+ fee:"K1（幼兒班）2025/26年度學費為$115,500起，分11期繳交",
+ url:"https://www.kingston.edu.hk/"},
+{rank:13,name:"聖若望英文書院幼稚園（St. Johannes College Kindergarten）",status:"tba",
+ intro:"位於九龍塘的傳統私立天主教英文幼稚園，英語教學環境濃厚，兼具直升小學部優勢。",
+ date:"有待公布",
+ fee:"K1（幼兒班）2025/26年度學費為$51,600起，分12期繳交",
+ url:"https://www.st-johannes.edu.hk/"},
+{rank:14,name:"德望小學暨幼稚園（Good Hope Primary School cum Kindergarten）",status:"tba",
+ intro:"傳統女校天主教名校，銜接德望小學。",
+ date:"有待公布",
+ fee:"K1（幼兒班）2025/26年度學費為$47,000起，分10期繳交",
+ url:"https://www3.ghs.edu.hk/"},
+{rank:15,name:"弘立幼稚園（The ISF Pre-school）",status:"soon",
+ intro:"雙語（普通話及英語）探究式學習，直升「弘立書院」小學部的黃金梯隊。",
+ date:"2026年9月1日至9月30日",
+ fee:"K1（幼兒班）2026/27年度學費為$159,670起，分11期繳交",
+ url:"https://preschool.isf.edu.hk/tc/%e6%8b%9b%e7%94%9f/"},
+{rank:16,name:"九龍真光中學（幼稚園部）Kowloon True Light School（Kindergarten Section）",status:"soon",
+ intro:"以主題繪本教學、兩文三語環境，每班設外籍英語老師、粵語老師及普通話老師作班主任或授課。真光幼稚園以至中學都是有聯繫，小學部會先取錄該年高班的四成學生。",
+ date:"2026年9月中旬至10月中旬（參考去年同樣時段）",
+ fee:"K1（幼兒班）2026/27年度學費為$73,315起，分11期繳交",
+ url:"https://www.ktlks.edu.hk/"}
+];
+
+const iconColors = ["#C9956B","#2A5A2E","#0C447C","#A85D42"];
+const badgeMap = {
+  open:{cls:"badge-open",label:"開放中"},
+  soon:{cls:"badge-soon",label:"即將開放"},
+  tba:{cls:"badge-tba",label:"有待公布"}
+};
+
+function render(filter){
+  const list = document.getElementById('school-list');
+  list.innerHTML = '';
+  schools.filter(s => filter === 'all' || s.status === filter).forEach((s, i) => {
+    const badge = badgeMap[s.status];
+    const color = iconColors[(s.rank - 1) % iconColors.length];
+    const details = document.createElement('details');
+    details.className = 'acc';
+    details.innerHTML = `
+      <summary>
+        <div class="acc-icon" style="background:${color}">${s.rank}</div>
+        <div class="acc-title-wrap">
+          <div class="acc-rank">No.${s.rank}</div>
+          <div class="acc-name">${s.name}</div>
+        </div>
+        <span class="acc-badge ${badge.cls}">${badge.label}</span>
+        <span class="chevron">▾</span>
+      </summary>
+      <div class="acc-body">
+        <div class="acc-row"><span class="lbl">學校簡介</span><br>${s.intro}</div>
+        <div class="acc-row"><span class="lbl">報名日期</span><br><b>${s.date}</b></div>
+        <div class="acc-row"><span class="lbl">學費</span><br>${s.fee}</div>
+        <a class="acc-link" href="${s.url}" target="_blank" rel="noopener">前往官方報名網站 →</a>
+      </div>`;
+    list.appendChild(details);
+  });
+}
+
+document.getElementById('filters').addEventListener('click', e => {
+  const btn = e.target.closest('.filter-btn');
+  if(!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render(btn.dataset.filter);
+});
+
+render('all');
+</script>
+
+</body>
+</html>
