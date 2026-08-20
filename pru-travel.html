@@ -69,7 +69,7 @@
   .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
   .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
   .pillar .emoji{font-size:24px; margin-bottom:8px;}
-  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4; word-break:normal;}
   @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
 
   section{padding:20px 0;}
@@ -160,9 +160,9 @@
   </div>
 
   <div class="pillars">
-    <div class="pillar"><div class="emoji">🤒</div><div class="txt">旅途中病咗點算？</div></div>
-    <div class="pillar"><div class="emoji">🛫</div><div class="txt">航班延誤/取消點算？</div></div>
-    <div class="pillar"><div class="emoji">🧳</div><div class="txt">行李遺失/損毀點算？</div></div>
+    <div class="pillar"><div class="emoji">🤒</div><div class="txt">旅途中病咗<br>點算？</div></div>
+    <div class="pillar"><div class="emoji">🛫</div><div class="txt">航班延誤/<br>取消點算？</div></div>
+    <div class="pillar"><div class="emoji">🧳</div><div class="txt">行李遺失/<br>損毀點算？</div></div>
   </div>
 
   <!-- COVERAGE OVERVIEW TABLE -->
@@ -177,7 +177,7 @@
           <td class="amt hi">$1,200,000</td>
         </tr>
         <tr>
-          <td><div class="item-name">人身意外保障</div><div class="item-sub">死亡/永久傷殘$120萬＋殮葬$2萬＋親友探望$2萬</div></td>
+          <td><div class="item-name">人身意外保障</div><div class="item-sub"><span style="white-space:nowrap;">死亡/永久傷殘$120萬</span><br><span style="white-space:nowrap;">＋殮葬$2萬</span><br><span style="white-space:nowrap;">＋親友探望$2萬</span></div></td>
           <td class="amt hi">$1,240,000</td>
         </tr>
         <tr>
@@ -189,7 +189,7 @@
           <td class="amt">$20,000</td>
         </tr>
         <tr>
-          <td><div class="item-name">個人現金/信用卡/旅遊證件保障</div></td>
+          <td><div class="item-name">個人現金/信用卡/<br>旅遊證件保障</div></td>
           <td class="amt">$26,000</td>
         </tr>
         <tr>
@@ -238,7 +238,7 @@
         <div class="acc-icon" style="background:var(--coral);">🏥</div>
         <div class="acc-head">
           <div class="acc-title">醫療支援保障</div>
-          <div class="acc-amt">最高$1,200,000（71歲或以上為$600,000）</div>
+          <div class="acc-amt">最高$1,200,000<br><span style="white-space:nowrap;">（71歲或以上為</span><span style="white-space:nowrap;">$600,000）</span></div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -436,7 +436,7 @@
           <ul class="acc-list">
             <li>香港境內一日遊</li>
             <li>抵達目的地先至投保</li>
-            <li>職業運動員/特技人/飛機師空中服務員等特定職業（如僅為私人旅程可個別核保）</li>
+            <li>職業運動員/特技人/飛機師空中服務員等特定職業<span style="white-space:nowrap;">（如僅為私人旅程</span><span style="white-space:nowrap;">可個別核保）</span></li>
             <li>以治病為旅遊目的</li>
           </ul>
         </div>
