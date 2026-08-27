@@ -23,6 +23,7 @@
     margin:0; font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
     background:var(--cream); color:var(--ink); line-height:1.7;
     line-break:strict; word-break:keep-all; overflow-wrap:break-word; overflow-x:hidden;
+    text-wrap:pretty;
   }
   .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
   @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
@@ -129,6 +130,10 @@
     .hero{padding:36px 0 6px;}
     section{padding:16px 0;}
     details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+  @media (max-width:400px){
+    .acc-body{font-size:13.5px;}
+    .acc-extra-body{font-size:13.5px;}
   }
 </style>
 </head>
@@ -279,7 +284,7 @@
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>喺加護保嘅基礎上，再加多暫時性傷殘保障：如受保人因意外連續7日或以上局部/完全暫時性傷殘，可獲每星期收入津貼，最長賠12個月（52星期）。投保年齡限19至65歲，適合返緊工、擔心意外後短暫失去工作能力嘅在職人士。</p>
+        <p>喺加護保嘅基礎上，再加多暫時性傷殘保障：如受保人因意外連續7日或以上局部/完全暫時性傷殘，可獲每星期收入津貼，最長賠12個月（52星期）。投保年齡限19至65歲，適合返緊工、擔心意外後短暫失去工作能力嘅<span class="nowrap">在職人士。</span></p>
         <div class="acc-extra">
           <div class="acc-extra-title">暫時性傷殘保障</div>
           <div class="acc-extra-body">
@@ -405,7 +410,7 @@
             <ul class="acc-list">
               <li>意外死亡及永久性傷殘：青苗$500,000/計劃A $600,000/計劃B $1,200,000</li>
               <li>意外醫療費用：計劃A $300,000、計劃B $600,000（每宗意外），最長104週，包香港跌打中醫針灸</li>
-              <li>指定運動額外利益：純休閒進行單車、行山或馬拉松時遇意外，額外50%意外死亡及永久性傷殘賠償；海外進行呢類運動更有雙倍意外醫療費用</li>
+              <li>指定運動額外利益：純休閒進行單車、行山或馬拉松時遇意外，額外50%意外死亡及永久性傷殘賠償；海外進行呢類運動更有雙倍<span class="nowrap">意外醫療費用</span></li>
               <li>住院現金：按計劃每日$200–$600不等</li>
               <li>雙倍賠償：駕駛/乘坐私家車或公共交通工具時遇意外，額外100%</li>
               <li>無索償保費回贈：連續3個保單年度無索償，回贈該3年保費總額20%</li>
@@ -419,7 +424,7 @@
               <li>學生額外利益賠償：參與學校活動時遇意外，額外50%意外死亡及永久性傷殘賠償</li>
               <li>綁架保障：因綁架導致意外身故，會支付恩恤現金</li>
               <li>學費保障：因意外連續住院超過5日，賠償不能退回嘅學費及相關開支</li>
-              <li>續保至18歲時會自動轉為計劃A，如想轉計劃B要喺續保前主動聯絡</li>
+              <li>續保至18歲時會自動轉為計劃A，如想轉計劃B要喺續保前<span class="nowrap">主動聯絡</span></li>
             </ul>
           </div>
         </div>
@@ -431,9 +436,10 @@
     <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考</span></div>
     <div class="cmp-card">
       <table class="premium">
-        <tr><th>安健寶投保例子</th><th colspan="2">30歲銀行主任 · 第一類</th></tr>
-        <tr><td>意外死亡及永久性傷殘</td><td colspan="2">$780,000</td></tr>
-        <tr><td>暫時喪失工作能力</td><td colspan="2">$3,900/週</td></tr>
+        <colgroup><col style="width:42%"><col style="width:29%"><col style="width:29%"></colgroup>
+        <tr><th>安健寶<br>投保例子</th><th colspan="2">30歲銀行主任<br>第一類</th></tr>
+        <tr><td>意外死亡及<br>永久性傷殘</td><td colspan="2">$780,000</td></tr>
+        <tr><td>暫時喪失<br>工作能力</td><td colspan="2">$3,900/週</td></tr>
         <tr><td>意外醫療費用</td><td colspan="2">$20,000</td></tr>
         <tr><td>年繳總保費</td><td colspan="2">$2,967<span class="item-sub">（月繳$265）</span></td></tr>
       </table>
