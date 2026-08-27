@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>醫療保障方案比較｜Lily Lau</title>
+<meta name="description" content="保誠三大醫療保障認可產品比較：尚賓、靈活自主、摯稱心">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0;
+    --coral:#C9956B;
+    --coral-deep:#B8845A;
+    --mint:#D6E8D5;
+    --mint-deep:#2A5A2E;
+    --butter:#FAEEDA;
+    --butter-deep:#633806;
+    --lavender:#E6F1FB;
+    --lavender-deep:#0C447C;
+    --terracotta:#A85D42;
+    --ink:#3D2B1A;
+    --ink-soft:#6B4E35;
+    --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08);
+    --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    margin:0;
+    font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    line-break:strict;
+    overflow-wrap:break-word;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
+  @media (min-width:1180px){ .wrap{max-width:880px; padding:0 40px;} }
+  img{max-width:100%;}
+
+  #guide{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+    cursor:pointer; text-decoration:none; border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{
+    display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px;
+    font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(26px,7vw,36px); margin:0 0 12px; font-weight:900; line-height:1.35;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillars > *{min-width:0;}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
+
+  section{padding:20px 0;}
+  .section-head{margin-bottom:16px;}
+  .section-head .tag{font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;}
+
+  .cmp-card{background:var(--white); border-radius:22px; padding:20px 16px; box-shadow:var(--shadow); margin-bottom:16px;}
+  table.cmp{width:100%; border-collapse:collapse; table-layout:fixed;}
+  table.cmp th{font-size:13.5px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0; vertical-align:bottom;}
+  table.cmp th:first-child{text-align:left;}
+  .th-abbr{display:block; font-size:11px; font-weight:500; color:var(--ink-soft); opacity:0.7; margin-top:2px;}
+  table.cmp td{padding:13px 0; border-bottom:1px solid #F0EAE0; vertical-align:top;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp col.c-name{width:28%;}
+  table.cmp col.c-amt{width:24%;}
+  .item-name{font-size:14.5px; font-weight:700;}
+  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px; line-height:1.5;}
+  .amt{text-align:right; font-size:14px; font-weight:900; white-space:normal; word-break:break-word; padding-left:4px; line-height:1.45;}
+  .amt.hi{color:var(--coral-deep);}
+  .amt .sub2{display:block; font-size:11.5px; font-weight:500; color:var(--ink-soft); margin-top:2px;}
+
+  details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:14px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:10px;}
+  .acc-extra-title{font-size:14px; font-weight:700; margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
+  .acc-list li{margin-bottom:6px; padding-left:2px;}
+  .acc-list li:last-child{margin-bottom:0;}
+  .nowrap{white-space:nowrap;}
+
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
+
+  .fit-card{background:var(--white); border-radius:20px; padding:18px 20px; box-shadow:var(--shadow); margin-bottom:14px; border-left:6px solid var(--coral);}
+  .fit-card.mint{border-left-color:var(--mint-deep);}
+  .fit-card.lav{border-left-color:var(--lavender-deep);}
+  .fit-name{font-size:16px; font-weight:900; margin-bottom:6px;}
+  .fit-name .fit-abbr{font-size:12.5px; font-weight:500; opacity:0.65; margin-left:6px;}
+  .fit-card .fit-name{color:var(--coral-deep);}
+  .fit-card.mint .fit-name{color:var(--mint-deep);}
+  .fit-card.lav .fit-name{color:var(--lavender-deep);}
+  .fit-text{font-size:14.5px; line-height:1.7;}
+
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral);}
+  .final-cta .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    .cmp-card, details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+  @media (max-width:380px){
+    .item-name{font-size:13.5px;}
+    .amt{font-size:12.5px;}
+    table.cmp th{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E9%86%AB%E7%99%82%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">🩺 醫療保障方案比較</div>
+    <h1>保誠三大醫療計劃<br><span>邊款先啱你？</span></h1>
+    <p class="sub">尚賓、靈活自主、摯稱心同樣係自願醫保認可產品，但保障邏輯同保費策略大不同</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">😟</div><div class="txt">驚醫療費「有限額」唔夠使</div></div>
+    <div class="pillar"><div class="emoji">💰</div><div class="txt">想揀啱預算嘅病房級別</div></div>
+    <div class="pillar"><div class="emoji">📋</div><div class="txt">已有醫療保障想諗埋加強</div></div>
+  </div>
+
+  <section>
+    <div class="section-head"><span class="tag">一眼睇晒三大分別</span></div>
+    <div class="cmp-card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"><col class="c-amt"></colgroup>
+        <tr><th></th><th>尚賓<span class="th-abbr">VIP</span></th><th>靈活<wbr>自主<span class="th-abbr">VFP</span></th><th>摯稱心<span class="th-abbr">VEP</span></th></tr>
+        <tr>
+          <td><div class="item-name">計劃類型</div></td>
+          <td class="amt">基本計劃<span class="sub2">可獨立投保</span></td>
+          <td class="amt">附加計劃<span class="sub2">須夾基本<span class="nowrap">計劃</span></span></td>
+          <td class="amt">基本計劃<span class="sub2">可獨立投保</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">保障地域</div></td>
+          <td class="amt">亞洲/全球<span class="sub2">(美國除外)<span class="nowrap">二揀一</span></span></td>
+          <td class="amt">全球<span class="sub2">(美國除外)</span></td>
+          <td class="amt">全球<span class="sub2">(美國除外)</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">病房級別</div></td>
+          <td class="amt">按地域自動<span class="sub2">半私家或<span class="nowrap">私家</span></span></td>
+          <td class="amt">三揀一<span class="sub2">普通/半私家/私家</span></td>
+          <td class="amt">三揀一<span class="sub2">普通/半私家/私家</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">每年保障限額</div></td>
+          <td class="amt hi">$1,200萬</td>
+          <td class="amt hi">不設上限<span class="sub2">個別項目設<span class="nowrap">限額</span></span></td>
+          <td class="amt hi">不設上限<span class="sub2">個別項目設<span class="nowrap">限額</span></span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">終身保障限額</div></td>
+          <td class="amt hi">$5,600萬</td>
+          <td class="amt hi">不設上限</td>
+          <td class="amt hi">不設上限</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">封頂機制</div></td>
+          <td class="amt">自付費<span class="sub2">$0/<span class="nowrap">2萬</span>/<span class="nowrap">5萬</span>/<span class="nowrap">9.6萬</span></span></td>
+          <td class="amt">選購額外醫療計劃<span class="sub2">網絡100%/非網絡80%</span></td>
+          <td class="amt">內置額外醫療計劃<span class="sub2">劃一80%</span></td>
+        </tr>
+      </table>
+    </div>
+    <div class="tip">💡 三個計劃都係自願醫保認可產品，合資格保費同樣可申請每名受保人每年上限$8,000嘅稅務扣<span class="nowrap">除。</span></div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="tag">撳開睇詳細內容</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">💰</div>
+        <div class="acc-head">
+          <div class="acc-title">保障限額點計？</div>
+          <div class="acc-amt">尚賓封頂較高；靈活自主/摯稱心不設終身上限</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p><strong>尚賓：</strong>每年最高賠償$1,200萬，終身保障限額$5,600萬，就不設個別項目上限的主要醫療費用提供全數賠償，即冇「病房費上限$X」「手術費上限$Y」呢類分項封頂，一個大額度用晒為<span class="nowrap">止。</span></p>
+        <p><strong>靈活自主/摯稱心：</strong>每年及終身都不設最高保障限額，但每一個保障項目（病房及膳食、外科醫生費、專科醫生費等）各自設有獨立賠償上限。換言之單一項目一旦超額，餘額就要靠額外醫療計劃嚟補（詳見下面「額外醫療計劃」一項）。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🛏️</div>
+        <div class="acc-head">
+          <div class="acc-title">病房級別同保障地域</div>
+          <div class="acc-amt">尚賓按地域定；靈活自主/摯稱心投保時三揀一</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p><strong>尚賓：</strong>投保時二揀一保障地域：亞洲（包括澳洲及新西蘭）或全球（美國除外）。病房級別隨地域自動釐定：中國內地/香港/澳門住半私家房，其他地方住私家房。</p>
+        <p><strong>靈活自主/摯稱心：</strong>投保時直接喺普通、半私家、私家三個病房級別揀一個，保障範圍全球通用（精神科治療同每日住院現金淨限香港）。病房級別揀得越高，保費同保障金額都會跟住上升。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">🧩</div>
+        <div class="acc-head">
+          <div class="acc-title">額外醫療計劃有咩用？</div>
+          <div class="acc-amt">尚賓唔需要；靈活自主自選、摯稱心已內置</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p><strong>尚賓：</strong>因為主要醫療費用已經全數賠償、冇分項上限，所以冇呢個機制，改用自付費選項嚟自訂預算。</p>
+        <p><strong>靈活自主：</strong>可以另外加保額外醫療計劃（設選項1/選項2兩級），當個別項目嘅合資格費用超出基本計劃嘅限額時，網絡醫療服務提供者可賠償超額部分嘅100%，非網絡就賠80%。受保人年滿45/50/55/60歲時，仲有一次免核保由選項1提升到選項2嘅機會。</p>
+        <p><strong>摯稱心：</strong>額外醫療計劃已經內置喺計劃入面（毋須另外核保或加保費），劃一賠償超額部分嘅80%。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">🎗️</div>
+        <div class="acc-head">
+          <div class="acc-title">癌症/中風/心臟病復康支援</div>
+          <div class="acc-amt">尚賓額外有家居設備提升同復康診療package</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p><strong>尚賓：</strong>就受保癌症、心臟病發作及中風，額外提供「家居設備提升」每宗事故$50,000（例如加寬門口、裝扶手），同「復康診療」每次$1,000、每宗事故上限$45,000（涵蓋腦神經科、骨科、營養師、中醫等指定專科），仲有住院陪床、術後中醫治療、指定癌症重建手術、善終服務等延伸保障。</p>
+        <p><strong>靈活自主：</strong>訂明非手術癌症治療設獨立限額，按病房級別由$100,000到$225,000（每保單年度），但冇上述嗰種家居設備提升/復康診療專屬package。</p>
+        <p><strong>摯稱心：</strong>訂明非手術癌症治療限額按病房級別由$80,000到$160,000（每保單年度），同樣冇家居設備提升/復康診療package。</p>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🛎️</div>
+        <div class="acc-head">
+          <div class="acc-title">增值服務（三個計劃一致）</div>
+          <div class="acc-amt">直付服務、綠色通道、安心醫、智安排、24小時支援</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>三個計劃都同樣配備以下增值服務（由第三方供應商提供，並非構成保單本身一部分）：</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title" style="color:var(--coral-deep);">五大增值服務</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>住院、日間手術及診斷成像檢測醫療費用直付服務</li>
+              <li>綠色醫療通道：優先預約中國內地指定醫院</li>
+              <li>安心醫：第二醫療意見及海外醫療禮賓服務</li>
+              <li>「智安排」預設保單服務：指定家人代辦理賠</li>
+              <li>24小時全球緊急支援服務</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🎁</div>
+        <div class="acc-head">
+          <div class="acc-title">保費優惠</div>
+          <div class="acc-amt">淨係靈活自主有15%無索償折扣</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p><strong>靈活自主：</strong>連續36個月冇作出索償，喺保單周年日可享相等於上年度已繳保費15%嘅無索償折扣（折扣只可用作支付本計劃之日後保費）。日間手術中心/診所嘅指定小手術（如大腸鏡、胃鏡）唔會影響呢個折扣資格。</p>
+        <p><strong>尚賓/摯稱心：</strong>暫時未有呢類無索償折扣機制。</p>
+      </div>
+    </details>
+
+  </section>
+
+  <section>
+    <div class="section-head"><span class="tag" style="color:var(--coral-deep);">邊款啱邊種人？</span></div>
+    <div class="fit-card">
+      <div class="fit-name">尚賓<span class="fit-abbr">VIP</span></div>
+      <div class="fit-text">預算充裕、想要一筆過大額度、唔想煩逐項限額嘅客人，尤其重視「一次過賠到盡」嘅安心感，同想自訂自付費嚟平衡保費嘅人。</div>
+    </div>
+    <div class="fit-card mint">
+      <div class="fit-name">靈活自主<span class="fit-abbr">VFP</span></div>
+      <div class="fit-text">已經有基本醫療保單、想加強保障但唔想全部换新嘅客人，可以按需要自選額外醫療計劃嘅網絡/非網絡保障級別，彈性較高。</div>
+    </div>
+    <div class="fit-card lav">
+      <div class="fit-name">摯稱心<span class="fit-abbr">VEP</span></div>
+      <div class="fit-text">首次投保、預算相對有限、想一份保單簡單直接搞掂嘅客人，毋須另外諗額外醫療計劃點揀，已經內置。</div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="avatar"><img src="assets/avatar.jpg" alt="Lily Lau"></div>
+    <h2>想知邊款啱你？</h2>
+    <p>每個人嘅醫療需要同預算都唔同，等我幫你分析邊個方案最抵長遠嘅健康保障。</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E9%86%AB%E7%99%82%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。以上資料整合自保誠尚賓（MKTX/QB0319C 10/24）、靈活自主（MKTX/QB0304C 10/24）及摯稱心（MKTX/QB0345C 08/25）產品小冊子，實際保障以保單條款正本為準，保費及核保結果因人而異。</div>
+
+</div>
+
+</body>
+</html>
