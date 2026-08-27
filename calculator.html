@@ -14,8 +14,8 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
-    background: #F7F3EE;
-    color: #2C2C2A;
+    background: #F5EDE0;
+    color: #3D2B1A;
     min-height: 100vh;
   }
 
@@ -24,7 +24,7 @@
     background: linear-gradient(160deg, #F5EDE0 0%, #EDD9C0 100%);
     padding: 1.5rem 1.5rem 1.25rem;
     text-align: center;
-    border-bottom: 0.5px solid #E8DDD0;
+    border-bottom: 0.5px solid #F0EAE0;
   }
   .header-avatar {
     width: 72px; height: 72px; border-radius: 50%;
@@ -35,10 +35,10 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
   .header-name { font-size: 18px; font-weight: 600; color: #3D2B1A; margin-bottom: 3px; }
-  .header-sub { font-size: 14px; color: #8B6347; }
+  .header-sub { font-size: 14px; color: #6B4E35; }
   .header-badges { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 0.6rem; }
   .hbadge { font-size: 12px; padding: 3px 11px; border-radius: 20px; font-weight: 500; }
-  .hb-cpa { background: #E8D5BE; color: #7A4F2A; }
+  .hb-cpa { background: #FAEEDA; color: #633806; }
   .hb-ins { background: #D6E8D5; color: #2A5A2E; }
 
   /* ── Two-column layout ── */
@@ -57,7 +57,7 @@
   /* ── Cards ── */
   .card {
     background: #fff;
-    border: 0.5px solid #E8DDD0;
+    border: 0.5px solid #F0EAE0;
     border-radius: 14px;
     padding: 1.25rem;
   }
@@ -77,7 +77,7 @@
   .row input[type=range] {
     flex: 1; min-width: 0; height: 4px; border-radius: 2px;
     -webkit-appearance: none; appearance: none;
-    background: #E8DDD0; outline: none; cursor: pointer;
+    background: #F0EAE0; outline: none; cursor: pointer;
   }
   .row input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none; width: 20px; height: 20px;
@@ -89,7 +89,7 @@
   .row .val-input {
     font-size: 15px; font-weight: 500; color: #3D2B1A;
     width: 92px; text-align: right;
-    border: 1px solid #E8DDD0; border-radius: 8px;
+    border: 1px solid #F0EAE0; border-radius: 8px;
     padding: 4px 8px; font-family: inherit;
     background: #FFFCF8; outline: none;
     -moz-appearance: textfield;
@@ -97,9 +97,9 @@
   .row .val-input:focus { border-color: #C9956B; }
   .row .val-input::-webkit-outer-spin-button,
   .row .val-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-  .row .val-unit { font-size: 13px; color: #8B6347; flex-shrink: 0; }
+  .row .val-unit { font-size: 13px; color: #6B4E35; flex-shrink: 0; }
   .text-input {
-    flex: 1; border: 1px solid #E8DDD0; border-radius: 8px;
+    flex: 1; border: 1px solid #F0EAE0; border-radius: 8px;
     padding: 6px 10px; font-size: 14px; font-family: inherit;
     color: #3D2B1A; background: #FFFCF8; outline: none;
   }
@@ -109,7 +109,7 @@
   .seg button {
     font-size: 13px; padding: 5px 12px; border-radius: 20px;
     border: 0.5px solid #D8C9BA;
-    background: #FFFCF8; color: #8B6347; cursor: pointer;
+    background: #FFFCF8; color: #6B4E35; cursor: pointer;
     font-family: inherit; transition: all .15s;
   }
   .seg button.active { background: #C9956B; border-color: #C9956B; color: #fff; }
@@ -125,7 +125,7 @@
   /* ── Gap bars ── */
   .gap-row { margin-bottom: 11px; }
   .gap-row:last-child { margin-bottom: 0; }
-  .gap-bar-label { display: flex; justify-content: space-between; font-size: 13px; color: #8B6347; margin-bottom: 5px; }
+  .gap-bar-label { display: flex; justify-content: space-between; font-size: 13px; color: #6B4E35; margin-bottom: 5px; }
   .gap-bar-track { height: 8px; background: #F0E8DF; border-radius: 4px; overflow: hidden; }
   .gap-bar-fill { height: 100%; border-radius: 4px; transition: width .4s; }
 
@@ -138,7 +138,7 @@
   .rec-title svg { width: 18px; height: 18px; flex-shrink: 0; }
 
   .prod-card {
-    background: #FFFCF8; border: 0.5px solid #E8DDD0;
+    background: #FFFCF8; border: 0.5px solid #F0EAE0;
     border-radius: 12px; padding: 1rem 1.1rem; margin-bottom: 0.7rem;
   }
   .prod-card:last-child { margin-bottom: 0; }
@@ -150,23 +150,23 @@
   .cat-med { background: #E6F1FB; color: #0C447C; }
   .cat-life { background: #EAF3DE; color: #27500A; }
   .cat-save { background: #FAEEDA; color: #633806; }
-  .prod-desc { font-size: 13px; color: #8B6347; line-height: 1.6; margin-bottom: 8px; }
+  .prod-desc { font-size: 13px; color: #6B4E35; line-height: 1.6; margin-bottom: 8px; }
   .prod-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
-  .prod-tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; background: #F0E8DF; color: #8B6347; }
-  .prod-why { font-size: 13px; color: #7A4F2A; background: #FBF8F4; border-radius: 6px; padding: 8px 10px; border: 0.5px solid #E8DDD0; line-height: 1.55; }
+  .prod-tag { font-size: 11px; padding: 2px 8px; border-radius: 8px; background: #F0E8DF; color: #6B4E35; }
+  .prod-why { font-size: 13px; color: #633806; background: #FBF8F4; border-radius: 6px; padding: 8px 10px; border: 0.5px solid #F0EAE0; line-height: 1.55; }
 
-  .no-gap { font-size: 15px; color: #8B6347; padding: 1rem; background: #FBF8F4; border-radius: 10px; text-align: center; }
+  .no-gap { font-size: 15px; color: #6B4E35; padding: 1rem; background: #FBF8F4; border-radius: 10px; text-align: center; }
 
   /* ── Child section ── */
   .child-block { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #F0E8DF; }
   .child-block-title { font-size: 13px; font-weight: 600; color: #C9956B; margin-bottom: 0.7rem; }
   .child-gap-section, .spouse-gap-section { margin-top: 1rem; }
-  .child-gap-title, .spouse-gap-title { font-size: 13px; font-weight: 600; color: #8B6347; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+  .child-gap-title, .spouse-gap-title { font-size: 13px; font-weight: 600; color: #6B4E35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
 
   /* ── CTA ── */
   .cta-card {
     background: linear-gradient(160deg, #F5EDE0 0%, #EDD9C0 100%);
-    border: 0.5px solid #E8DDD0; border-radius: 14px;
+    border: 0.5px solid #F0EAE0; border-radius: 14px;
     padding: 1.1rem 1.25rem;
     display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
   }
