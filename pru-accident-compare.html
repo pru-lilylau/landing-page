@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保誠意外保障方案比較｜Lily Lau</title>
+<meta name="description" content="保誠意外保系列（首護保/加護保/全護保）同安健寶/倍安寶意外保障方案比較">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0; --coral:#C9956B; --coral-deep:#B8845A;
+    --mint:#D6E8D5; --mint-deep:#2A5A2E; --butter:#FAEEDA; --butter-deep:#633806;
+    --lavender:#E6F1FB; --lavender-deep:#0C447C; --terracotta:#A85D42;
+    --ink:#3D2B1A; --ink-soft:#6B4E35; --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08); --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    margin:0; font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream); color:var(--ink); line-height:1.7;
+    line-break:strict; word-break:keep-all; overflow-wrap:break-word; overflow-x:hidden;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
+  @media (min-width:1180px){ .wrap{max-width:880px; padding:0 40px;} }
+  img{max-width:100%;}
+
+  #guide{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+    cursor:pointer; text-decoration:none; border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px; font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;}
+  .hero h1{font-size:clamp(26px,7vw,36px); margin:0 0 12px; font-weight:900; line-height:1.35;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillars > *{min-width:0;}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
+
+  section{padding:20px 0;}
+  .section-head{margin-bottom:8px;}
+  .section-head .tag{font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;}
+  .section-sub{font-size:14px; color:var(--ink-soft); margin:0 0 16px;}
+
+  .cmp-card{background:var(--white); border-radius:22px; padding:22px 18px; box-shadow:var(--shadow); margin-bottom:10px; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  table.cmp{border-collapse:collapse; min-width:560px; width:100%;}
+  table.cmp th{font-size:14px; font-weight:700; color:var(--ink-soft); text-align:right; padding:0 8px 10px 0; border-bottom:2px solid #F0EAE0; white-space:normal;}
+  table.cmp th:first-child{text-align:left;}
+  table.cmp td{padding:13px 8px 13px 0; border-bottom:1px solid #F0EAE0; vertical-align:top;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp col.c-name{width:150px;}
+  table.cmp col.c-amt{width:140px;}
+  .item-name{font-size:15px; font-weight:700;}
+  .item-sub{font-size:13px; color:var(--ink-soft); margin-top:2px;}
+  .amt{text-align:right; font-size:14.5px; font-weight:900; white-space:normal; word-break:break-word; line-height:1.5;}
+  @media (max-width:400px){ .amt{font-size:13px;} }
+  .amt.hi{color:var(--coral-deep);}
+  .scroll-hint{font-size:13px; color:var(--ink-soft); text-align:center; margin:0 0 18px; opacity:0.8;}
+
+  details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:14px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
+  .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
+  .acc-list li{margin-bottom:6px; padding-left:2px;}
+  .acc-list li:last-child{margin-bottom:0;}
+  .nowrap{white-space:nowrap;}
+
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
+
+  table.premium{width:100%; border-collapse:collapse; font-size:14px; table-layout:fixed;}
+  table.premium th, table.premium td{padding:10px 4px; text-align:right; border-bottom:1px solid #F0EAE0;}
+  table.premium th:first-child, table.premium td:first-child{text-align:left; color:var(--ink-soft);}
+  table.premium th{font-weight:700;}
+  .premium-note{font-size:13px; color:var(--ink-soft); margin-top:10px; line-height:1.6;}
+
+  .flags{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;}
+  .flags > *{min-width:0;}
+  .flag{border-radius:16px; padding:16px;}
+  .flag.ok{background:var(--mint);}
+  .flag.no{background:#F3DCD3; border:1px solid #E8C4B6;}
+  .flag-title{font-size:14px; font-weight:700; margin-bottom:6px;}
+  .flag.ok .flag-title{color:var(--mint-deep);}
+  .flag.no .flag-title{color:var(--terracotta);}
+  .flag-text{font-size:14px; line-height:1.7;}
+  .flag.ok .flag-text{color:var(--mint-deep);}
+  .flag.no .flag-text{color:var(--terracotta);}
+
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral);}
+  .final-cta .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  .subhead{font-size:15px; font-weight:900; color:var(--coral-deep); margin:26px 0 10px; padding-left:2px;}
+  .subhead:first-child{margin-top:0;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%84%8F%E5%A4%96%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">🛡️ 保誠保險</div>
+    <h1>意外唔會揀日子<br>你嘅<span>意外保障</span>夠唔夠？</h1>
+    <p class="sub">意外保系列（附加保障）同安健寶/倍安寶（一般保險）— 一次過睇清5個方案點揀</p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">🤕</div><div class="txt">意外受傷<wbr>手停口停</div></div>
+    <div class="pillar"><div class="emoji">🏥</div><div class="txt">醫療雜費<wbr>愈計愈多</div></div>
+    <div class="pillar"><div class="emoji">👨‍👩‍👧</div><div class="txt">想連埋<wbr>家人一齊保</div></div>
+  </div>
+
+  <!-- ============ 組別一：意外保系列（附加保障） ============ -->
+  <section>
+    <div class="section-head"><span class="tag">意外保系列（附加保障）</span></div>
+    <p class="section-sub">首護保/加護保/全護保 3個級別 · 必須夾埋已有嘅人壽基本計劃先買得，唔可以獨立投保</p>
+    <div class="cmp-card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"><col class="c-amt"></colgroup>
+        <tr><th></th><th>意外首護保</th><th>意外加護保</th><th>意外全護保</th></tr>
+        <tr>
+          <td><div class="item-name">投保年齡</div></td>
+          <td class="amt">1–70歲</td>
+          <td class="amt">1–70歲</td>
+          <td class="amt hi">19–65歲</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">意外身故保障</div></td>
+          <td class="amt">保額100%</td>
+          <td class="amt">保額100%</td>
+          <td class="amt hi">保額100%</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">意外斷肢保障</div><div class="item-sub">按傷殘程度計</div></td>
+          <td class="amt">最高100%</td>
+          <td class="amt">最高100%</td>
+          <td class="amt hi">最高100%</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">意外醫療費用保障</div><div class="item-sub">住院/門診/跌打針灸等</div></td>
+          <td class="amt">—</td>
+          <td class="amt">保額5%<br>最高$80,000<span class="nowrap">/宗</span></td>
+          <td class="amt hi">保額5%<br>最高$80,000<span class="nowrap">/宗</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">暫時性傷殘保障</div><div class="item-sub">每星期收入津貼</div></td>
+          <td class="amt">—</td>
+          <td class="amt">—</td>
+          <td class="amt hi">有<br><span class="item-sub">最高每週$5,000</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">完全永久傷殘保障</div></td>
+          <td class="amt">有</td>
+          <td class="amt">有</td>
+          <td class="amt hi">有</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">雙倍賠償</div><div class="item-sub">公共交通/行人/火災等</div></td>
+          <td class="amt">最高100%</td>
+          <td class="amt">最高100%</td>
+          <td class="amt hi">最高100%</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">恩恤身故保障</div><div class="item-sub">非意外身故</div></td>
+          <td class="amt">$50,000</td>
+          <td class="amt">$50,000</td>
+          <td class="amt hi">$50,000</td>
+        </tr>
+      </table>
+    </div>
+    <p class="scroll-hint">← 左右滑動睇齊3個級別 →</p>
+    <div class="tip">💡 3個級別入面，全護保係唯一有「暫時性傷殘每週收入津貼」，比較啱返緊工、驚意外後一段時間手停口停嘅客人；如果客人已經有醫療保單、淨係想加強身故/斷肢保障，首護保已經夠用同保費相宜。</div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="tag">撳開睇意外保系列詳情</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🩹</div>
+        <div class="acc-head">
+          <div class="acc-title">意外首護保</div>
+          <div class="acc-amt">基本級別 · 身故/斷肢/完全永久傷殘</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>提供意外身故保障、意外斷肢保障同完全永久傷殘保障，加埋雙倍賠償、全球緊急支援服務同恩恤身故保障。冇涵蓋意外醫療費用同暫時性傷殘，係3個級別入面保費最相宜嘅選擇，適合單純想加強人壽保單嘅意外身故/傷殘保障。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">保障組合</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>意外身故保障：保額100%</li>
+              <li>意外斷肢保障：按傷殘程度，最高保額100%</li>
+              <li>完全永久傷殘保障：首18個月每月1%，其後一筆過82%</li>
+              <li>雙倍賠償：公共交通/行人/升降機/火災/自然災害情況下額外100%</li>
+              <li>全球緊急支援服務、恩恤身故保障（$50,000）</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🏥</div>
+        <div class="acc-head">
+          <div class="acc-title">意外加護保</div>
+          <div class="acc-amt">首護保保障 + 意外醫療費用</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>喺首護保嘅基礎上，加多意外醫療費用保障，涵蓋因意外導致嘅住院、門診、跌打針灸、物理/職業/脊椎治療、家中看護同醫療器具租用費用，最高賠償保額5%（每宗意外上限$80,000，18歲以下上限$16,000）。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">意外醫療費用細項上限</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>跌打/針灸：每次$300，每保單年度最高10次</li>
+              <li>物理/職業/脊椎治療：每次$700，每保單年度最高15次</li>
+              <li>出院後家中看護：每日$600，每保單年度最高15次</li>
+              <li>醫療器具（拐杖/輪椅等）：每保單年度最高$2,000</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">⚠️ 加護保同全護保嘅意外醫療費用保障，如同一受保人兩個計劃都有買，最高賠償額會合併計算，唔會分開疊加。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">📅</div>
+        <div class="acc-head">
+          <div class="acc-title">意外全護保</div>
+          <div class="acc-amt">加護保保障 + 暫時性傷殘每週津貼</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>喺加護保嘅基礎上，再加多暫時性傷殘保障：如受保人因意外連續7日或以上局部/完全暫時性傷殘，可獲每星期收入津貼，最長賠12個月（52星期）。投保年齡限19至65歲，適合返緊工、擔心意外後短暫失去工作能力嘅在職人士。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">暫時性傷殘保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>局部暫時性傷殘：保額0.125%/週，最高$1,250/週</li>
+              <li>完全暫時性傷殘：保額0.5%/週，最高$5,000/週</li>
+              <li>12個月內最多賠52星期，兩項合計賠足保額100%後即終止</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <div class="subhead" style="margin-top:36px;">──── 一般保險 ────</div>
+
+  <!-- ============ 組別二：安健寶 vs 倍安寶 ============ -->
+  <section>
+    <div class="section-head"><span class="tag">安健寶 VS 倍安寶</span></div>
+    <p class="section-sub">兩份都係一般保險（保誠財險），唔使夾人壽保單都買得；安健寶按職業自選投保額，倍安寶就係固定計劃</p>
+    <div class="cmp-card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"></colgroup>
+        <tr><th></th><th>安健寶</th><th>倍安寶</th></tr>
+        <tr>
+          <td><div class="item-name">保費模式</div></td>
+          <td class="amt">4級職業分類<span class="nowrap">％</span>費率<br><span class="item-sub">彈性自選投保額</span></td>
+          <td class="amt hi">固定計劃<br><span class="item-sub">青苗/計劃A/計劃B</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">意外死亡及<wbr>永久性傷殘</div></td>
+          <td class="amt">最低$780,000<br>最高5倍<span class="nowrap">年薪</span></td>
+          <td class="amt hi">青苗$500,000<br>A $600,000/B $1,200,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">意外醫療費用</div></td>
+          <td class="amt">自選投保額<br>最高$80,000<span class="nowrap">/宗</span></td>
+          <td class="amt hi">青苗冇提供<br>A $300,000/B $600,000</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">住院現金</div><div class="item-sub">每日金額</div></td>
+          <td class="amt">最高$1,000<span class="nowrap">/日</span></td>
+          <td class="amt hi">最高$600<span class="nowrap">/日</span>（計劃B）</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">家居康復<wbr>服務資助</div></td>
+          <td class="amt">有<br><span class="item-sub">最高$300,000</span></td>
+          <td class="amt hi">冇提供</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">指定運動<wbr>額外利益</div><div class="item-sub">單車/行山/馬拉松</div></td>
+          <td class="amt">冇</td>
+          <td class="amt hi">有<br><span class="item-sub">額外50%賠償</span></td>
+        </tr>
+        <tr>
+          <td><div class="item-name">無索償優惠</div></td>
+          <td class="amt">每年加5%保額<br>5年封頂$500,000</td>
+          <td class="amt hi">3年無索償<br>回贈20%保費</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">家人同保折扣</div></td>
+          <td class="amt">9折</td>
+          <td class="amt hi">9折</td>
+        </tr>
+        <tr>
+          <td><div class="item-name">職業限制</div></td>
+          <td class="amt">分4級收費<br><span class="item-sub">按風險釐定保費</span></td>
+          <td class="amt hi">大部分職業適用<br><span class="item-sub">個別高危職業除外</span></td>
+        </tr>
+      </table>
+    </div>
+    <p class="scroll-hint">← 左右滑動睇齊兩個方案 →</p>
+    <div class="tip">💡 安健寶保費同職業風險掛鈎、投保額可以自己按年薪彈性調高，仲有家居康復服務資助（傷殘資助裝修/器材），比較啱想「度身訂造」保障額嘅在職人士；倍安寶保費一開始就企定，仲有指定運動額外賠償同青苗計劃，比較啱想簡單投保、或者想連小朋友一齊保埋嘅家庭。</div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="tag">撳開睇安健寶/倍安寶詳情</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">💼</div>
+        <div class="acc-head">
+          <div class="acc-title">安健寶 PRUChoice Personal Accident</div>
+          <div class="acc-amt">按職業分類彈性投保 · 賠償期最長104週</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>全球性人身意外保障，恐怖主義襲擊都受保。意外死亡及永久性傷殘保障喺處理索償時，唔會扣減已賠出嘅暫時喪失工作能力或意外醫療費用；投保額可以按年薪彈性調高，職業分為第一至第四類（另設青苗組），風險愈高保費率愈高。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">主要保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>意外死亡及永久性傷殘：最低投保$780,000，最高5倍年薪（特定人士上限$1,000,000）</li>
+              <li>暫時喪失工作能力：由第3日起計，最長賠104週，18–65歲適用</li>
+              <li>意外醫療費用：涵蓋門診、住院、脊醫、物理/職業治療、香港跌打中醫針灸，最長104週</li>
+              <li>住院現金：最高每日$1,000，最長104週</li>
+              <li>家居康復服務及醫療器材資助：嚴重永久傷殘（賠足50%或以上保額）可獲，最高$300,000</li>
+              <li>雙倍賠償：駕駛/乘坐私家車或公共交通工具時遇意外，額外100%（上限$1,000,000）</li>
+              <li>無索償記錄優惠：連續5年續保無索償，每年加5%投保額，累積上限$500,000</li>
+              <li>殮葬費用：最高$30,000</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">⚠️ 暫時喪失工作能力保障不適用於家庭主婦、義工、非在職人士、退休人士及青苗組；自僱人士呢項保障最高只做60%。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">👨‍👩‍👧‍👦</div>
+        <div class="acc-head">
+          <div class="acc-title">倍安寶 PRUChoice Personal Accident Plus+</div>
+          <div class="acc-amt">成人計劃A/B + 青苗計劃 · 適合連小朋友一齊保</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>全球性人身意外保障，恐怖主義襲擊都受保。設成人計劃A/B（18–70歲投保）同青苗計劃（15日至17歲未婚全日制學生），投保額同保費喺三個計劃內都係固定，方便快捷；適用於絕大部分職業，只有小部分高危職業（保鏢、地盤工人、職業運動員等）不承保。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">主要保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>意外死亡及永久性傷殘：青苗$500,000/計劃A $600,000/計劃B $1,200,000</li>
+              <li>意外醫療費用：計劃A $300,000、計劃B $600,000（每宗意外），最長104週，包香港跌打中醫針灸</li>
+              <li>指定運動額外利益：純休閒進行單車、行山或馬拉松時遇意外，額外50%意外死亡及永久性傷殘賠償；海外進行呢類運動更有雙倍意外醫療費用</li>
+              <li>住院現金：按計劃每日$200–$600不等</li>
+              <li>雙倍賠償：駕駛/乘坐私家車或公共交通工具時遇意外，額外100%</li>
+              <li>無索償保費回贈：連續3個保單年度無索償，回贈該3年保費總額20%</li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-extra">
+          <div class="acc-extra-title">青苗計劃專屬保障</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>學生額外利益賠償：參與學校活動時遇意外，額外50%意外死亡及永久性傷殘賠償</li>
+              <li>綁架保障：因綁架導致意外身故，會支付恩恤現金</li>
+              <li>學費保障：因意外連續住院超過5日，賠償不能退回嘅學費及相關開支</li>
+              <li>續保至18歲時會自動轉為計劃A，如想轉計劃B要喺續保前主動聯絡</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="tag" style="color:var(--lavender-deep);">保費參考</span></div>
+    <div class="cmp-card">
+      <table class="premium">
+        <tr><th>安健寶投保例子</th><th colspan="2">30歲銀行主任 · 第一類</th></tr>
+        <tr><td>意外死亡及永久性傷殘</td><td colspan="2">$780,000</td></tr>
+        <tr><td>暫時喪失工作能力</td><td colspan="2">$3,900/週</td></tr>
+        <tr><td>意外醫療費用</td><td colspan="2">$20,000</td></tr>
+        <tr><td>年繳總保費</td><td colspan="2">$2,967<span class="item-sub">（月繳$265）</span></td></tr>
+      </table>
+      <p class="premium-note">保費按投保額同職業類別（第一至第四類）浮動，以上只係其中一個例子；實際保費以核保結果為準。</p>
+    </div>
+    <div class="cmp-card">
+      <table class="premium">
+        <tr><th>倍安寶</th><th>月繳</th><th>年繳</th></tr>
+        <tr><td>青苗計劃</td><td>$164</td><td>$1,840</td></tr>
+        <tr><td>計劃A</td><td>$172</td><td>$1,930</td></tr>
+        <tr><td>計劃B</td><td>$344</td><td>$3,860</td></tr>
+      </table>
+      <p class="premium-note">每份保單保險期最低及不可退回保費為$500；如與配偶或未婚子女（15日至17歲全日制學生）同保，額外可享9折優惠。</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="flags">
+      <div class="flag ok">
+        <div class="flag-title">✅ 啱買</div>
+        <div class="flag-text">已有人壽保單想加強意外保障（意外保系列）；想按年薪自訂投保額嘅在職人士（安健寶）；想固定保費、連小朋友一齊投保嘅家庭（倍安寶）</div>
+      </div>
+      <div class="flag no">
+        <div class="flag-title">❌ 唔啱買</div>
+        <div class="flag-text">冇基本人壽保單（意外保系列必須夾埋主保單先買得）；從事保單列明嘅高危職業（例如空中工作人員、職業運動員、地盤工人等，倍安寶不承保）</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="final-cta">
+    <div class="avatar"><img src="assets/avatar.jpg" alt="Lily Lau"></div>
+    <h2>想知邊款意外保障啱<span class="nowrap">你？</span></h2>
+    <p>免費幫你check現有保單，睇下意外保障夠唔夠</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E6%84%8F%E5%A4%96%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。實際保障及不保事項以保單條款正本為準，意外保系列須附加於基本人壽計劃投保。</div>
+
+</div>
+
+</body>
+</html>
