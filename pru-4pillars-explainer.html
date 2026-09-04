@@ -96,6 +96,7 @@
   .match-badge{display:none; font-size:11px; font-weight:700; color:var(--coral-deep); background:var(--butter); border-radius:999px; padding:3px 9px; white-space:nowrap;}
   details.acc.highlight .match-badge{display:inline-block;}
   .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .claim-tag{display:inline-flex; align-items:center; gap:5px; background:var(--butter); color:var(--butter-deep); font-size:12px; font-weight:700; padding:4px 11px; border-radius:999px; margin-top:8px;}
   .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
   details.acc[open] .chevron{transform:rotate(180deg);}
   .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
@@ -186,6 +187,7 @@
         <div class="acc-head">
           <div class="acc-title">醫療保障<span class="match-badge">⭐ 同你最相關</span></div>
           <div class="acc-amt">一次留院分分鐘使晒你儲咗幾年嘅錢</div>
+          <div class="claim-tag">💳 實報實銷，直接同醫院找數</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -210,6 +212,7 @@
         <div class="acc-head">
           <div class="acc-title">危疾保障<span class="match-badge">⭐ 同你最相關</span></div>
           <div class="acc-amt">確診嗰刻人工停晒，單仲要照交</div>
+          <div class="claim-tag">💰 一經確診，一筆過現金到手</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -234,6 +237,7 @@
         <div class="acc-head">
           <div class="acc-title">人壽保障<span class="match-badge">⭐ 同你最相關</span></div>
           <div class="acc-amt">如果聽日冇咗你，層樓同屋企人靠邊個？</div>
+          <div class="claim-tag">🎁 身故一筆過賠畀受益人</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -258,6 +262,7 @@
         <div class="acc-head">
           <div class="acc-title">意外保障<span class="match-badge">⭐ 同你最相關</span></div>
           <div class="acc-amt">一次骨折隨時停薪幾個月，冇得慢慢諗</div>
+          <div class="claim-tag">🩹 一筆過賠付＋意外醫療津貼</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -282,6 +287,7 @@
         <div class="acc-head">
           <div class="acc-title">儲蓄保障<span class="match-badge">⭐ 同你最相關</span></div>
           <div class="acc-amt">人工一到手就用晒？唔逼自己就儲唔到</div>
+          <div class="claim-tag">📈 供款期滿可提取現金值</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
@@ -322,7 +328,7 @@
   const stages = {
     single: {
       emoji: '🧑‍💻',
-      name: 'Ivy・出嚟做嘢幾年',
+      name: '出嚟做嘢幾年',
       desc: '出嚟做嘢自己養自己，可能同父母住，又或者一個人租樓住，財務責任都係自己一手包辦。',
       order: ['medical','ci','accident','life','savings'],
       highlight: ['medical','ci','accident'],
@@ -336,7 +342,7 @@
     },
     newlywed: {
       emoji: '💑',
-      name: '輝仔＆小美・啱啱買咗樓',
+      name: '啱啱買咗樓',
       desc: '兩公婆一齊供緊層樓，開始要為「兩個人」嘅將來打算。',
       order: ['life','medical','ci','accident','savings'],
       highlight: ['life','medical','ci'],
@@ -350,7 +356,7 @@
     },
     parent: {
       emoji: '👨‍👩‍👧',
-      name: 'Kelly・有小朋友',
+      name: '有小朋友',
       desc: '湊住個小朋友周圍走，爸爸媽媽嘅健康就係佢嘅全部。',
       order: ['medical','ci','life','accident','savings'],
       highlight: ['medical','ci','life'],
@@ -364,7 +370,7 @@
     },
     midlife: {
       emoji: '🧑‍🦳',
-      name: '陳生・上有父母下有子女',
+      name: '上有父母下有子女',
       desc: '夾心階層，自己就係成頭家嘅經濟支柱。',
       order: ['medical','ci','life','savings','accident'],
       highlight: ['medical','ci','savings'],
