@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>誠保一生(CIM3)/危疾加護保III(CIE3)/愛伴航2 三方比較｜Lily Lau</title>
+<meta name="description" content="保誠「誠保一生」、保誠「危疾加護保III」對比友邦「愛伴航」保險計劃2，一頁睇清三份危疾保障邊個位更啱你。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0;
+    --coral:#C9956B;
+    --coral-deep:#B8845A;
+    --mint:#D6E8D5;
+    --mint-deep:#2A5A2E;
+    --butter:#FAEEDA;
+    --butter-deep:#633806;
+    --lavender:#E6F1FB;
+    --lavender-deep:#0C447C;
+    --terracotta:#A85D42;
+    --ink:#3D2B1A;
+    --ink-soft:#6B4E35;
+    --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08);
+    --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    margin:0;
+    font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    line-break:strict;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
+  @media (min-width:1180px){ .wrap{max-width:880px; padding:0 40px;} }
+  img{max-width:100%;}
+
+  #guide{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+    cursor:pointer; text-decoration:none; border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{
+    display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px;
+    font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(24px,6.6vw,34px); margin:0 0 12px; font-weight:900; line-height:1.4;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillars > *{min-width:0;}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
+
+  section{padding:20px 0;}
+  .section-head{margin-bottom:16px;}
+  .section-head .tag{font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;}
+  .section-head .hint{font-size:13px; color:var(--ink-soft); font-weight:400; text-transform:none; letter-spacing:0; display:block; margin-top:4px;}
+
+  /* 3-column comparison — horizontal scroll card, table-layout:fixed required
+     (skill design-system.md pitfall #10). */
+  .cmp-card{background:var(--white); border-radius:22px; padding:18px; box-shadow:var(--shadow); margin-bottom:16px; overflow-x:auto;}
+  table.cmp{width:100%; min-width:600px; border-collapse:collapse; table-layout:fixed;}
+  table.cmp th{font-size:13px; font-weight:700; color:var(--ink-soft); text-align:right; padding-bottom:10px; border-bottom:2px solid #F0EAE0;}
+  table.cmp th:first-child{text-align:left;}
+  table.cmp td{padding:12px 0; border-bottom:1px solid #F0EAE0; vertical-align:middle;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp col.c-name{width:26%;}
+  table.cmp col.c-amt{width:24.6%;}
+  .item-name{font-size:14px; font-weight:700;}
+  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+  .amt{text-align:right; font-size:13.5px; font-weight:900; white-space:normal; word-break:keep-all; padding-left:6px;}
+  .amt.hi{color:var(--coral-deep);}
+  .amt.tie{color:var(--ink-soft); font-weight:700;}
+  .amt.no{color:var(--terracotta); font-weight:700;}
+  .scroll-hint{font-size:12.5px; color:var(--ink-soft); text-align:center; margin:6px 0 0;}
+
+  details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:14px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-note{background:var(--butter); border-radius:12px; padding:12px 16px; font-size:14px; margin-top:10px;}
+  .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
+  .acc-list li{margin-bottom:6px; padding-left:2px;}
+  .acc-list li:last-child{margin-bottom:0;}
+  .nowrap{white-space:nowrap;}
+
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
+
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral);}
+  .final-cta .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E4%B8%89%E4%BB%BD%E5%8D%B1%E7%96%BE%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88%E7%9A%84%E6%AF%94%E8%BC%83" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">🆚 三方危疾比較</div>
+    <h1>同一個保障需要<br>邊份<span>危疾計劃</span>更貼身？</h1>
+    <p class="sub">保誠「誠保一生」（CIM3）、保誠「危疾加護保III」（CIE3），同友邦「愛伴航」保險計劃2，三份放埋一齊比。</p>
+  </div>
+
+  <!-- PAIN-POINT PILLARS -->
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">💊</div><div class="txt">危疾之後，人壽保障仲喺唔喺？</div></div>
+    <div class="pillar"><div class="emoji">🎗️</div><div class="txt">癌症持續復發，邊份撐得耐？</div></div>
+    <div class="pillar"><div class="emoji">👨‍👩‍👧</div><div class="txt">一家人齊齊買，有冇額外著數</div></div>
+  </div>
+
+  <!-- CLARIFYING TIP: correct the assumption that CIM3's perks carry over to CIE3 -->
+  <div class="tip">💡 先講清楚：「誠保一生」（CIM3）同「危疾加護保III」（CIE3）係保誠兩份設計理念唔同嘅危疾產品。CIM3主打「危疾之後人壽保障唔會歸零」加孕產/兒童保障；CIE3主打「持續/復發危疾嘅財務支援」（癌症最高可達660%）加家人同行額外保障。唔係全部優點都通用，撳落去睇邊份保障屬邊份計劃。</div>
+
+  <!-- COMPARISON TABLE (3 plans, horizontal scroll) -->
+  <section>
+    <div class="section-head">
+      <span class="tag">重點保障一覽<span class="hint">左右滑動可睇齊三份計劃</span></span>
+    </div>
+    <div class="cmp-card">
+      <table class="cmp">
+        <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"><col class="c-amt"></colgroup>
+        <tr><th></th><th>愛伴航2</th><th>誠保一生<br>CIM3</th><th>危疾加護保III<br>CIE3</th></tr>
+
+        <tr>
+          <td><div class="item-name">受保病況種類</div><div class="item-sub">危疾/早期/兒童合計</div></td>
+          <td class="amt">115種</td>
+          <td class="amt hi">⭐127種</td>
+          <td class="amt">117種</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">索償嚴重疾病後<span class="nowrap">嘅人壽</span>保障</div><div class="item-sub">賠完危疾，身故保障仲有冇</div></td>
+          <td class="amt">跟住遞減至0</td>
+          <td class="amt hi">⭐存活1年後仍賠100%</td>
+          <td class="amt no">即時終止</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">癌症最高總保障</div><div class="item-sub">計及持續/復發癌症</div></td>
+          <td class="amt">600%</td>
+          <td class="amt">約300%</td>
+          <td class="amt hi">⭐660%</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">腦退化症/<span class="nowrap">柏金遜</span>終身年金</div><div class="item-sub">每年派錢，減輕長期護理負擔</div></td>
+          <td class="amt tie">每年6%</td>
+          <td class="amt tie">每年6%</td>
+          <td class="amt no">沒有</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">懷孕及兒童保障</div><div class="item-sub">懷孕投保、產後抑鬱、兒童專屬病種</div></td>
+          <td class="amt">18種<span class="nowrap">（需首護摯寶）</span></td>
+          <td class="amt hi">⭐22種+<span class="nowrap">產後抑鬱</span></td>
+          <td class="amt no">不適用</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">家人同行額外保障</div><div class="item-sub">首10年，2位家庭成員同保</div></td>
+          <td class="amt">沒有</td>
+          <td class="amt">沒有</td>
+          <td class="amt hi">⭐+50%人壽</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">保費供款年期選擇</div><div class="item-sub">10/18/25　vs　5/10/15/20/25　vs　10/15/20/25</div></td>
+          <td class="amt">3種</td>
+          <td class="amt hi">⭐5種</td>
+          <td class="amt">4種</td>
+        </tr>
+
+        <tr>
+          <td><div class="item-name">保單貨幣</div><div class="item-sub">港元定美元計價</div></td>
+          <td class="amt">只有美元</td>
+          <td class="amt hi">⭐港元/美元</td>
+          <td class="amt hi">⭐港元/美元</td>
+        </tr>
+
+      </table>
+    </div>
+    <p class="scroll-hint">👈 表格可以左右滑動 👉</p>
+  </section>
+
+  <!-- ACCORDION -->
+  <section>
+    <div class="section-head"><span class="tag">撳開睇邊份保障屬邊份計劃</span></div>
+
+    <details class="acc" open>
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🛡️</div>
+        <div class="acc-head">
+          <div class="acc-title">危疾都索償咗，人壽保障仲喺</div>
+          <div class="acc-amt">誠保一生（CIM3）獨有：人壽延伸保障 額外100%</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>三份計劃入面，只有誠保一生喺索償嚴重疾病保障之後，仲會繼續提供人壽保障。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">誠保一生點做到</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>索償嚴重疾病保障後，受保人只要存活滿1年</li>
+              <li>喺86歲（下次生日年齡）前不幸身故，仲可以額外攞返基本保額<span class="nowrap">100%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">愛伴航2嘅身故賠償會跟住已支付嘅危疾賠償同步遞減，賠到100%即歸零；危疾加護保III就更加直接：「假如我們已經支付嚴重疾病保障，則不會支付身故賠償」，索償咗嚴重疾病保障之後，人壽保障隨即終止。呢一項係誠保一生獨有嘅設計。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🎗️</div>
+        <div class="acc-head">
+          <div class="acc-title">癌症持續復發，邊份撐得耐</div>
+          <div class="acc-amt">危疾加護保III（CIE3）：癌症最高總保障660%</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>如果客人最擔心嘅係癌症持續治療或者復發嘅開支，三份計劃入面，危疾加護保III喺呢一點提供得最多。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">危疾加護保III嘅「癌症治療額外保障」</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>索償癌症後1至2年內，以及2至3年內，各可再攞多1次，每次60%，最多合共6次</li>
+              <li>連同嚴重疾病保障100%+嚴重疾病延伸保障最多2次癌症索償200%，癌症總保障可達當時保額<span class="nowrap">660%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="acc-note">相比之下：愛伴航2嘅癌症總賠償上限為原有保額600%（嚴重疾病賠償+持續癌症現金選項+10X多重危疾賠償合計）；誠保一生嘅癌症保障上限則約為300%（嚴重疾病保障100%+嚴重疾病延伸保障癌症組別最多200%），冇危疾加護保III咁高。</div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">👶</div>
+        <div class="acc-head">
+          <div class="acc-title">BB同兒童保障點揀</div>
+          <div class="acc-amt">誠保一生（CIM3）：懷孕20週投保+產後抑鬱保障</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>誠保一生嘅「摯愛寶」版本，最早懷孕20週已經可以幫未出世嘅BB投保，仲有產後抑鬱保障（基本保額5%，愛伴航完全冇呢一項）。愛伴航2都有孕婦版本「首護摯寶」（懷孕22週起），但冇產後抑鬱保障。危疾加護保III就完全冇孕產專屬版本，兒童保障亦只係包含喺一般56/61種病況入面（例如胰島素依賴型糖尿病、川崎病等，多數保障至18歲），冇獨立嘅兒童病種組別。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">兒童保障種類</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>誠保一生：22種（15嚴重+7次級，基本計劃已包，包括肺炎、嚴重濕疹、嚴重風疹等）</li>
+              <li>愛伴航2：18種（主計劃13種+首護摯寶先有嘅5種兒童成長保障）</li>
+              <li>危疾加護保III：兒童病種散落喺56/61種病況入面，冇獨立分類</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">👨‍👩‍👧</div>
+        <div class="acc-head">
+          <div class="acc-title">一家人齊齊買，有冇額外著數</div>
+          <div class="acc-amt">危疾加護保III（CIE3）獨有：家人同行額外保障</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>如果客人打算同配偶或者子女一齊投保，危疾加護保III有一項另外兩份計劃都<span class="nowrap">冇嘅著數。</span></p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">保障如何運作</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>適用於：自己+配偶、自己+子女、或2名子女一齊投保危疾加護保III</li>
+              <li>首10年內，其中一方不幸身故，可額外獲賠自己保單當時保額<span class="nowrap">50%</span>嘅人壽保障</li>
+              <li>兩張保單投保時間需相隔不超過90日，且未曾連結過其他保單</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="avatar"><img src="assets/avatar.jpg" alt="Lily Lau"></div>
+    <h2>想知邊份方案更啱你<span class="nowrap">？</span></h2>
+    <p>人壽保障會唔會歸零、癌症持續保障夠唔夠、家人一齊買有冇著數，每個人睇重嘅位都唔同。WhatsApp我，一齊按你嘅實際需要傾傾。</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E4%B8%89%E4%BB%BD%E5%8D%B1%E7%96%BE%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88%E7%9A%84%E6%AF%94%E8%BC%83" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約，唔代表任何一方保險公司立場。實際保障、條款及細則以個別保單契約正本為準，投保前請詳閱產品說明文件。</div>
+
+</div>
+
+</body>
+</html>
