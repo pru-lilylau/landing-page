@@ -95,6 +95,7 @@ body{
 .badge-open{background:var(--mint);color:var(--mint-deep);}
 .badge-soon{background:var(--lavender);color:var(--lavender-deep);}
 .badge-tba{background:#F3DCD3;color:var(--terracotta);}
+.badge-closed{background:#E5DED2;color:var(--ink-soft);}
 .chevron{
   flex:0 0 auto;font-size:14px;color:var(--ink-soft);
   transition:transform .2s;margin-left:2px;
@@ -181,6 +182,7 @@ body{
     <button class="filter-btn" data-filter="open">开放中</button>
     <button class="filter-btn" data-filter="soon">即将开放</button>
     <button class="filter-btn" data-filter="tba">有待公布</button>
+    <button class="filter-btn" data-filter="closed">已截止</button>
   </div>
 
   <div class="section-label">港岛及九龙区16间热门私立幼稚园（排名不分先后）</div>
@@ -211,82 +213,82 @@ body{
 
 <script>
 const schools = [
-{rank:1,name:"国际英文幼稚园（St. Catherine's International Kindergarten，简称 ST CAT）",status:"open",
+{rank:1,name:"国际英文幼稚园（St. Catherine's International Kindergarten，简称 ST CAT）",open:"2026-08-28",close:"2026-09-08",confirmed:true,
  intro:"九龙塘顶级私立名校，以出色的英语及三语环境著称，升读本地名校及国际学校网络极强，是全港家长抢破头的第一志愿。",
  date:"2026年8月28日（上午10:00）至2026年9月8日（下午5:00）",
  fee:"K1（幼儿班）2025/26年度学费为$76,780，分11期缴交",
  url:"https://www.stcatherines.edu.hk/?page_id=287&lang=zh"},
-{rank:2,name:"维多利亚国际幼稚园（Victoria Educational Organisation，简称 VEO）",status:"soon",
+{rank:2,name:"维多利亚国际幼稚园（Victoria Educational Organisation，简称 VEO）",open:"2026-09-01",close:"2026-10-31",
  intro:"港岛（铜锣湾、康怡、宝翠园）及九龙（何文田等）设有多个校舍，主打IB PYP双语／三语国际化课程，探究式学习口碑极佳。",
  date:"预计2026年9月上旬至10月下旬（参考往年为9月初至10月底）",
  fee:"K1（幼儿班）2025/26年度学费为$107,668起，分11期缴交",
  url:"https://www.victoria.edu.hk/"},
-{rank:3,name:"民生书院幼稚园（Munsang College Kindergarten）",status:"soon",
+{rank:3,name:"民生书院幼稚园（Munsang College Kindergarten）",open:"2026-10-01",close:"2026-10-10",
  intro:"九龙城区传统私立顶尖名校，享有直升民生书院小学部及中学部的极强优势，教学扎实，深受家长追捧。",
  date:"预计2026年10月上旬开放（往年多于10月初开展短暂数天的申请，如2025年10月3日至8日）",
  fee:"K1（幼儿班）2025/26年度学费为$52,400，分10期缴交",
  url:"https://kindergarten.munsang.edu.hk/"},
-{rank:4,name:"圣公会幼稚园（Sheng Kung Hui Kindergarten）",status:"soon",
+{rank:4,name:"圣公会幼稚园（Sheng Kung Hui Kindergarten）",open:"2026-09-21",close:"2026-10-31",
  intro:"位于港岛湾仔／铜锣湾区的百年私立名校，著重全人发展与基督教品德教育，毕业生升读港岛区顶尖小学表现极佳。",
  date:"预计2026年9月下旬至10月下旬",
  fee:"K1（幼儿班）2025/26年度学费为$71,830，分10期缴交",
  url:"http://www.skhkg.edu.hk/"},
-{rank:5,name:"圣保禄幼稚园（St. Paul's Kindergarten）",status:"soon",
+{rank:5,name:"圣保禄幼稚园（St. Paul's Kindergarten）",open:"2026-09-11",close:"2026-10-10",
  intro:"铜锣湾著名天主教私立幼稚园，提供全日制课程，与圣保禄学校（小学部／中学部）渊源深厚。",
  date:"预计2026年9月中旬至10月初（往年同样时段）",
  fee:"K1（幼儿班）2025/26年度学费为$97,350，分11期缴交",
  url:"https://apply.spk.edu.hk/"},
-{rank:6,name:"剑鸣幼稚园（Keen Mind Kindergarten）",status:"open",
+{rank:6,name:"剑鸣幼稚园（Keen Mind Kindergarten）",open:"2026-09-02",close:"2026-09-09",confirmed:true,
  intro:"位于九龙塘金巴伦道，是极受家长欢迎的私立独立名校。学术配套齐备，面试训练专业。",
  date:"2026年9月2日上午9时至2026年9月9日下午5时",
  fee:"K1（幼儿班）2025/26年度学费为$73,777，分11期缴交",
  url:"http://www.keenmind.com.hk/"},
-{rank:7,name:"高主教书院幼稚园部（Raimondi College Kindergarten Section）",status:"soon",
+{rank:7,name:"高主教书院幼稚园部（Raimondi College Kindergarten Section）",open:"2026-10-01",close:"2026-10-15",
  intro:"港岛半山／北角天主教顶级私立名校，直升高主教书院小学部及中学部的比例高，极具升小吸引力。",
  date:"预计2026年10月上旬开放（参考2025年10月6日至10月15日）",
  fee:"K1（幼儿班）2025/26年度学费为$40,800，分10期缴交",
  url:"https://www.rckg.edu.hk/"},
-{rank:8,name:"学之园幼稚园（Learning Habitat Kindergarten，简称LH）",status:"open",
+{rank:8,name:"学之园幼稚园（Learning Habitat Kindergarten，简称LH）",open:"2026-08-01",close:"2026-10-16",confirmed:true,
  intro:"于九龙（大角咀、红磡等）及港岛（北角等）设有分校，以高质素双语教学及极为优异的升小实力闻名。",
- date:"即日起至2026年10月16日",
+ date:"2026年8月1日（上午9:00）起至2026年10月16日",
  fee:"K1（幼儿班）2026/27年度学费为$87,600起，分12期缴交",
  url:"https://www.learninghabitat.org/"},
-{rank:9,name:"约克国际幼稚园（York International Kindergarten）",status:"open",
+{rank:9,name:"约克国际幼稚园（York International Kindergarten）",open:"2026-01-01",close:null,confirmed:true,
  intro:"位于九龙塘的著名私立英文幼稚园，提供沉浸式英普双语教学，极受追求语言基础与国际化教学的家长青睐。",
  date:"即日起开放报名（采滚动式招收，额满即止）",
  fee:"K1（幼儿班）2025/26年度学费为$57,596起，分11期缴交",
  url:"https://www.york.edu.hk/"},
-{rank:10,name:"文娜雅拔国际幼儿园及幼稚园（Manhabit International Nursery & Kindergarten）",status:"tba",
+{rank:10,name:"文娜雅拔国际幼儿园及幼稚园（Manhabit International Nursery & Kindergarten）",open:null,close:null,
  intro:"大部分毕业生会升读保良局蔡继有学校、香港浸会大学附属学校王锦辉中小学或其他国际学校。",
  date:"有待公布",
  fee:"K1（幼儿班）2025/26年度学费为$73,568起，分11期缴交",
  url:"http://manhabit.edu.hk/"},
-{rank:11,name:"多多国际幼稚园（Tutor Time International Nursery & Kindergarten）",status:"tba",
+{rank:11,name:"多多国际幼稚园（Tutor Time International Nursery & Kindergarten）",open:null,close:null,
  intro:"港岛（北角半山、半山）及九龙（九龙塘）均设校舍，实行美式国际幼儿教育，注重早期自主学习与幼儿发展。",
  date:"有待公布",
  fee:"K1（幼儿班）2025/26年度学费为$154,560起，分12期缴交",
  url:"https://www.tutortime.com.hk/"},
-{rank:12,name:"京斯敦国际幼稚园（Kingston International Kindergarten）",status:"open",
+{rank:12,name:"京斯敦国际幼稚园（Kingston International Kindergarten）",open:"2026-01-01",close:null,confirmed:true,
  intro:"九龙塘知名IB认证国际幼稚园，采用一英一普双班主任制，可直接衔接京斯敦国际学校小学部。",
  date:"即日起接受网上申请",
  fee:"K1（幼儿班）2025/26年度学费为$115,500起，分11期缴交",
  url:"https://www.kingston.edu.hk/"},
-{rank:13,name:"圣若望英文书院幼稚园（St. Johannes College Kindergarten）",status:"tba",
+{rank:13,name:"圣若望英文书院幼稚园（St. Johannes College Kindergarten）",open:null,close:null,
  intro:"位于九龙塘的传统私立天主教英文幼稚园，英语教学环境浓厚，兼具直升小学部优势。",
  date:"有待公布",
  fee:"K1（幼儿班）2025/26年度学费为$51,600起，分12期缴交",
  url:"https://www.st-johannes.edu.hk/"},
-{rank:14,name:"德望小学暨幼稚园（Good Hope Primary School cum Kindergarten）",status:"tba",
+{rank:14,name:"德望小学暨幼稚园（Good Hope Primary School cum Kindergarten）",open:"2026-09-11",close:null,confirmed:true,
  intro:"传统女校天主教名校，衔接德望小学。",
- date:"有待公布",
+ date:"报名表格由2026年9月11日开始派发（截止日期有待公布）",
  fee:"K1（幼儿班）2025/26年度学费为$47,000起，分10期缴交",
  url:"https://www3.ghs.edu.hk/"},
-{rank:15,name:"弘立幼稚园（The ISF Pre-school）",status:"open",
+{rank:15,name:"弘立幼稚园（The ISF Pre-school）",open:"2026-09-01",close:"2026-09-30",confirmed:true,
  intro:"双语（普通话及英语）探究式学习，直升「弘立书院」小学部的黄金梯队。",
  date:"2026年9月1日至9月30日",
  fee:"K1（幼儿班）2026/27年度学费为$159,670起，分11期缴交",
  url:"https://preschool.isf.edu.hk/tc/%e6%8b%9b%e7%94%9f/"},
-{rank:16,name:"九龙真光中学（幼稚园部）Kowloon True Light School（Kindergarten Section）",status:"soon",
+{rank:16,name:"九龙真光中学（幼稚园部）Kowloon True Light School（Kindergarten Section）",open:"2026-09-11",close:"2026-10-20",
  intro:"以主题绘本教学、两文三语环境，每班设外籍英语老师、粤语老师及普通话老师作班主任或授课。真光幼稚园以至中学都是有联系，小学部会先取录该年高班的四成学生。",
  date:"2026年9月中旬至10月中旬（参考去年同样时段）",
  fee:"K1（幼儿班）2026/27年度学费为$73,315起，分11期缴交",
@@ -297,14 +299,23 @@ const iconColors = ["#C9956B","#2A5A2E","#0C447C","#A85D42"];
 const badgeMap = {
   open:{cls:"badge-open",label:"开放中"},
   soon:{cls:"badge-soon",label:"即将开放"},
-  tba:{cls:"badge-tba",label:"有待公布"}
+  tba:{cls:"badge-tba",label:"有待公布"},
+  closed:{cls:"badge-closed",label:"已截止"}
 };
+
+function getStatus(s){
+  if(!s.open) return 'tba';
+  const today = new Date(new Date().toDateString());
+  if(today < new Date(s.open)) return 'soon';
+  if(s.close && today > new Date(s.close)) return 'closed';
+  return s.confirmed ? 'open' : 'soon';
+}
 
 function render(filter){
   const list = document.getElementById('school-list');
   list.innerHTML = '';
-  schools.filter(s => filter === 'all' || s.status === filter).forEach((s, i) => {
-    const badge = badgeMap[s.status];
+  schools.filter(s => filter === 'all' || getStatus(s) === filter).forEach((s, i) => {
+    const badge = badgeMap[getStatus(s)];
     const color = iconColors[(s.rank - 1) % iconColors.length];
     const details = document.createElement('details');
     details.className = 'acc';
