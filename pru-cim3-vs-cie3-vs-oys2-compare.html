@@ -87,8 +87,8 @@
   table.cmp tr:last-child td{border-bottom:none;}
   table.cmp col.c-name{width:26%;}
   table.cmp col.c-amt{width:24.6%;}
-  .item-name{font-size:14px; font-weight:700;}
-  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+  .item-name{font-size:14px; font-weight:700; text-wrap:balance;}
+  .item-sub{font-size:12.5px; color:var(--ink-soft); margin-top:2px; text-wrap:balance;}
   .amt{text-align:right; font-size:13.5px; font-weight:900; white-space:normal; word-break:keep-all; padding-left:6px;}
   .amt.hi{color:var(--coral-deep);}
   .amt.tie{color:var(--ink-soft); font-weight:700;}
@@ -101,7 +101,7 @@
   details.acc summary::-webkit-details-marker{display:none;}
   .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
   .acc-head{flex:1; min-width:0;}
-  .acc-title{font-size:16px; font-weight:700;}
+  .acc-title{font-size:16px; font-weight:700; text-wrap:balance;}
   .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
   .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
   details.acc[open] .chevron{transform:rotate(180deg);}
@@ -156,7 +156,7 @@
   </div>
 
   <!-- CLARIFYING TIP: correct the assumption that CIM3's perks carry over to CIE3 -->
-  <div class="tip">💡 先講清楚：「誠保一生」（CIM3）同「危疾加護保III」（CIE3）係保誠兩份設計理念唔同嘅危疾產品。CIM3主打「危疾之後人壽保障唔會歸零」加孕產/兒童保障；CIE3主打「持續/復發危疾嘅財務支援」（癌症最高可達660%）加家人同行額外保障。唔係全部優點都通用，撳落去睇邊份保障屬邊份計劃。</div>
+  <div class="tip">💡 先講清楚：「誠保一生」（CIM3）同「危疾加護保III」（CIE3）係保誠兩份設計理念唔同嘅危疾產品。CIM3主打「危疾之後人壽保障唔會歸零」加懷孕/兒童保障；CIE3主打「持續/復發危疾嘅財務支援」（癌症最高可達660%）加家人同行額外保障。唔係全部優點都通用，撳落去睇邊份保障屬邊份計劃。</div>
 
   <!-- COMPARISON TABLE (3 plans, horizontal scroll) -->
   <section>
@@ -176,7 +176,7 @@
         </tr>
 
         <tr>
-          <td><div class="item-name">索償嚴重疾病後<span class="nowrap">嘅人壽</span>保障</div><div class="item-sub">賠完危疾，身故保障仲有冇</div></td>
+          <td><div class="item-name">索償嚴重疾病後<br>嘅人壽保障</div><div class="item-sub">賠完危疾，仲有冇身故賠償</div></td>
           <td class="amt">跟住遞減至0</td>
           <td class="amt hi">⭐存活1年後仍賠100%</td>
           <td class="amt no">即時終止</td>
@@ -291,7 +291,7 @@
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>誠保一生嘅「摯愛寶」版本，最早懷孕20週已經可以幫未出世嘅BB投保，仲有產後抑鬱保障（基本保額5%，愛伴航完全冇呢一項）。愛伴航2都有孕婦版本「首護摯寶」（懷孕22週起），但冇產後抑鬱保障。危疾加護保III就完全冇孕產專屬版本，兒童保障亦只係包含喺一般56/61種病況入面（例如胰島素依賴型糖尿病、川崎病等，多數保障至18歲），冇獨立嘅兒童病種組別。</p>
+        <p>誠保一生嘅「摯愛寶」版本，最早懷孕20週已經可以幫未出世嘅BB投保，仲有產後抑鬱保障（基本保額5%，愛伴航完全冇呢一項）。愛伴航2都有孕婦版本「首護摯寶」（懷孕22週起），但冇產後抑鬱保障。危疾加護保III就完全冇懷孕專屬版本，兒童保障亦只係包含喺一般56/61種病況入面（例如胰島素依賴型糖尿病、川崎病等，多數保障至18歲），冇獨立嘅兒童病種組別。</p>
         <div class="acc-extra">
           <div class="acc-extra-title">兒童保障種類</div>
           <div class="acc-extra-body">
