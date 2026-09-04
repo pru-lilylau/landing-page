@@ -118,7 +118,8 @@
 
   /* final CTA */
   .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
-  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral); background:var(--lavender); display:flex; align-items:center; justify-content:center; font-size:30px;}
+  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral); background:var(--lavender); display:flex; align-items:center; justify-content:center; font-size:30px; position:relative;}
+  .final-cta .avatar img{width:100%; height:100%; object-fit:cover; display:block; position:absolute; inset:0;}
   .final-cta h2{color:#fff; font-size:19.5px; margin:0 0 8px; line-height:1.5;}
   .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
   .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
@@ -304,7 +305,10 @@
 
   <!-- FINAL CTA -->
   <div class="final-cta">
-    <div class="avatar">👩‍💼</div>
+    <div class="avatar">
+      <img src="assets/avatar.jpg" alt="Lily Lau" onerror="this.remove()">
+      👩‍💼
+    </div>
     <h2>想知邊個保障最啱你嘅<br>人生階段？</h2>
     <p>免費幫你評估返而家嘅保障缺口，搵Lily傾傾。</p>
     <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E8%BF%94%E8%87%AA%E5%B7%B1%E5%98%85%E4%BF%9D%E9%9A%9C%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
