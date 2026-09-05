@@ -1039,7 +1039,8 @@ function calc() {
 
 // 建立呢刻嘅保障缺口分析（連埋姓名/電話/email），俾自動send同撳掣手動send共用
 // 淨係讀取資料、砌message，唔會有任何send出去嘅動作
-function buildResultSummary(clientPhone) {
+function buildResultSummary(clientPhone, mode) {
+  mode = mode || 'lily';
   var clientName = document.getElementById('client-name').value.trim();
   var g = state.lastCalc || {};
   var age = g.age;
@@ -1051,7 +1052,9 @@ function buildResultSummary(clientPhone) {
   var childMedMap = {company:'公司醫療',basic:'基本',high:'高端'};
 
   var sections = [];
-  sections.push('你好 Lily，以下係我嘅保險需要分析結果：');
+  sections.push(mode === 'share'
+    ? '📊 呢個係我啱啱用「保障缺口計算機」計出嚟嘅保險需要分析，同你分享下：'
+    : '你好 Lily，以下係我嘅保險需要分析結果：');
 
   var basicLines = ['【基本資料】'];
   if (clientName) basicLines.push('稱呼：' + clientName);
@@ -1093,7 +1096,9 @@ function buildResultSummary(clientPhone) {
     sections.push(childLines.join('\n'));
   }
 
-  sections.push('📌 想了解更多，請問可以聯絡你嗎？');
+  sections.push(mode === 'share'
+    ? '如果你都想計下自己嘅保障缺口，可以試下呢個計算機：\nhttps://pru-lilylau.github.io/landing-page/calculator.html'
+    : '📌 想了解更多，請問可以聯絡你嗎？');
 
   var msg = sections.join('\n\n');
 
@@ -1161,7 +1166,7 @@ function sendSummaryToWhatsApp() {
 
 // 客人自己複製/分享結果（例如send俾伴侶）：有原生分享就用share sheet，冇就複製到剪貼簿
 function copyOrShareSummary() {
-  var r = buildResultSummary(document.getElementById('client-phone').value.trim());
+  var r = buildResultSummary(document.getElementById('client-phone').value.trim(), 'share');
   if (navigator.share) {
     navigator.share({ title: '我嘅保障缺口分析', text: r.msg }).catch(function(){});
     return;
