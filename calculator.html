@@ -164,7 +164,7 @@
   .child-block { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #F0E8DF; }
   .child-block-title { font-size: 13px; font-weight: 600; color: #C9956B; margin-bottom: 0.7rem; }
   .child-gap-section, .spouse-gap-section { margin-top: 1rem; }
-  .child-gap-title, .spouse-gap-title { font-size: 13px; font-weight: 600; color: #6B4E35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+  .child-gap-title, .spouse-gap-title, .self-gap-title { font-size: 13px; font-weight: 600; color: #6B4E35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
 
   /* ── CTA ── */
   .cta-card {
@@ -292,7 +292,7 @@
     body { font-size: 17px; }
     .header-name { font-size: 19px; }
     .header-sub { font-size: 15px; }
-    .hbadge { font-size: 13px; }
+    .hbadge { font-size: 14px; }
     .section-title { font-size: 16px; }
     .row { flex-wrap: wrap; row-gap: 8px; }
     .row label { width: 100%; font-size: 16px; }
@@ -301,32 +301,34 @@
     .row .val-input { font-size: 16px; width: 84px; }
     .row .val-unit { font-size: 14px; }
     .text-input { font-size: 15px; }
-    .med-hint { font-size: 13px; }
+    .med-hint { font-size: 14px; }
     .seg button { font-size: 14px; }
-    .metric-label { font-size: 13px; }
+    .metric-label { font-size: 14px; }
     .metric-val { font-size: 21px; }
     .metric-val-status { font-size: 17px; }
-    .metric-sub { font-size: 13px; }
+    .metric-sub { font-size: 14px; }
     .gap-bar-label { font-size: 14px; }
     .rec-title { font-size: 16px; }
     .prod-name-zh { font-size: 16px; }
-    .prod-name-en { font-size: 13px; }
-    .prod-cat { font-size: 12px; }
+    .prod-name-en { font-size: 14px; }
+    .prod-cat { font-size: 14px; }
     .prod-desc { font-size: 14px; }
-    .prod-tag { font-size: 12px; }
+    .prod-tag { font-size: 14px; }
     .prod-why { font-size: 14px; }
     .no-gap { font-size: 16px; }
     .child-block-title { font-size: 14px; }
-    .child-gap-title, .spouse-gap-title { font-size: 14px; }
+    .child-gap-title, .spouse-gap-title, .self-gap-title { font-size: 14px; }
     .cta-text strong { font-size: 17px; }
     .cta-text p { font-size: 15px; }
     .cta-btn { font-size: 16px; }
     .wa-summary-btn { font-size: 1rem; }
-    .step-dot .step-label { font-size: 12px; }
+    .step-dot .dot { width: 28px; height: 28px; font-size: 14px; }
+    .step-dot .step-label { font-size: 14px; }
     .step-btn { font-size: 16px; }
-    .privacy-note { font-size: 12px; }
+    .privacy-note { font-size: 14px; }
     .copy-summary-btn { font-size: 1rem; }
     .pub-rec-row p { font-size: 14px; }
+    .footer { font-size: 14px; }
   }
 </style>
 </head>
@@ -495,6 +497,7 @@
 
   <div class="card" data-step="3">
     <div class="section-title">估算結果</div>
+    <div class="self-gap-title" id="self-label"></div>
     <div class="results-grid" id="results"></div>
     <div id="gaps"></div>
     <div id="spouse-gaps"></div>
@@ -899,7 +902,17 @@ function updateChild(i, key, val) {
   calc();
 }
 
+// 結果度標返「本人」係邊個、幾多歲，同配偶／子女標題睇齊
+function updateSelfLabel() {
+  const clientName = document.getElementById('client-name').value.trim();
+  const age = numVal('age-num');
+  const icon = state.gender === 'female' ? '🙋‍♀️' : '🙋‍♂️';
+  const el = document.getElementById('self-label');
+  if (el) el.innerHTML = icon + ' 本人' + (clientName ? `（${clientName}，${age} 歲）` : `（${age} 歲）`);
+}
+
 function calc() {
+  updateSelfLabel();
   const age = numVal('age-num');
   const income = numVal('income-num');
   const savings = numVal('savings-num');
@@ -1039,7 +1052,8 @@ function calc() {
 
 // 建立呢刻嘅保障缺口分析（連埋姓名/電話/email），俾自動send同撳掣手動send共用
 // 淨係讀取資料、砌message，唔會有任何send出去嘅動作
-function buildResultSummary(clientPhone) {
+function buildResultSummary(clientPhone, mode) {
+  mode = mode || 'lily';
   var clientName = document.getElementById('client-name').value.trim();
   var g = state.lastCalc || {};
   var age = g.age;
@@ -1051,7 +1065,9 @@ function buildResultSummary(clientPhone) {
   var childMedMap = {company:'公司醫療',basic:'基本',high:'高端'};
 
   var sections = [];
-  sections.push('你好 Lily，以下係我嘅保險需要分析結果：');
+  sections.push(mode === 'share'
+    ? '📊 呢個係我啱啱用「保障缺口計算機」計出嚟嘅保險需要分析，同你分享下：'
+    : '你好 Lily，以下係我嘅保險需要分析結果：');
 
   var basicLines = ['【基本資料】'];
   if (clientName) basicLines.push('稱呼：' + clientName);
@@ -1093,7 +1109,9 @@ function buildResultSummary(clientPhone) {
     sections.push(childLines.join('\n'));
   }
 
-  sections.push('📌 想了解更多，請問可以聯絡你嗎？');
+  sections.push(mode === 'share'
+    ? '如果你都想計下自己嘅保障缺口，可以試下呢個計算機：\nhttps://pru-lilylau.github.io/landing-page/calculator.html'
+    : '📌 想了解更多，請問可以聯絡你嗎？');
 
   var msg = sections.join('\n\n');
 
@@ -1161,7 +1179,7 @@ function sendSummaryToWhatsApp() {
 
 // 客人自己複製/分享結果（例如send俾伴侶）：有原生分享就用share sheet，冇就複製到剪貼簿
 function copyOrShareSummary() {
-  var r = buildResultSummary(document.getElementById('client-phone').value.trim());
+  var r = buildResultSummary(document.getElementById('client-phone').value.trim(), 'share');
   if (navigator.share) {
     navigator.share({ title: '我嘅保障缺口分析', text: r.msg }).catch(function(){});
     return;
@@ -1207,7 +1225,10 @@ function autoSubmitResults() {
 }
 
 document.getElementById('client-phone').addEventListener('input', scheduleAutoSubmit);
-document.getElementById('client-name').addEventListener('input', scheduleAutoSubmit);
+document.getElementById('client-name').addEventListener('input', function() {
+  updateSelfLabel();
+  scheduleAutoSubmit();
+});
 
 calc();
 renderStep();
