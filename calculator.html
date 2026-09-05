@@ -237,6 +237,53 @@
     width: 26px; height: 26px;
   }
 
+  /* ── Stepper ── */
+  .stepper {
+    max-width: 1100px; margin: 0 auto; padding: 1rem 1.25rem 0;
+    display: flex; align-items: flex-start; justify-content: center; gap: 6px;
+  }
+  .step-dot { display: flex; flex-direction: column; align-items: center; gap: 4px; color: #B8A090; }
+  .step-dot .dot {
+    width: 26px; height: 26px; border-radius: 50%; background: #F0E8DF; color: #6B4E35;
+    display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;
+    transition: background .2s, color .2s;
+  }
+  .step-dot .step-label { font-size: 11px; white-space: nowrap; }
+  .step-dot.active .dot { background: #C9956B; color: #fff; }
+  .step-dot.active .step-label { color: #3D2B1A; font-weight: 600; }
+  .step-dot.done .dot { background: #639922; color: #fff; }
+  .step-line { width: 34px; height: 1px; background: #E4D8C8; margin-top: 12px; }
+
+  .step-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 0.25rem; }
+  .step-btn {
+    flex: 1; padding: 12px; border-radius: 12px; font-size: 15px; font-weight: 600;
+    font-family: inherit; cursor: pointer; border: none; transition: background .15s;
+  }
+  .step-btn-back { background: #F0E8DF; color: #6B4E35; }
+  .step-btn-back:hover { background: #E4D8C8; }
+  .step-btn-next { background: #C9956B; color: #fff; }
+  .step-btn-next:hover { background: #B8845A; }
+
+  .page-body.single-col { grid-template-columns: 1fr; max-width: 640px; }
+  .page-body.single-col .col-right { display: none; }
+
+  /* ── Public (non-VIP) recommendations ── */
+  .pub-rec-row { margin-bottom: 10px; }
+  .pub-rec-row:last-child { margin-bottom: 0; }
+  .pub-rec-row p { font-size: 13px; color: #6B4E35; line-height: 1.6; margin-top: 6px; }
+
+  /* ── Privacy note ── */
+  .privacy-note { font-size: 11px; color: #B8A090; margin: -6px 0 1rem; line-height: 1.5; }
+
+  /* ── Copy/Share Summary Button ── */
+  .copy-summary-btn {
+    display: flex; align-items: center; gap: 8px; justify-content: center; width: 100%;
+    margin-top: 0.6rem; padding: 0.8rem 1rem; background: #FFFCF8; color: #6B4E35;
+    border: 1px solid #E4D8C8; border-radius: 12px; font-size: 0.92rem; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: background .15s;
+  }
+  .copy-summary-btn:hover { background: #F0E8DF; }
+
   /* ── Mobile: single column ── */
   @media (max-width: 720px) {
     .page-body { grid-template-columns: 1fr; }
@@ -275,6 +322,11 @@
     .cta-text p { font-size: 15px; }
     .cta-btn { font-size: 16px; }
     .wa-summary-btn { font-size: 1rem; }
+    .step-dot .step-label { font-size: 12px; }
+    .step-btn { font-size: 16px; }
+    .privacy-note { font-size: 12px; }
+    .copy-summary-btn { font-size: 1rem; }
+    .pub-rec-row p { font-size: 14px; }
   }
 </style>
 </head>
@@ -290,12 +342,20 @@
   </div>
 </div>
 
-<div class="page-body">
+<div class="stepper" id="stepper">
+  <div class="step-dot active" data-stepnum="1"><span class="dot">1</span><span class="step-label">基本資料</span></div>
+  <div class="step-line"></div>
+  <div class="step-dot" data-stepnum="2"><span class="dot">2</span><span class="step-label">保障現況</span></div>
+  <div class="step-line"></div>
+  <div class="step-dot" data-stepnum="3"><span class="dot">3</span><span class="step-label">結果</span></div>
+</div>
+
+<div class="page-body" id="page-body">
 
   <!-- 左欄：輸入 + 結果 -->
   <div class="col-left">
 
-  <div class="card">
+  <div class="card" data-step="1">
     <div class="section-title">基本資料</div>
     <div class="row">
       <label>稱呼</label>
@@ -305,6 +365,7 @@
       <label>WhatsApp電話</label>
       <input type="tel" id="client-phone" class="text-input" inputmode="numeric" placeholder="例如：61234567">
     </div>
+    <div class="privacy-note">你的資料只會用作跟進聯絡，絕不轉售第三方，並遵守香港《個人資料（私隱）條例》(PDPO) 處理。</div>
     <div class="row">
       <label>性別</label>
       <div class="seg" id="gender-seg">
@@ -338,7 +399,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-step="2">
     <div class="section-title">現有保障</div>
     <div class="row">
       <label>危疾保額</label>
@@ -359,9 +420,14 @@
       <input type="range" id="life-have" min="0" max="20000000" value="0" step="100000">
       <div class="val-wrap"><span class="val-unit">$</span><input type="text" inputmode="numeric" class="val-input" id="life-have-num" value="0"></div>
     </div>
+    <div class="row">
+      <label>未償按揭/貸款</label>
+      <input type="range" id="debt" min="0" max="20000000" value="0" step="100000">
+      <div class="val-wrap"><span class="val-unit">$</span><input type="text" inputmode="numeric" class="val-input" id="debt-num" value="0"></div>
+    </div>
   </div>
 
-  <div class="card" id="spouse-card">
+  <div class="card" id="spouse-card" data-step="2">
     <div class="section-title">配偶資料</div>
     <div class="row">
       <label>婚姻狀況</label>
@@ -403,7 +469,7 @@
     </div>
   </div>
 
-  <div class="card" id="child-card">
+  <div class="card" id="child-card" data-step="2">
     <div class="section-title">子女資料</div>
     <div class="row">
       <label>有冇小朋友</label>
@@ -427,7 +493,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-step="3">
     <div class="section-title">估算結果</div>
     <div class="results-grid" id="results"></div>
     <div id="gaps"></div>
@@ -439,6 +505,15 @@
       </svg>
       傳送結果俾 Lily
     </button>
+    <button class="copy-summary-btn" type="button" onclick="copyOrShareSummary()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>
+      複製 / 分享結果
+    </button>
+  </div>
+
+  <div class="step-nav" id="step-nav">
+    <button type="button" class="step-btn step-btn-back" id="stepBackBtn" onclick="goStep(-1)">← 上一步</button>
+    <button type="button" class="step-btn step-btn-next" id="stepNextBtn" onclick="goStep(1)">下一步 →</button>
   </div>
 
   </div><!-- /col-left -->
@@ -446,7 +521,17 @@
   <!-- 右欄：產品建議 + CTA -->
   <div class="col-right">
 
-  <div class="card" id="rec-card" style="display:none">
+  <div class="card" data-step="3">
+    <div class="rec-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C9956B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      你可能需要留意
+    </div>
+    <div id="recommendations-public"></div>
+  </div>
+
+  <div class="card" id="rec-card" style="display:none" data-step="3">
     <div class="rec-title">
       <svg viewBox="0 0 24 24" fill="none" stroke="#C9956B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -456,7 +541,7 @@
     <div id="recommendations"></div>
   </div>
 
-  <div class="cta-card">
+  <div class="cta-card" data-step="3">
     <div class="cta-text">
       <strong>想了解邊個方案啱你？</strong>
       <p>Lily 為你免費分析最適合方案<br>會計師 × 保險顧問雙重視角</p>
@@ -470,7 +555,8 @@
 
 <div class="footer">
   本計算器結果僅供參考，並非正式保險建議。<br>
-  如需專業意見，請聯絡 Lily。<br><br>
+  如需專業意見，請聯絡 Lily。<br>
+  你提交嘅資料只作跟進聯絡用途，絕不轉售第三方，並遵守PDPO處理。<br><br>
   &copy; 2026 Lily Lau · 
   <a href="https://www.instagram.com/pru_lilylau" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#B8A090;text-decoration:none;vertical-align:middle;">
     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -489,7 +575,29 @@
 </a>
 
 <script>
-const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set(), clientEmail: '' };
+const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set(), clientEmail: '', step: 1 };
+
+// 三步式表單：1.基本資料 2.保障現況 3.結果 — 減少一次過見晒成頁欄位嘅壓迫感
+function renderStep() {
+  document.querySelectorAll('[data-step]').forEach(function(el) {
+    el.style.display = (+el.dataset.step === state.step) ? '' : 'none';
+  });
+  if (state.step === 3 && !recsUnlocked) document.getElementById('rec-card').style.display = 'none';
+
+  document.querySelectorAll('.step-dot').forEach(function(d) {
+    var s = +d.dataset.stepnum;
+    d.classList.toggle('active', s === state.step);
+    d.classList.toggle('done', s < state.step);
+  });
+  document.getElementById('stepBackBtn').style.display = state.step === 1 ? 'none' : '';
+  document.getElementById('stepNextBtn').style.display = state.step === 3 ? 'none' : '';
+  document.getElementById('page-body').classList.toggle('single-col', state.step !== 3);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function goStep(delta) {
+  state.step = Math.min(3, Math.max(1, state.step + delta));
+  renderStep();
+}
 
 // 由 redirect.html 帶過嚟嘅姓名/電話/email（客人喺果邊已經留過），自動填返落表格
 // 咁樣撳「傳送結果俾 Lily」嗰陣先可以將電話同計算結果一齊send返俾你
@@ -628,6 +736,21 @@ function fmt(n) {
   if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
   if (n >= 10000) return '$' + Math.round(n/10000) + '萬';
   return '$' + n.toLocaleString();
+}
+
+// 淡化版建議：所有客人都睇到（唔講產品名/保費），深入嘅保誠產品建議留返俾 Lily 自己（VIP解鎖）睇
+function renderPublicRecommendations(g) {
+  const container = document.getElementById('recommendations-public');
+  if (!container) return;
+  const areas = [];
+  if (g.ciGap > 0) areas.push({label:'危疾保障', cls:'cat-ci', note:'你嘅危疾保障未夠應付大病嘅醫療開支同復原期收入損失，建議盡快了解相關方案。'});
+  if (g.medScore < 70) areas.push({label:'醫療保障', cls:'cat-med', note:'你依家嘅醫療保障未必夠全面，住院、手術費隨時「食大茶飯」，建議加強保障。'});
+  if (g.dep > 0 && g.lifePct < 70) areas.push({label:'人壽保障', cls:'cat-life', note:'你有家人需要依靠你嘅收入，人壽保障可以確保佢哋唔會因為你而陷入財困。'});
+  if (g.savPct < 50) areas.push({label:'儲蓄／退休', cls:'cat-save', note:'你嘅退休儲蓄仲有段距離，及早規劃可以善用複息效果。'});
+
+  container.innerHTML = areas.length === 0
+    ? `<div class="no-gap">你的保障規劃已相當完善！建議定期檢視保單。</div>`
+    : areas.map(a => `<div class="pub-rec-row"><span class="prod-cat ${a.cls}">${a.label}</span><p>${a.note}</p></div>`).join('');
 }
 
 function toggleMed(val, btn) {
@@ -782,6 +905,7 @@ function calc() {
   const savings = numVal('savings-num');
   const ciHave = numVal('ci-have-num');
   const lifeHave = numVal('life-have-num');
+  const debt = numVal('debt-num');
   const dep = +state.dep;
   const medScore = getMedScore();
   const med = [...state.medSet];
@@ -789,7 +913,7 @@ function calc() {
   const annualIncome = income * 12;
   const years = Math.max(65 - age, 10);
   const ciNeed = annualIncome * 5;
-  const lifeNeed = dep > 0 ? annualIncome * (dep + 2) : 0;
+  const lifeNeed = dep > 0 ? annualIncome * (dep + 2) + debt : 0;
   const savingsNeed = Math.round(income * 0.15) * 12 * years;
   const ciGap = Math.max(0, ciNeed - ciHave);
   const lifeGap = Math.max(0, lifeNeed - lifeHave);
@@ -801,7 +925,7 @@ function calc() {
 
   document.getElementById('results').innerHTML = `
     <div class="metric"><div class="metric-label">危疾建議保額</div><div class="metric-val">${fmt(ciNeed)}</div><div class="metric-sub">年入 × 5 倍</div></div>
-    <div class="metric"><div class="metric-label">人壽建議保額</div><div class="metric-val">${dep>0?fmt(lifeNeed):'—'}</div><div class="metric-sub">${dep>0?'有家庭負擔':'暫無需要'}</div></div>
+    <div class="metric"><div class="metric-label">人壽建議保額</div><div class="metric-val">${dep>0?fmt(lifeNeed):'—'}</div><div class="metric-sub">${dep>0?('年入倍數'+(debt>0?'+按揭餘額':'')):'暫無需要'}</div></div>
     <div class="metric"><div class="metric-label">醫療保障</div><div class="metric-val metric-val-status" style="color:${gapBarColor(medScore)}">${getMedStatusLabel(medScore)}</div><div class="metric-sub">現有：${getMedSubLabel()}（評分 ${medScore}%）</div></div>
     <div class="metric"><div class="metric-label">退休儲蓄目標</div><div class="metric-val">${fmt(savingsNeed)}</div><div class="metric-sub">${years} 年後退休目標</div></div>
   `;
@@ -884,6 +1008,7 @@ function calc() {
   const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet,spouse};
   state.lastCalc = g;
   scheduleAutoSubmit();
+  renderPublicRecommendations(g);
   if (!recsUnlocked) return;
 
   const matched = PRODUCTS.filter(p => p.trigger(g));
@@ -906,7 +1031,7 @@ function calc() {
 }
 
 [
-  ['age', false], ['income', true], ['savings', true], ['ci-have', true], ['life-have', true],
+  ['age', false], ['income', true], ['savings', true], ['ci-have', true], ['life-have', true], ['debt', true],
   ['sp-age', false], ['sp-income', true], ['sp-ci-have', true], ['sp-life-have', true]
 ].forEach(([id, money]) => {
   bindSlider(id, id+'-num', calc, money);
@@ -934,9 +1059,10 @@ function buildResultSummary(clientPhone) {
   basicLines.push('家庭負擔：' + (dep === 0 ? '暫無' : dep + ' 人'));
   sections.push(basicLines.join('\n'));
 
+  var debt = numVal('debt-num');
   var gapLines = ['【保障缺口】'];
   gapLines.push('• 危疾：' + (g.ciGap > 0 ? '缺口 ' + fmt(g.ciGap) : '足夠') + '（現有保障 ' + g.ciPct + '%）');
-  gapLines.push('• 人壽：' + (dep === 0 ? '暫無需要' : '缺口 ' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%）'));
+  gapLines.push('• 人壽：' + (dep === 0 ? '暫無需要' : '缺口 ' + fmt(g.lifeGap) + '（現有保障 ' + g.lifePct + '%' + (debt > 0 ? '，已計入按揭/貸款 ' + fmt(debt) : '') + '）'));
   gapLines.push('• 醫療：現有 ' + medLabel + ' － ' + getMedStatusLabel(g.medScore));
   gapLines.push('• 退休儲蓄：缺口 ' + fmt(g.savingsGap));
   sections.push(gapLines.join('\n'));
@@ -993,6 +1119,7 @@ function buildResultSummary(clientPhone) {
       savings: numVal('savings-num'),
       ciHave: numVal('ci-have-num'),
       lifeHave: numVal('life-have-num'),
+      debt: debt,
       medPlan: medLabel,
       ciGap: g.ciGap,
       ciPct: g.ciPct,
@@ -1032,6 +1159,32 @@ function sendSummaryToWhatsApp() {
   window.open(url, '_blank');
 }
 
+// 客人自己複製/分享結果（例如send俾伴侶）：有原生分享就用share sheet，冇就複製到剪貼簿
+function copyOrShareSummary() {
+  var r = buildResultSummary(document.getElementById('client-phone').value.trim());
+  if (navigator.share) {
+    navigator.share({ title: '我嘅保障缺口分析', text: r.msg }).catch(function(){});
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(r.msg).then(function(){
+      alert('已複製到剪貼簿，可以貼去WhatsApp或其他地方分享！');
+    }).catch(function(){ fallbackCopy(r.msg); });
+    return;
+  }
+  fallbackCopy(r.msg);
+}
+function fallbackCopy(text) {
+  var ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  try { document.execCommand('copy'); alert('已複製到剪貼簿！'); } catch (e) {}
+  document.body.removeChild(ta);
+}
+
 // 客人一計完（停手唔郁滑桿之後）自動靜靜雞send一次俾 Lily，唔使等佢哋撳「傳送結果」
 // 冇電話就唔會send（避免無法跟進嘅lead）；內容同上次send過一樣就唔會重複send
 let autoSubmitTimer = null;
@@ -1057,6 +1210,7 @@ document.getElementById('client-phone').addEventListener('input', scheduleAutoSu
 document.getElementById('client-name').addEventListener('input', scheduleAutoSubmit);
 
 calc();
+renderStep();
 autoSubmitReady = true;
 </script>
 </body>
