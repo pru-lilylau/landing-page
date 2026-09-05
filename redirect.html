@@ -333,7 +333,7 @@
       </div>
       <h2>搞掂喇！</h2>
       <p>撳下面個掣，即刻計下你嘅保障缺口：</p>
-      <a class="calc-btn" href="https://pru-lilylau.github.io/landing-page/calculator.html" target="_blank" rel="noopener">
+      <a class="calc-btn" id="calcBtn" href="https://pru-lilylau.github.io/landing-page/calculator.html" target="_blank" rel="noopener">
         前往保障缺口計算機
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
@@ -401,6 +401,11 @@
         submittedAt: new Date().toISOString()
       })
     }).catch(err => console.error('Formspree提交失敗', err));
+
+    // 將姓名/電話/email 帶去計算機，等佢計完之後撳「傳送結果」可以連埋電話一齊send返俾你
+    const calcParams = new URLSearchParams({ name, phone });
+    if (email) calcParams.set('email', email);
+    document.getElementById('calcBtn').href = CALC_URL + '?' + calcParams.toString();
 
     // 提交後顯示成功畫面，用戶自己撳掣先去計算機
 

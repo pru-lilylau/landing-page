@@ -302,6 +302,10 @@
       <input type="text" id="client-name" class="text-input" placeholder="例如：Chris Wong">
     </div>
     <div class="row">
+      <label>WhatsApp電話</label>
+      <input type="tel" id="client-phone" class="text-input" inputmode="numeric" placeholder="例如：61234567">
+    </div>
+    <div class="row">
       <label>性別</label>
       <div class="seg" id="gender-seg">
         <button data-v="male" onclick="setSeg('gender',this)" class="active">男 ♂</button>
@@ -485,7 +489,19 @@
 </a>
 
 <script>
-const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set() };
+const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set(), clientEmail: '' };
+
+// 由 redirect.html 帶過嚟嘅姓名/電話/email（客人喺果邊已經留過），自動填返落表格
+// 咁樣撳「傳送結果俾 Lily」嗰陣先可以將電話同計算結果一齊send返俾你
+(function prefillFromReferral() {
+  const params = new URLSearchParams(location.search);
+  const n = params.get('name');
+  const p = params.get('phone');
+  const e = params.get('email');
+  if (n) document.getElementById('client-name').value = n;
+  if (p) document.getElementById('client-phone').value = p;
+  if (e) state.clientEmail = e;
+})();
 
 // 產品建議只想 Lily 自己睇到：帶住 ?key=... 開一次呢個頁面就會用 localStorage 記住解鎖狀態
 // （純粹遮擋一般客人，唔係真正加密 — 識睇原始碼一樣搵到，唔適合防有心人）
@@ -513,6 +529,19 @@ function logToBackend(payload) {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).catch(function(){});
+  } catch (e) {}
+}
+
+// 同 redirect.html 用同一個 Formspree 表單，等電話同計算結果可以一齊send俾你
+// 咁你收到嘅 lead 就會直接連埋佢個保障缺口結果，唔使再問一次
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xwvdzwjv';
+function submitResultsToFormspree(payload) {
+  try {
+    fetch(FORMSPREE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify(payload)
     }).catch(function(){});
   } catch (e) {}
@@ -884,6 +913,11 @@ function calc() {
 
 function sendSummaryToWhatsApp() {
   var clientName = document.getElementById('client-name').value.trim();
+  var clientPhone = document.getElementById('client-phone').value.trim();
+  if (!clientPhone) {
+    clientPhone = prompt('麻煩留低你嘅WhatsApp電話，等Lily可以跟進你嘅保障缺口分析：') || '';
+    document.getElementById('client-phone').value = clientPhone;
+  }
   var g = state.lastCalc || {};
   var age = g.age;
   var income = g.income;
@@ -940,8 +974,19 @@ function sendSummaryToWhatsApp() {
   var msg = sections.join('\n\n');
   var url = 'https://wa.me/85260133108?text=' + encodeURIComponent(msg);
 
+  submitResultsToFormspree({
+    name: clientName,
+    phone: clientPhone,
+    email: state.clientEmail || '',
+    source: 'insurance-gap-calculator-results',
+    submittedAt: new Date().toISOString(),
+    result_summary: msg
+  });
+
   logToBackend({
     name: clientName,
+    phone: clientPhone,
+    email: state.clientEmail || '',
     gender: genderLabel,
     age: age,
     income: income,
