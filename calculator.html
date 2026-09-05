@@ -883,6 +883,7 @@ function calc() {
 
   const g = {ciPct,ciGap,lifePct,lifeGap,savPct,savingsGap,medScore,dep,income,age,medSet:state.medSet,spouse};
   state.lastCalc = g;
+  scheduleAutoSubmit();
   if (!recsUnlocked) return;
 
   const matched = PRODUCTS.filter(p => p.trigger(g));
@@ -911,13 +912,10 @@ function calc() {
   bindSlider(id, id+'-num', calc, money);
 });
 
-function sendSummaryToWhatsApp() {
+// 建立呢刻嘅保障缺口分析（連埋姓名/電話/email），俾自動send同撳掣手動send共用
+// 淨係讀取資料、砌message，唔會有任何send出去嘅動作
+function buildResultSummary(clientPhone) {
   var clientName = document.getElementById('client-name').value.trim();
-  var clientPhone = document.getElementById('client-phone').value.trim();
-  if (!clientPhone) {
-    clientPhone = prompt('麻煩留低你嘅WhatsApp電話，等Lily可以跟進你嘅保障缺口分析：') || '';
-    document.getElementById('client-phone').value = clientPhone;
-  }
   var g = state.lastCalc || {};
   var age = g.age;
   var income = g.income;
@@ -972,53 +970,94 @@ function sendSummaryToWhatsApp() {
   sections.push('📌 想了解更多，請問可以聯絡你嗎？');
 
   var msg = sections.join('\n\n');
-  var url = 'https://wa.me/85260133108?text=' + encodeURIComponent(msg);
 
-  submitResultsToFormspree({
-    name: clientName,
-    phone: clientPhone,
-    email: state.clientEmail || '',
-    source: 'insurance-gap-calculator-results',
-    submittedAt: new Date().toISOString(),
-    result_summary: msg
-  });
+  return {
+    clientName: clientName,
+    msg: msg,
+    formspreePayload: {
+      name: clientName,
+      phone: clientPhone,
+      email: state.clientEmail || '',
+      source: 'insurance-gap-calculator-results',
+      submittedAt: new Date().toISOString(),
+      result_summary: msg
+    },
+    backendPayload: {
+      name: clientName,
+      phone: clientPhone,
+      email: state.clientEmail || '',
+      gender: genderLabel,
+      age: age,
+      income: income,
+      dep: dep,
+      savings: numVal('savings-num'),
+      ciHave: numVal('ci-have-num'),
+      lifeHave: numVal('life-have-num'),
+      medPlan: medLabel,
+      ciGap: g.ciGap,
+      ciPct: g.ciPct,
+      lifeGap: g.lifeGap,
+      lifePct: g.lifePct,
+      medStatus: getMedStatusLabel(g.medScore),
+      savingsGap: g.savingsGap,
+      marital: state.marital,
+      spouseAge: g.spouse ? g.spouse.age : '',
+      spouseIncome: g.spouse ? numVal('sp-income-num') : '',
+      spouseMed: g.spouse ? (state.spouseMedSet.size === 0 ? '未有醫療保障' : Array.from(state.spouseMedSet).map(function(v){ return childMedMap[v]||v; }).join(' + ')) : '',
+      spouseCiGap: g.spouse ? g.spouse.ciGap : '',
+      spouseLifeGap: g.spouse ? g.spouse.lifeGap : '',
+      children: (state.hasChild === 'yes' && state.children) ? state.children.map(function(c, i) {
+        var cms = c.medSet || new Set();
+        var medChildLabel = cms.size === 0 ? '未有' : Array.from(cms).map(function(v){ return childMedMap[v]||v; }).join('+');
+        var eduGap = Math.max(0, EDU_COST_PER_YEAR*4 - (c.edu || 0));
+        return '子女' + (i+1) + '(' + c.age + '歲) CI缺口:' + fmt(Math.max(0, CI_CHILD_NEED - c.ci)) + ' 醫療:' + medChildLabel + ' 教育缺口:' + fmt(eduGap);
+      }).join(' | ') : ''
+    }
+  };
+}
 
-  logToBackend({
-    name: clientName,
-    phone: clientPhone,
-    email: state.clientEmail || '',
-    gender: genderLabel,
-    age: age,
-    income: income,
-    dep: dep,
-    savings: numVal('savings-num'),
-    ciHave: numVal('ci-have-num'),
-    lifeHave: numVal('life-have-num'),
-    medPlan: medLabel,
-    ciGap: g.ciGap,
-    ciPct: g.ciPct,
-    lifeGap: g.lifeGap,
-    lifePct: g.lifePct,
-    medStatus: getMedStatusLabel(g.medScore),
-    savingsGap: g.savingsGap,
-    marital: state.marital,
-    spouseAge: g.spouse ? g.spouse.age : '',
-    spouseIncome: g.spouse ? numVal('sp-income-num') : '',
-    spouseMed: g.spouse ? (state.spouseMedSet.size === 0 ? '未有醫療保障' : Array.from(state.spouseMedSet).map(function(v){ return childMedMap[v]||v; }).join(' + ')) : '',
-    spouseCiGap: g.spouse ? g.spouse.ciGap : '',
-    spouseLifeGap: g.spouse ? g.spouse.lifeGap : '',
-    children: (state.hasChild === 'yes' && state.children) ? state.children.map(function(c, i) {
-      var cms = c.medSet || new Set();
-      var medChildLabel = cms.size === 0 ? '未有' : Array.from(cms).map(function(v){ return childMedMap[v]||v; }).join('+');
-      var eduGap = Math.max(0, EDU_COST_PER_YEAR*4 - (c.edu || 0));
-      return '子女' + (i+1) + '(' + c.age + '歲) CI缺口:' + fmt(Math.max(0, CI_CHILD_NEED - c.ci)) + ' 醫療:' + medChildLabel + ' 教育缺口:' + fmt(eduGap);
-    }).join(' | ') : ''
-  });
+// 手動撳「傳送結果俾 Lily」：一定要有電話（冇就問一次），send完仲會開返WhatsApp
+function sendSummaryToWhatsApp() {
+  var clientPhone = document.getElementById('client-phone').value.trim();
+  if (!clientPhone) {
+    clientPhone = prompt('麻煩留低你嘅WhatsApp電話，等Lily可以跟進你嘅保障缺口分析：') || '';
+    document.getElementById('client-phone').value = clientPhone;
+  }
+  var r = buildResultSummary(clientPhone);
+  submitResultsToFormspree(r.formspreePayload);
+  logToBackend(r.backendPayload);
+  lastAutoSubmitSignature = clientPhone + '|' + r.msg;
 
+  var url = 'https://wa.me/85260133108?text=' + encodeURIComponent(r.msg);
   window.open(url, '_blank');
 }
 
+// 客人一計完（停手唔郁滑桿之後）自動靜靜雞send一次俾 Lily，唔使等佢哋撳「傳送結果」
+// 冇電話就唔會send（避免無法跟進嘅lead）；內容同上次send過一樣就唔會重複send
+let autoSubmitTimer = null;
+let autoSubmitReady = false;
+let lastAutoSubmitSignature = '';
+function scheduleAutoSubmit() {
+  if (!autoSubmitReady) return;
+  clearTimeout(autoSubmitTimer);
+  autoSubmitTimer = setTimeout(autoSubmitResults, 2500);
+}
+function autoSubmitResults() {
+  var clientPhone = document.getElementById('client-phone').value.trim();
+  if (!clientPhone) return;
+  var r = buildResultSummary(clientPhone);
+  var signature = clientPhone + '|' + r.msg;
+  if (signature === lastAutoSubmitSignature) return;
+  lastAutoSubmitSignature = signature;
+  submitResultsToFormspree(r.formspreePayload);
+  logToBackend(r.backendPayload);
+}
+
+document.getElementById('client-phone').addEventListener('input', scheduleAutoSubmit);
+document.getElementById('client-name').addEventListener('input', scheduleAutoSubmit);
+
 calc();
+autoSubmitReady = true;
 </script>
 </body>
 </html>
