@@ -164,7 +164,7 @@
   .child-block { margin-top: 1rem; padding-top: 1rem; border-top: 0.5px solid #F0E8DF; }
   .child-block-title { font-size: 13px; font-weight: 600; color: #C9956B; margin-bottom: 0.7rem; }
   .child-gap-section, .spouse-gap-section { margin-top: 1rem; }
-  .child-gap-title, .spouse-gap-title { font-size: 13px; font-weight: 600; color: #6B4E35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+  .child-gap-title, .spouse-gap-title, .self-gap-title { font-size: 13px; font-weight: 600; color: #6B4E35; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
 
   /* ── CTA ── */
   .cta-card {
@@ -317,7 +317,7 @@
     .prod-why { font-size: 14px; }
     .no-gap { font-size: 16px; }
     .child-block-title { font-size: 14px; }
-    .child-gap-title, .spouse-gap-title { font-size: 14px; }
+    .child-gap-title, .spouse-gap-title, .self-gap-title { font-size: 14px; }
     .cta-text strong { font-size: 17px; }
     .cta-text p { font-size: 15px; }
     .cta-btn { font-size: 16px; }
@@ -495,6 +495,7 @@
 
   <div class="card" data-step="3">
     <div class="section-title">估算結果</div>
+    <div class="self-gap-title" id="self-label"></div>
     <div class="results-grid" id="results"></div>
     <div id="gaps"></div>
     <div id="spouse-gaps"></div>
@@ -899,7 +900,17 @@ function updateChild(i, key, val) {
   calc();
 }
 
+// 結果度標返「本人」係邊個、幾多歲，同配偶／子女標題睇齊
+function updateSelfLabel() {
+  const clientName = document.getElementById('client-name').value.trim();
+  const age = numVal('age-num');
+  const icon = state.gender === 'female' ? '🙋‍♀️' : '🙋‍♂️';
+  const el = document.getElementById('self-label');
+  if (el) el.innerHTML = icon + ' 本人' + (clientName ? `（${clientName}，${age} 歲）` : `（${age} 歲）`);
+}
+
 function calc() {
+  updateSelfLabel();
   const age = numVal('age-num');
   const income = numVal('income-num');
   const savings = numVal('savings-num');
@@ -1212,7 +1223,10 @@ function autoSubmitResults() {
 }
 
 document.getElementById('client-phone').addEventListener('input', scheduleAutoSubmit);
-document.getElementById('client-name').addEventListener('input', scheduleAutoSubmit);
+document.getElementById('client-name').addEventListener('input', function() {
+  updateSelfLabel();
+  scheduleAutoSubmit();
+});
 
 calc();
 renderStep();
