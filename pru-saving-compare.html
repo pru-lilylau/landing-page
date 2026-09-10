@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>保誠儲蓄產品大比拼｜Lily Lau</title>
+<meta name="description" content="駿譽財富、誠譽財富、信守明天多元貨幣、世譽財富：4款保誠儲蓄傳承保險計劃一覽比較">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F5EDE0;
+    --coral:#C9956B;
+    --coral-deep:#B8845A;
+    --mint:#D6E8D5;
+    --mint-deep:#2A5A2E;
+    --butter:#FAEEDA;
+    --butter-deep:#633806;
+    --lavender:#E6F1FB;
+    --lavender-deep:#0C447C;
+    --terracotta:#A85D42;
+    --ink:#3D2B1A;
+    --ink-soft:#6B4E35;
+    --white:#FFFCF8;
+    --shadow: 0 8px 24px rgba(61,43,26,0.08);
+    --shadow-hover: 0 12px 32px rgba(61,43,26,0.14);
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; overflow-x:hidden;}
+  body{
+    margin:0;
+    font-family:'Noto Sans TC','Noto Sans CJK TC', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.7;
+    line-break:strict;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
+  @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
+  @media (min-width:1180px){ .wrap{max-width:880px; padding:0 40px;} }
+  img{max-width:100%;}
+  .nowrap{white-space:nowrap;}
+
+  #guide{
+    position:fixed; right:18px; bottom:18px; z-index:50;
+    width:60px; height:60px; border-radius:50%;
+    background:#25D366; box-shadow: var(--shadow-hover);
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+    cursor:pointer; text-decoration:none; border:3px solid var(--white);
+    animation: float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);}}
+  @media (prefers-reduced-motion: reduce){ #guide{animation:none;} html{scroll-behavior:auto;} }
+
+  .hero{padding:48px 0 8px; text-align:center;}
+  .eyebrow{
+    display:inline-block; background:var(--white); padding:8px 20px; border-radius:999px;
+    font-size:14px; font-weight:700; color:var(--coral-deep); box-shadow:var(--shadow); margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(28px,7vw,38px); margin:0 0 12px; font-weight:900; line-height:1.35;}
+  .hero h1 span{color:var(--coral-deep);}
+  .hero p.sub{font-size:16px; color:var(--ink-soft); margin:0 auto;}
+
+  .pillars{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:28px 0;}
+  .pillars > *{min-width:0;}
+  .pillar{background:var(--white); border-radius:16px; padding:16px 8px; text-align:center; box-shadow:var(--shadow); min-width:0;}
+  .pillar .emoji{font-size:24px; margin-bottom:8px;}
+  .pillar .txt{font-size:14px; font-weight:700; line-height:1.4;}
+  @media (max-width:520px){ .pillars{grid-template-columns:1fr 1fr 1fr; gap:8px;} .pillar{padding:12px 6px;} }
+
+  section{padding:20px 0;}
+  .section-head{margin-bottom:16px;}
+  .section-head .tag{font-size:16px; font-weight:700; color:var(--mint-deep); text-transform:uppercase; letter-spacing:1px;}
+
+  /* horizontal-scroll comparison table (4 products) */
+  .cmp-card{background:var(--white); border-radius:22px; padding:22px; box-shadow:var(--shadow); margin-bottom:10px;}
+  .scroll-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; margin:0 -22px; padding:0 22px;}
+  table.cmp{width:100%; min-width:760px; border-collapse:collapse; table-layout:fixed;}
+  table.cmp col.c-name{width:140px;}
+  table.cmp col.c-val{width:155px;}
+  table.cmp th{font-size:14px; font-weight:700; color:var(--ink-soft); text-align:center; padding:0 8px 12px; border-bottom:2px solid #F0EAE0; vertical-align:bottom;}
+  table.cmp th:first-child{text-align:left;}
+  table.cmp th .p-code{display:block; font-size:14px; font-weight:700; color:var(--ink-soft); opacity:0.7; letter-spacing:0.5px; margin-bottom:1px;}
+  table.cmp th .p-name{display:block; font-size:15px; font-weight:900; color:var(--ink); margin-bottom:2px;}
+  table.cmp th .p-tag{display:block; font-size:14px; color:var(--coral-deep); font-weight:700;}
+  table.cmp td{padding:14px 8px; border-bottom:1px solid #F0EAE0; vertical-align:top; font-size:14px; text-align:center; line-height:1.6;}
+  table.cmp tr:last-child td{border-bottom:none;}
+  table.cmp td:first-child{text-align:left; padding-left:0;}
+  .row-label{font-size:14.5px; font-weight:700; color:var(--ink);}
+  .row-sub{font-size:14px; color:var(--ink-soft); margin-top:2px; font-weight:400;}
+  .val-hi{color:var(--coral-deep); font-weight:900;}
+  .val-no{color:var(--ink-soft); opacity:0.6;}
+  .scroll-hint{text-align:center; font-size:14px; color:var(--ink-soft); opacity:0.75; margin:8px 0 18px;}
+
+  details.acc{background:var(--white); border-radius:20px; box-shadow:var(--shadow); margin-bottom:14px; overflow:hidden; border:1px solid #F2ECE1;}
+  details.acc[open]{box-shadow:var(--shadow-hover);}
+  details.acc summary{list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:center; gap:14px;}
+  details.acc summary::-webkit-details-marker{display:none;}
+  .acc-icon{width:38px; height:38px; border-radius:11px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:18px; color:var(--white);}
+  .acc-head{flex:1; min-width:0;}
+  .acc-title{font-size:16px; font-weight:700;}
+  .acc-amt{font-size:14px; color:var(--ink-soft); margin-top:2px;}
+  .chevron{width:26px; height:26px; border-radius:50%; background:var(--cream); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:transform .3s ease; font-size:14px; color:var(--ink-soft);}
+  details.acc[open] .chevron{transform:rotate(180deg);}
+  .acc-body{padding:0 20px 22px; font-size:14.5px; color:var(--ink);}
+  .acc-body p{margin:0 0 12px;}
+  .acc-extra{background:var(--cream); border-radius:12px; padding:14px 16px; margin-top:4px;}
+  .acc-extra-title{font-size:14px; font-weight:700; color:var(--coral-deep); margin-bottom:6px;}
+  .acc-extra-body{font-size:14px; line-height:1.85;}
+  .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
+  .acc-list li{margin-bottom:6px; padding-left:2px;}
+  .acc-list li:last-child{margin-bottom:0;}
+
+  .tip{background:var(--lavender); border-left:5px solid var(--lavender-deep); border-radius:12px; padding:16px 18px; font-size:14px; line-height:1.6; margin-bottom:18px; box-shadow:var(--shadow); color:var(--lavender-deep);}
+
+  /* "邊款啱你" fit cards — 4 cards, one per product */
+  .fits{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .fits > *{min-width:0;}
+  .fit-card{background:var(--white); border-radius:16px; padding:16px; box-shadow:var(--shadow); min-width:0;}
+  .fit-card .fit-name{font-size:14.5px; font-weight:900; margin-bottom:6px;}
+  .fit-card .fit-text{font-size:14px; color:var(--ink-soft); line-height:1.7;}
+  @media (max-width:420px){ .fits{grid-template-columns:1fr;} }
+
+  .final-cta{background:var(--ink); border-radius:28px; padding:36px 24px; text-align:center; color:var(--white); margin:24px 0 20px;}
+  .final-cta .avatar{width:64px; height:64px; border-radius:50%; overflow:hidden; margin:0 auto 14px; border:3px solid var(--coral);}
+  .final-cta .avatar img{width:100%; height:100%; object-fit:cover; display:block;}
+  .final-cta h2{color:#fff; font-size:20px; margin:0 0 8px;}
+  .final-cta p{opacity:0.85; margin:0 0 20px; font-size:14.5px;}
+  .cta-btn{display:inline-flex; align-items:center; gap:8px; background:var(--coral); color:var(--ink); padding:14px 30px; border-radius:999px; font-weight:700; font-size:15px; text-decoration:none; border:none;}
+  .disclaimer{font-size:14px; color:var(--ink-soft); text-align:center; opacity:0.85; line-height:1.6; padding:0 8px 40px;}
+
+  @media (max-width:640px){
+    .hero{padding:36px 0 6px;}
+    section{padding:16px 0;}
+    details.acc summary, .acc-body{padding-left:16px; padding-right:16px;}
+  }
+</style>
+</head>
+<body>
+
+<a id="guide" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E5%84%B2%E8%93%84%E5%82%B3%E6%89%BF%E6%96%B9%E6%A1%88" target="_blank" rel="noopener" title="WhatsApp查詢">
+  <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.8 14.14c-.24.68-1.4 1.31-1.93 1.35-.5.05-1.02.15-3.32-.72-2.79-1.06-4.61-3.88-4.75-4.06-.14-.18-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.25-.28.55-.35.73-.35.18 0 .37.002.53.01.17.008.4-.065.62.47.24.58.81 2 .88 2.15.07.15.12.32.02.5-.1.18-.15.29-.29.45-.14.16-.3.36-.43.48-.14.13-.29.28-.13.55.16.27.72 1.19 1.55 1.93 1.06.95 1.96 1.24 2.23 1.38.27.14.43.12.59-.07.16-.19.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.53.72 1.79.85.26.13.43.19.5.3.07.11.07.62-.17 1.3z"/></svg>
+</a>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="eyebrow">🏦 儲蓄傳承大比拼</div>
+    <h1>4款保誠儲蓄產品<br><span>邊款啱你？</span></h1>
+    <p class="sub">由最快2年供完，到一筆過整付，一次過睇晒4款分紅儲蓄計劃嘅分別</p>
+  </div>
+
+  <!-- PAIN-POINT PILLARS -->
+  <div class="pillars">
+    <div class="pillar"><div class="emoji">⏱️</div><div class="txt">想快啲<wbr>供完保費</div></div>
+    <div class="pillar"><div class="emoji">🔒</div><div class="txt">驚市場波動<wbr>想鎖定回報</div></div>
+    <div class="pillar"><div class="emoji">👨‍👩‍👧</div><div class="txt">想預先<wbr>部署傳承</div></div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <section>
+    <div class="section-head"><span class="tag">一覽比較</span></div>
+    <div class="cmp-card">
+      <div class="scroll-wrap">
+        <table class="cmp">
+          <colgroup><col class="c-name"><col class="c-val"><col class="c-val"><col class="c-val"><col class="c-val"></colgroup>
+          <tr>
+            <th></th>
+            <th><span class="p-code">PACE</span><span class="p-name">駿譽財富</span><span class="p-tag">3年供・入息選項</span></th>
+            <th><span class="p-code">PHOR</span><span class="p-name">誠譽財富</span><span class="p-tag">2年供・最快回本</span></th>
+            <th><span class="p-code">TRST</span><span class="p-name">信守明天</span><span class="p-tag">多元貨幣</span></th>
+            <th><span class="p-code">Prime Eternity</span><span class="p-name">世譽財富</span><span class="p-tag">整付・最低門檻</span></th>
+          </tr>
+          <tr>
+            <td><div class="row-label">保費供款<wbr>年期</div></td>
+            <td class="val-hi">3年</td>
+            <td class="val-hi">2年</td>
+            <td>3年<span class="nowrap">或5年</span></td>
+            <td>整付<span class="nowrap">一筆過</span></td>
+          </tr>
+          <tr>
+            <td><div class="row-label">投保年齡</div><div class="row-sub">下次生日年齡</div></td>
+            <td>1至<span class="nowrap">80歲</span></td>
+            <td>1至<span class="nowrap">80歲</span></td>
+            <td>1至<span class="nowrap">80歲</span></td>
+            <td>1至<span class="nowrap">75歲</span></td>
+          </tr>
+          <tr>
+            <td><div class="row-label">保單貨幣</div></td>
+            <td>美元</td>
+            <td>美元</td>
+            <td class="val-hi">6種貨幣<div class="row-sub">美元/港元/<wbr>人民幣/澳元/<wbr>加元/英鎊</div></td>
+            <td>美元</td>
+          </tr>
+          <tr>
+            <td><div class="row-label">最低名義<wbr>金額</div></td>
+            <td class="val-no">$600,000<wbr>美元</td>
+            <td class="val-hi">$20,000<wbr>美元</td>
+            <td>視乎貨幣<div class="row-sub">及核保而定</div></td>
+            <td class="val-hi">$10,000<wbr>美元</td>
+          </tr>
+          <tr>
+            <td><div class="row-label">保證現金<wbr>價值</div></td>
+            <td>隨保單<wbr>年度增長</td>
+            <td>隨保單<wbr>年度增長</td>
+            <td>隨保單<wbr>年度增長</td>
+            <td class="val-hi">即日起約<span class="nowrap">85%</span><div class="row-sub">整付保費</div></td>
+          </tr>
+          <tr>
+            <td><div class="row-label">非保證紅利</div></td>
+            <td>歸原紅利<wbr>+特別紅利</td>
+            <td>終期紅利</td>
+            <td>歸原紅利<wbr>+終期紅利</td>
+            <td>終期紅利</td>
+          </tr>
+          <tr>
+            <td><div class="row-label">紅利鎖定<wbr>機制</div></td>
+            <td class="val-no">冇</td>
+            <td class="val-hi">有<div class="row-sub">第10個周年<wbr>日起,最多<wbr><span class="nowrap">鎖75%</span></div></td>
+            <td class="val-hi">有<div class="row-sub">終期紅利<wbr>鎖定戶口</div></td>
+            <td class="val-hi">有</td>
+          </tr>
+          <tr>
+            <td><div class="row-label">自主入息<wbr>選項</div></td>
+            <td class="val-hi">有<div class="row-sub">第5個<wbr>周年日起</div></td>
+            <td class="val-hi">有<div class="row-sub">第5個<wbr>周年日起</div></td>
+            <td class="val-hi">有<span class="nowrap">(市場首創)</span></td>
+            <td class="val-no">未提供</td>
+          </tr>
+          <tr>
+            <td><div class="row-label">股票類別<wbr>資產上限</div></td>
+            <td>最高<span class="nowrap">50%</span></td>
+            <td>未列明</td>
+            <td class="val-hi">最高<span class="nowrap">70%</span></td>
+            <td>未列明</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <p class="scroll-hint">👈 表格可以左右滑動 👉</p>
+    <div class="tip">💡 4款都係股東全資分紅嘅終身儲蓄計劃，分別在於「供款速度」同「操作彈性」：想供得快兼儲蓄目標明確嘅可以睇PACE同PHOR；想靈活轉換貨幣、增長潛力最高嘅睇TRST；手頭有一筆錢想即刻部署高現金價值兼傳承嘅就睇世譽財富（整付）。</div>
+  </section>
+
+  <!-- ACCORDION -->
+  <section>
+    <div class="section-head"><span class="tag">撳開睇每款產品特色</span></div>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--coral);">🚀</div>
+        <div class="acc-head">
+          <div class="acc-title">駿譽財富保險計劃</div>
+          <div class="acc-amt">PACE・3年供款・自主入息</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>只需繳付3年保費，保單生效起即有保證現金價值，配合非保證歸原紅利及特別紅利提升增長潛力，追求更快回本、更早獲得回報。最低名義金額$600,000美元，門檻係4款之中最高。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">傳承同提取工具</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>自主入息選項：第5個保單周年日起，可設定每年/每月自動提取款項畀指定收款人（本人、家人或機構）</li>
+              <li>傳承工具：分拆保單（開枝散葉）、更換受保人、指定後備受保人/保單持有人，仲有保單暫託人選項畀未成年子女接管</li>
+              <li>無行為能力選項：萬一無法管理保單，可預先安排家人獲一筆過款項，或者代為接管保單</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--mint-deep);">🔒</div>
+        <div class="acc-head">
+          <div class="acc-title">誠譽財富保險計劃</div>
+          <div class="acc-amt">PHOR・2年供款・獨有紅利鎖定</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>4款之中供款期最短，只需2年，最低名義金額$20,000美元，門檻低好多。保單生效起有保證現金價值，加上非保證終期紅利，追求更快回本。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">紅利鎖定/解鎖選項</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>由第10個保單周年日起，可將終期紅利嘅若干百分比（每次最少<span class="nowrap">10%</span>，全保單總和上限<span class="nowrap">75%</span>）鎖定到「紅利鎖定戶口」，賺取非保證利息，唔再受市場波動影響</li>
+              <li>鎖定1年後，隨時可以解鎖返做非保證終期紅利，重新參與市場增長</li>
+              <li>同樣有自主入息選項（第5個周年日起）同埋開枝散葉、更換受保人、保單暫託人等傳承工具</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--lavender-deep);">🌍</div>
+        <div class="acc-head">
+          <div class="acc-title">保誠信守明天多元貨幣保險計劃</div>
+          <div class="acc-amt">TRST・3/5年供款・6種貨幣任揀</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>投保時可以喺美元、港元、人民幣、澳元、加元、英鎊6種貨幣之中揀1種做保單貨幣，第3個保單周年日起仲可以行使貨幣轉換選項，配合子女海外升學或移居等人生大計。股票類別資產配置上限高達<span class="nowrap">70%</span>，增長潛力係4款之中最高，但都代表非保證紅利波動可能較大。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">市場首創傳承同鎖定工具</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>終期紅利鎖定戶口：機制同PHOR類似，可鎖定部分終期紅利避免市場波動</li>
+              <li>市場首創升級自主傳承：身故賠償支付選擇，可按受益人人生事件（結婚、生仔、置業等）先至觸發支付</li>
+              <li>自主入息選項：一樣可以設定自動提取現金流</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="acc">
+      <summary>
+        <div class="acc-icon" style="background:var(--terracotta);">💎</div>
+        <div class="acc-head">
+          <div class="acc-title">世譽財富保險計劃</div>
+          <div class="acc-amt">整付・最低門檻・愛轉贈選項</div>
+        </div>
+        <div class="chevron">▾</div>
+      </summary>
+      <div class="acc-body">
+        <p>一筆過整付保費，保單生效即有保證現金價值，約相等於整付保費嘅<span class="nowrap">85%</span>，最低名義金額只需$10,000美元，4款之中門檻最低，適合想即刻部署一筆資金嘅客人。</p>
+        <div class="acc-extra">
+          <div class="acc-extra-title">獨有嘅愛轉贈選項</div>
+          <div class="acc-extra-body">
+            <ul class="acc-list">
+              <li>愛轉贈選項：可指定慈善機構為受益人，並訂立想捐贈嘅身故賠償百分比，公司會額外支付該金額嘅<span class="nowrap">1%</span>，進一步支持善舉</li>
+              <li>市場首創自主傳承、無限次更換受保人、委任後續持有人及後備受保人，傳承工具齊全</li>
+              <li>紅利鎖定選項：可以鎖定終期紅利以穩守增值成果，亦可解鎖捕捉市場機遇</li>
+              <li>冇提供自主入息選項，想定期自動提取現金流嘅客人可考慮其餘3款</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+  <!-- FIT CARDS -->
+  <section>
+    <div class="section-head"><span class="tag">邊款啱你？</span></div>
+    <div class="fits">
+      <div class="fit-card">
+        <div class="fit-name">🚀 駿譽財富 PACE</div>
+        <div class="fit-text">手頭資金充裕、想3年供完兼有自主入息安排退休現金流嘅客人</div>
+      </div>
+      <div class="fit-card">
+        <div class="fit-name">🔒 誠譽財富 PHOR</div>
+        <div class="fit-text">預算有限但想儲得快（2年供款）、同時想日後有得鎖定紅利避免市場波動嘅客人</div>
+      </div>
+      <div class="fit-card">
+        <div class="fit-name">🌍 信守明天 TRST</div>
+        <div class="fit-text">有跨境資產配置需要、想揀貨幣兼追求較高增長潛力，日後仲可能海外升學/移居嘅客人</div>
+      </div>
+      <div class="fit-card">
+        <div class="fit-name">💎 世譽財富</div>
+        <div class="fit-text">手頭有一筆現金想一筆過投保，即刻鎖定高現金價值，重視傳承同善舉嘅客人</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <div class="avatar"><img src="assets/avatar.jpg" alt="Lily Lau"></div>
+    <h2>邊款儲蓄方案啱你<span class="nowrap">？</span></h2>
+    <p>幫你分析供款能力、增長需要同傳承心願，揀啱組合，唔使自己撞板。</p>
+    <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E5%84%B2%E8%93%84%E5%82%B3%E6%89%BF%E6%96%B9%E6%A1%88" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
+  </div>
+
+  <div class="disclaimer">只作參考及教育用途，不構成保單合約。以上資料整合自保誠駿譽財富保險計劃、誠譽財富保險計劃、信守明天多元貨幣保險計劃及世譽財富保險計劃各自嘅產品資料冊子。實際保障、保費、非保證回報及條款以保誠保單條款正本為準，如有查詢歡迎WhatsApp查詢。</div>
+
+</div>
+
+</body>
+</html>
