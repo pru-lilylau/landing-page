@@ -415,7 +415,7 @@
         <button data-v="basic" onclick="toggleMed('basic',this)">基本</button>
         <button data-v="high" onclick="toggleMed('high',this)">高端</button>
       </div>
-      <div class="med-hint">可多選，未有保障就唔選</div>
+      <div class="med-hint">可多選，未有保障就不選</div>
     </div>
     <div class="row">
       <label>人壽保額</label>
@@ -466,7 +466,7 @@
           <button data-v="basic" onclick="toggleSpouseMed('basic',this)">基本</button>
           <button data-v="high" onclick="toggleSpouseMed('high',this)">高端</button>
         </div>
-        <div class="med-hint">可多選，未有保障就唔選</div>
+        <div class="med-hint">可多選，未有保障就不選</div>
       </div>
     </div>
   </div>
@@ -474,9 +474,9 @@
   <div class="card" id="child-card" data-step="2">
     <div class="section-title">子女資料</div>
     <div class="row">
-      <label>有冇小朋友</label>
+      <label>有沒有小朋友</label>
       <div class="seg" id="hasChild-seg">
-        <button data-v="no" onclick="setSeg('hasChild',this)" class="active">冇</button>
+        <button data-v="no" onclick="setSeg('hasChild',this)" class="active">沒有</button>
         <button data-v="yes" onclick="setSeg('hasChild',this)">有</button>
       </div>
     </div>
@@ -506,7 +506,7 @@
       <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:18px;flex-shrink:0;">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
-      傳送結果俾 Lily
+      傳送結果給 Lily
     </button>
     <button class="copy-summary-btn" type="button" onclick="copyOrShareSummary()">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 01-1-1V4a1 1 0 011-1h10a1 1 0 011 1v1"/></svg>
@@ -546,7 +546,7 @@
 
   <div class="cta-card" data-step="3">
     <div class="cta-text">
-      <strong>想了解邊個方案啱你？</strong>
+      <strong>想了解哪個方案適合你？</strong>
       <p>Lily 為你免費分析最適合方案<br>會計師 × 保險顧問雙重視角</p>
     </div>
     <a class="cta-btn" href="https://wa.me/85260133108?text=你好Lily，我想了解保險規劃" target="_blank" rel="noopener">WhatsApp 諮詢</a>
@@ -559,7 +559,7 @@
 <div class="footer">
   本計算器結果僅供參考，並非正式保險建議。<br>
   如需專業意見，請聯絡 Lily。<br>
-  你提交嘅資料只作跟進聯絡用途，絕不轉售第三方，並遵守PDPO處理。<br><br>
+  你提交的資料只作跟進聯絡用途，絕不轉售第三方，並遵守PDPO處理。<br><br>
   &copy; 2026 Lily Lau · 
   <a href="https://www.instagram.com/pru_lilylau" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:4px;color:#B8A090;text-decoration:none;vertical-align:middle;">
     <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -580,7 +580,7 @@
 <script>
 const state = { dep: 1, medSet: new Set(), gender: 'male', hasChild: 'no', childCount: 1, children: [], marital: 'single', spouseMedSet: new Set(), clientEmail: '', step: 1 };
 
-// 三步式表單：1.基本資料 2.保障現況 3.結果 — 減少一次過見晒成頁欄位嘅壓迫感
+// 三步式表單：1.基本資料 2.保障現況 3.結果 — 減少一次看到整頁欄位的壓迫感
 function renderStep() {
   document.querySelectorAll('[data-step]').forEach(function(el) {
     el.style.display = (+el.dataset.step === state.step) ? '' : 'none';
@@ -602,8 +602,8 @@ function goStep(delta) {
   renderStep();
 }
 
-// 由 redirect.html 帶過嚟嘅姓名/電話/email（客人喺果邊已經留過），自動填返落表格
-// 咁樣撳「傳送結果俾 Lily」嗰陣先可以將電話同計算結果一齊send返俾你
+// 由 redirect.html 帶來的姓名/電話/email（客人在那邊已經留過），自動填入表格
+// 這樣按「傳送結果給 Lily」的時候才可以將電話與計算結果一起傳送給你
 (function prefillFromReferral() {
   const params = new URLSearchParams(location.search);
   const n = params.get('name');
@@ -614,8 +614,8 @@ function goStep(delta) {
   if (e) state.clientEmail = e;
 })();
 
-// 產品建議只想 Lily 自己睇到：帶住 ?key=... 開一次呢個頁面就會用 localStorage 記住解鎖狀態
-// （純粹遮擋一般客人，唔係真正加密 — 識睇原始碼一樣搵到，唔適合防有心人）
+// 產品建議只想 Lily 自己看到：帶著 ?key=... 開一次這個頁面就會用 localStorage 記住解鎖狀態
+// （純粹遮擋一般客人，不是真正加密 — 懂得看原始碼一樣找到，不適合防有心人）
 const REC_UNLOCK_KEY = 'lily-vip-2026';
 const REC_UNLOCK_STORAGE = 'lily_rec_unlocked';
 (function initRecUnlock() {
@@ -630,8 +630,8 @@ const REC_UNLOCK_STORAGE = 'lily_rec_unlocked';
 const recsUnlocked = localStorage.getItem(REC_UNLOCK_STORAGE) === '1';
 if (recsUnlocked) document.getElementById('rec-card').style.display = '';
 
-// 客人撳「傳送結果俾 Lily」時，靜靜雞將完整資料 POST 去 Lily 自己嘅 Google 試算表存底
-// 未貼上你自己嘅 Apps Script Web App 網址前，呢個 function 乜都唔會做（唔會出錯）
+// 客人按「傳送結果給 Lily」時，悄悄地將完整資料 POST 去 Lily 自己的 Google 試算表存底
+// 未貼上你自己的 Apps Script Web App 網址前，這個 function 什麼都不會做（不會出錯）
 const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxv4hqMG7QeJsodX02pSkA5NmRqq0OdUd8pxysnUu7Y-ooq0PippMWf9fMs_23X63kXyA/exec';
 function logToBackend(payload) {
   if (!BACKEND_URL || BACKEND_URL.indexOf('PASTE_YOUR') === 0) return;
@@ -645,8 +645,8 @@ function logToBackend(payload) {
   } catch (e) {}
 }
 
-// 同 redirect.html 用同一個 Formspree 表單，等電話同計算結果可以一齊send俾你
-// 咁你收到嘅 lead 就會直接連埋佢個保障缺口結果，唔使再問一次
+// 與 redirect.html 用同一個 Formspree 表單，等電話與計算結果可以一起傳送給你
+// 這樣你收到的 lead 就會直接連同他的保障缺口結果，不用再問一次
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xwvdzwjv';
 function submitResultsToFormspree(payload) {
   try {
@@ -684,7 +684,7 @@ const PRODUCTS = [
     desc:'政府認可 VHIS 靈活計劃，每年保障上限達1,200萬港元，終身保障上限5,600萬港元。主要醫療費用不設個別保障限額，合資格保費可申請稅務扣減。',
     tags:['VHIS 認可','稅務扣減','不設個別限額','終身續保'],
     trigger: g => g.medScore < 70,
-    why: g => `你現時醫療保障${g.medSet.size===0?'空白':g.medSet.has('company')&&g.medSet.size===1?'只靠公司醫療，離職或退休後即失保':'偏薄'}，VHIS 尚賓計劃保費可扣稅（每人上限 $8,000），作為會計師我特別建議善用呢個稅務優惠。`
+    why: g => `你現時醫療保障${g.medSet.size===0?'空白':g.medSet.has('company')&&g.medSet.size===1?'只靠公司醫療，離職或退休後即失保':'偏薄'}，VHIS 尚賓計劃保費可扣稅（每人上限 $8,000），作為會計師我特別建議善用這個稅務優惠。`
   },
   {
     cat:'life', catLabel:'人壽', catClass:'cat-life',
@@ -741,15 +741,15 @@ function fmt(n) {
   return '$' + n.toLocaleString();
 }
 
-// 淡化版建議：所有客人都睇到（唔講產品名/保費），深入嘅保誠產品建議留返俾 Lily 自己（VIP解鎖）睇
+// 淡化版建議：所有客人都看到（不講產品名/保費），深入的保誠產品建議留給 Lily 自己（VIP解鎖）看
 function renderPublicRecommendations(g) {
   const container = document.getElementById('recommendations-public');
   if (!container) return;
   const areas = [];
-  if (g.ciGap > 0) areas.push({label:'危疾保障', cls:'cat-ci', note:'你嘅危疾保障未夠應付大病嘅醫療開支同復原期收入損失，建議盡快了解相關方案。'});
-  if (g.medScore < 70) areas.push({label:'醫療保障', cls:'cat-med', note:'你依家嘅醫療保障未必夠全面，住院、手術費隨時「食大茶飯」，建議加強保障。'});
-  if (g.dep > 0 && g.lifePct < 70) areas.push({label:'人壽保障', cls:'cat-life', note:'你有家人需要依靠你嘅收入，人壽保障可以確保佢哋唔會因為你而陷入財困。'});
-  if (g.savPct < 50) areas.push({label:'儲蓄／退休', cls:'cat-save', note:'你嘅退休儲蓄仲有段距離，及早規劃可以善用複息效果。'});
+  if (g.ciGap > 0) areas.push({label:'危疾保障', cls:'cat-ci', note:'你的危疾保障未夠應付大病的醫療開支與復原期收入損失，建議盡快了解相關方案。'});
+  if (g.medScore < 70) areas.push({label:'醫療保障', cls:'cat-med', note:'你目前的醫療保障未必夠全面，住院、手術費隨時花費龐大，建議加強保障。'});
+  if (g.dep > 0 && g.lifePct < 70) areas.push({label:'人壽保障', cls:'cat-life', note:'你有家人需要依靠你的收入，人壽保障可以確保他們不會因為你而陷入財困。'});
+  if (g.savPct < 50) areas.push({label:'儲蓄／退休', cls:'cat-save', note:'你的退休儲蓄還有一段距離，及早規劃可以善用複息效果。'});
 
   container.innerHTML = areas.length === 0
     ? `<div class="no-gap">你的保障規劃已相當完善！建議定期檢視保單。</div>`
@@ -879,7 +879,7 @@ function renderChildInputs() {
           <button data-v="basic" onclick="toggleChildMed(${i},'basic',this)" ${c.medSet&&c.medSet.has('basic')?'class="active"':''}>基本</button>
           <button data-v="high" onclick="toggleChildMed(${i},'high',this)" ${c.medSet&&c.medSet.has('high')?'class="active"':''}>高端</button>
         </div>
-        <div class="med-hint">可多選，未有保障就唔選</div>
+        <div class="med-hint">可多選，未有保障就不選</div>
       </div>
     </div>`).join('');
   state.children.forEach((c, i) => {
@@ -902,7 +902,7 @@ function updateChild(i, key, val) {
   calc();
 }
 
-// 結果度標返「本人」係邊個、幾多歲，同配偶／子女標題睇齊
+// 結果中標示「本人」是誰、多少歲，與配偶／子女標題看齊
 function updateSelfLabel() {
   const clientName = document.getElementById('client-name').value.trim();
   const age = numVal('age-num');
@@ -1050,8 +1050,8 @@ function calc() {
   bindSlider(id, id+'-num', calc, money);
 });
 
-// 建立呢刻嘅保障缺口分析（連埋姓名/電話/email），俾自動send同撳掣手動send共用
-// 淨係讀取資料、砌message，唔會有任何send出去嘅動作
+// 建立此刻的保障缺口分析（連同姓名/電話/email），給自動傳送與按鈕手動傳送共用
+// 只是讀取資料、組裝訊息，不會有任何傳送出去的動作
 function buildResultSummary(clientPhone, mode) {
   mode = mode || 'lily';
   var clientName = document.getElementById('client-name').value.trim();
@@ -1066,8 +1066,8 @@ function buildResultSummary(clientPhone, mode) {
 
   var sections = [];
   sections.push(mode === 'share'
-    ? '📊 呢個係我啱啱用「保障缺口計算機」計出嚟嘅保險需要分析，同你分享下：'
-    : '你好 Lily，以下係我嘅保險需要分析結果：');
+    ? '📊 這是我剛剛用「保障缺口計算機」計算出來的保險需要分析，與你分享一下：'
+    : '你好 Lily，以下是我的保險需要分析結果：');
 
   var basicLines = ['【基本資料】'];
   if (clientName) basicLines.push('稱呼：' + clientName);
@@ -1110,7 +1110,7 @@ function buildResultSummary(clientPhone, mode) {
   }
 
   sections.push(mode === 'share'
-    ? '如果你都想計下自己嘅保障缺口，可以試下呢個計算機：\nhttps://pru-lilylau.github.io/landing-page/calculator.html'
+    ? '如果你都想計算一下自己的保障缺口，可以試試這個計算機：\nhttps://pru-lilylau.github.io/landing-page/calculator.html'
     : '📌 想了解更多，請問可以聯絡你嗎？');
 
   var msg = sections.join('\n\n');
@@ -1161,11 +1161,11 @@ function buildResultSummary(clientPhone, mode) {
   };
 }
 
-// 手動撳「傳送結果俾 Lily」：一定要有電話（冇就問一次），send完仲會開返WhatsApp
+// 手動按「傳送結果給 Lily」：一定要有電話（沒有就問一次），傳送完還會重新開啟WhatsApp
 function sendSummaryToWhatsApp() {
   var clientPhone = document.getElementById('client-phone').value.trim();
   if (!clientPhone) {
-    clientPhone = prompt('麻煩留低你嘅WhatsApp電話，等Lily可以跟進你嘅保障缺口分析：') || '';
+    clientPhone = prompt('請留下你的WhatsApp電話，讓Lily可以跟進你的保障缺口分析：') || '';
     document.getElementById('client-phone').value = clientPhone;
   }
   var r = buildResultSummary(clientPhone);
@@ -1177,11 +1177,11 @@ function sendSummaryToWhatsApp() {
   window.open(url, '_blank');
 }
 
-// 客人自己複製/分享結果（例如send俾伴侶）：有原生分享就用share sheet，冇就複製到剪貼簿
+// 客人自己複製/分享結果（例如傳送給伴侶）：有原生分享就用share sheet，沒有就複製到剪貼簿
 function copyOrShareSummary() {
   var r = buildResultSummary(document.getElementById('client-phone').value.trim(), 'share');
   if (navigator.share) {
-    navigator.share({ title: '我嘅保障缺口分析', text: r.msg }).catch(function(){});
+    navigator.share({ title: '我的保障缺口分析', text: r.msg }).catch(function(){});
     return;
   }
   if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -1203,8 +1203,8 @@ function fallbackCopy(text) {
   document.body.removeChild(ta);
 }
 
-// 客人一計完（停手唔郁滑桿之後）自動靜靜雞send一次俾 Lily，唔使等佢哋撳「傳送結果」
-// 冇電話就唔會send（避免無法跟進嘅lead）；內容同上次send過一樣就唔會重複send
+// 客人一計算完（停止移動滑桿之後）自動悄悄地傳送一次給 Lily，不用等他們按「傳送結果」
+// 沒有電話就不會傳送（避免無法跟進的lead）；內容與上次傳送過一樣就不會重複傳送
 let autoSubmitTimer = null;
 let autoSubmitReady = false;
 let lastAutoSubmitSignature = '';

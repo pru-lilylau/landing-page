@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>尚賓VIP vs 加倍保PMP 點揀｜Lily Lau</title>
-<meta name="description" content="保誠自願醫保尚賓計劃同醫療加倍保有咩分別？一頁圖睇晒VHIS扣稅、已有病症、保障限額同癌症保障嘅分別。">
+<title>尚賓VIP vs 加倍保PMP 如何選擇｜Lily Lau</title>
+<meta name="description" content="保誠自願醫保尚賓計劃與醫療加倍保有什麼分別？一頁圖看清VHIS扣稅、已有病症、保障限額與癌症保障的分別。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -39,10 +39,10 @@
     background:var(--cream);
     color:var(--ink);
     line-height:1.7;
-    line-break:strict;       /* 中文喺標點符號處斷行,唔會斷得核突 */
-    word-break:keep-all;     /* 數字/英文（例如$1,500,000）唔會斷開一半 */
-    overflow-wrap:break-word;/* 萬一有超長字串,先至強制斷 */
-    overflow-x:hidden;       /* 安全網,防止內容撐爆令成頁左右搖晃 */
+    line-break:strict;       /* 中文在標點符號處斷行，不會斷得難看 */
+    word-break:keep-all;     /* 數字/英文（例如$1,500,000）不會斷開一半 */
+    overflow-wrap:break-word;/* 萬一有超長字串，才強制斷行 */
+    overflow-x:hidden;       /* 安全網，防止內容撐爆導致整頁左右搖晃 */
   }
   .wrap{max-width:640px; margin:0 auto; padding:0 20px;}
   @media (min-width:900px){ .wrap{max-width:760px; padding:0 32px;} }
@@ -122,7 +122,7 @@
   .acc-list{margin:0; padding-left:1.15em; list-style:disc;}
   .acc-list li{margin-bottom:6px; padding-left:2px;}
   .acc-list li:last-child{margin-bottom:0;}
-  /* 用嚟包住短標籤+金額組合、或者孤字/孤標點，強制佢哋一齊換行唔會被拆開 */
+  /* 用來包住短標籤+金額組合、或者孤字/孤標點，強制它們一起換行不會被拆開 */
   .nowrap{white-space:nowrap;}
 
   /* tip callout — use lavender (informational). Do NOT use --butter
@@ -141,7 +141,7 @@
      background (same low-contrast issue as tip). Use the terracotta
      tint below. */
   .flags{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;}
-  .flags > *{min-width:0;} /* grid item預設min-width:auto,冇斷位嘅長句會撐爆個格 */
+  .flags > *{min-width:0;} /* grid item預設min-width:auto，沒有斷點的長句會撐爆格子 */
   .flag{border-radius:16px; padding:16px;}
   .flag.ok{background:var(--mint);}
   .flag.no{background:#F3DCD3; border:1px solid #E8C4B6;}
@@ -181,20 +181,20 @@
   <!-- HERO -->
   <div class="hero">
     <div class="eyebrow">🩺 VHIS地基 vs 加強Top-up</div>
-    <h1>醫療保障點揀先啱？<br><span>尚賓VIP　vs　加倍保PMP</span></h1>
-    <p class="sub">兩個保誠醫療產品用途唔一樣，撳落去逐項睇清楚分別，揀啱先至買。</p>
+    <h1>醫療保障怎樣選才適合？<br><span>尚賓VIP　vs　加倍保PMP</span></h1>
+    <p class="sub">兩個保誠醫療產品用途不一樣，點進去逐項看清楚分別，選對才買。</p>
   </div>
 
   <!-- PAIN-POINT PILLARS -->
   <div class="pillars">
-    <div class="pillar"><div class="emoji">🩹</div><div class="txt">驚已有病症唔受保</div></div>
+    <div class="pillar"><div class="emoji">🩹</div><div class="txt">擔心已有病症不受保</div></div>
     <div class="pillar"><div class="emoji">💰</div><div class="txt">想扣稅又有保障</div></div>
     <div class="pillar"><div class="emoji">🎗️</div><div class="txt">想加大癌症保障</div></div>
   </div>
 
   <!-- COMPARISON TABLE -->
   <section>
-    <div class="section-head"><span class="tag">一眼睇晒核心分別</span></div>
+    <div class="section-head"><span class="tag">一眼看清核心分別</span></div>
     <div class="cmp-card">
       <table class="cmp">
         <colgroup><col class="c-name"><col class="c-amt"><col class="c-amt"></colgroup>
@@ -220,7 +220,7 @@
           <td class="amt hi">只設全球<br><span class="nowrap">(美國除外)</span></td>
         </tr>
         <tr>
-          <td><div class="item-name">已有病症</div><div class="item-sub">投保前已存在嘅傷病</div></td>
+          <td><div class="item-name">已有病症</div><div class="item-sub">投保前已存在的傷病</div></td>
           <td class="amt">第31日起<wbr>100%受保</td>
           <td class="amt hi">永久<wbr>不保</td>
         </tr>
@@ -230,36 +230,36 @@
           <td class="amt hi">15日<wbr>至69歲</td>
         </tr>
         <tr>
-          <td><div class="item-name">自付費金額</div><div class="item-sub">保單年度自行負擔嘅金額</div></td>
+          <td><div class="item-name">自付費金額</div><div class="item-sub">保單年度自行負擔的金額</div></td>
           <td class="amt">$0/2萬/<wbr>5萬/9.6萬</td>
           <td class="amt hi">$0/1萬/2萬/5萬<br>或$0<wbr>自付<wbr>賠90%</td>
         </tr>
       </table>
     </div>
-    <div class="tip">💡 兩個一齊買嘅邏輯：VIP係「地基」，因為VHIS法定要求，未知已有病症都保埋，仲有得扣稅；PMP保額更高、癌症保障更全面，仲有確診即刻全家豁免保費呢個VIP冇嘅著數，啱畀想再加大保障上限嘅客。</div>
+    <div class="tip">💡 兩個一起買的邏輯：VIP是「地基」，因為VHIS法定要求，未知已有病症也保，還可以扣稅；PMP保額更高、癌症保障更全面，還有確診即刻全家豁免保費這個VIP沒有的優惠，適合想再加大保障上限的客人。</div>
   </section>
 
   <!-- ACCORDION -->
   <section>
-    <div class="section-head"><span class="tag">撳開睇詳細內容</span></div>
+    <div class="section-head"><span class="tag">點開查看詳細內容</span></div>
 
     <details class="acc">
       <summary>
         <div class="acc-icon" style="background:var(--coral);">📋</div>
         <div class="acc-head">
           <div class="acc-title">VHIS認可與已有病症保障</div>
-          <div class="acc-amt">呢一點決定咗邊個做「主力」保單</div>
+          <div class="acc-amt">這一點決定了哪個做「主力」保單</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>尚賓VIP屬於自願醫保計劃下嘅認可產品，未知嘅投保前已有病症（包括未知先天性疾病）由第31日起<span class="nowrap">100%</span>受保，呢個係VHIS法定最低要求。合資格保費仲可以申請稅務扣除，每名受保人每年上限$8,000，一家人分開投保仲可以疊加扣稅額。</p>
+        <p>尚賓VIP屬於自願醫保計劃下的認可產品，未知的投保前已有病症（包括未知先天性疾病）由第31日起<span class="nowrap">100%</span>受保，這是VHIS法定最低要求。合資格保費還可以申請稅務扣除，每名受保人每年上限$8,000，一家人分開投保還可以疊加扣稅額。</p>
         <div class="acc-extra">
-          <div class="acc-extra-title">加倍保PMP點解唔同</div>
+          <div class="acc-extra-title">加倍保PMP為什麼不同</div>
           <div class="acc-extra-body"><ul class="acc-list">
-            <li>PMP唔屬於VHIS認可產品，冇稅務扣除</li>
-            <li>喺生效日前已經存在嘅傷病、或者生效/復效日起計30日內先確診嘅傷病，一律永久不保</li>
-            <li>設計上假設你已經有一定健康底先加保，唔係用嚟頂替VIP嘅「保底」角色</li>
+            <li>PMP不屬於VHIS認可產品，沒有稅務扣除</li>
+            <li>在生效日前已經存在的傷病、或者生效/復效日起計30日內才確診的傷病，一律永久不保</li>
+            <li>設計上假設你已經有一定健康基礎才加保，不是用來頂替VIP的「保底」角色</li>
           </ul></div>
         </div>
       </div>
@@ -270,15 +270,15 @@
         <div class="acc-icon" style="background:var(--mint-deep);">🌏</div>
         <div class="acc-head">
           <div class="acc-title">保障地區與限額</div>
-          <div class="acc-amt">VIP有得揀平啲嘅亞洲版</div>
+          <div class="acc-amt">VIP可以選擇較便宜的亞洲版</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>尚賓VIP可以自選亞洲（包括澳洲及新西蘭）或者全球（美國除外）保障，客戶主要留喺亞洲活動嘅話可以揀平啲嘅亞洲版；每年保障$1,200萬，終身$5,600萬。</p>
+        <p>尚賓VIP可以自選亞洲（包括澳洲及新西蘭）或者全球（美國除外）保障，客戶主要留在亞洲活動的話可以選較便宜的亞洲版；每年保障$1,200萬，終身$5,600萬。</p>
         <div class="acc-extra">
           <div class="acc-extra-title">加倍保PMP</div>
-          <div class="acc-extra-body">只設全球（美國除外）一個選項，冇平啲嘅地區限定版，但保額更高：每年$1,400萬，終身$6,000萬（呢個終身限額係同一受保人名下所有加倍保保單合計嘅絕對<span class="nowrap">上限）。</span>如喺美國發生意外，兩個計劃都會賠當地治療費用。</div>
+          <div class="acc-extra-body">只設全球（美國除外）一個選項，沒有較便宜的地區限定版，但保額更高：每年$1,400萬，終身$6,000萬（這個終身限額是同一受保人名下所有加倍保保單合計的絕對<span class="nowrap">上限）。</span>如在美國發生意外，兩個計劃都會賠當地治療費用。</div>
         </div>
       </div>
     </details>
@@ -288,15 +288,15 @@
         <div class="acc-icon" style="background:var(--lavender-deep);">💳</div>
         <div class="acc-head">
           <div class="acc-title">自付費結構</div>
-          <div class="acc-amt">PMP多一個免自付但賠<span class="nowrap">90%</span>嘅選項</div>
+          <div class="acc-amt">PMP多一個免自付但賠<span class="nowrap">90%</span>的選項</div>
         </div>
         <div class="chevron">▾</div>
       </summary>
       <div class="acc-body">
-        <p>尚賓VIP設4檔自付費（$0/2萬/5萬/9.6萬），無論揀邊檔，賠償都係<span class="nowrap">100%</span>全數。</p>
+        <p>尚賓VIP設4檔自付費（$0/2萬/5萬/9.6萬），無論選哪一檔，賠償都是<span class="nowrap">100%</span>全數。</p>
         <div class="acc-extra">
           <div class="acc-extra-title">加倍保PMP多一種玩法</div>
-          <div class="acc-extra-body">計劃一同樣有4檔自付額（$0/1萬/2萬/5萬）<span class="nowrap">100%</span>賠；計劃二免自付額，但只賠合資格費用嘅<span class="nowrap">90%</span>（其餘<span class="nowrap">10%</span>自己負擔）。如果客戶已經有其他醫療保險（例如公司團保），可以用嗰份計劃嘅賠償抵銷PMP嘅自付額或者自留部分。</div>
+          <div class="acc-extra-body">計劃一同樣有4檔自付額（$0/1萬/2萬/5萬）<span class="nowrap">100%</span>賠；計劃二免自付額，但只賠合資格費用的<span class="nowrap">90%</span>（其餘<span class="nowrap">10%</span>自己負擔）。如果客戶已經有其他醫療保險（例如公司團保），可以用那份計劃的賠償抵銷PMP的自付額或者自留部分。</div>
         </div>
       </div>
     </details>
@@ -313,11 +313,11 @@
       <div class="acc-body">
         <p>兩個計劃都保訂明非手術癌症治療（化療/電療/標靶/免疫/荷爾蒙治療）。</p>
         <div class="acc-extra">
-          <div class="acc-extra-title">加倍保PMP升級咗嘅部分</div>
+          <div class="acc-extra-title">加倍保PMP升級了的部分</div>
           <div class="acc-extra-body"><ul class="acc-list">
-            <li>標靶治療前所需嘅遺傳基因測試，費用有得賠</li>
-            <li>醫生喺香港建議、僅喺海外註冊但未在港註冊嘅個人使用癌症藥物，都有得賠</li>
-            <li>受保人確診癌症，往後12個月保費豁免；已受保滿1年嘅配偶/父母/子女/兄弟姊妹，各自都可以獲豁免12個月保費（終身限一次）</li>
+            <li>標靶治療前所需的遺傳基因測試，費用可以獲賠</li>
+            <li>醫生在香港建議、僅在海外註冊但未在港註冊的個人使用癌症藥物，都可以獲賠</li>
+            <li>受保人確診癌症，往後12個月保費豁免；已受保滿1年的配偶/父母/子女/兄弟姊妹，各自都可以獲豁免12個月保費（終身限一次）</li>
           </ul></div>
         </div>
       </div>
@@ -336,7 +336,7 @@
         <p>兩個計劃都有醫療費用直付服務、綠色醫療通道（內地約1,200間指定醫院）、「智安排」預設保單服務、安心醫（第二醫療意見及海外醫療禮賓）、24小時全球緊急支援服務。</p>
         <div class="acc-extra">
           <div class="acc-extra-title">分別</div>
-          <div class="acc-extra-body">VIP嘅醫療費用直付服務額外覆蓋訂明診斷成像檢測（CT/MRI/PET），仲有治療前預算賠償額嘅服務；PMP嘅直付服務只涵蓋住院及日間手術。</div>
+          <div class="acc-extra-body">VIP的醫療費用直付服務額外覆蓋訂明診斷成像檢測（CT/MRI/PET），還有治療前預算賠償額的服務；PMP的直付服務只涵蓋住院及日間手術。</div>
         </div>
       </div>
     </details>
@@ -346,8 +346,8 @@
   <!-- FINAL CTA -->
   <div class="final-cta">
     <div class="avatar"><img src="assets/avatar.jpg" alt="Lily Lau"></div>
-    <h2>唔知邊個啱你<span class="nowrap">？</span></h2>
-    <p>幫你分析已有醫保、預算同健康狀況，揀啱組合，唔使自己撞板。</p>
+    <h2>不知道哪個適合你<span class="nowrap">？</span></h2>
+    <p>幫你分析已有醫保、預算與健康狀況，選對組合，不用自己摸索碰壁。</p>
     <a class="cta-btn" href="https://wa.me/85260133108?text=Hi%20Lily%EF%BC%8C%E6%88%91%E6%83%B3%E4%BA%86%E8%A7%A3%E5%B0%9A%E8%B3%93VIP%E5%90%8C%E5%8A%A0%E5%80%8D%E4%BF%9DPMP%E9%BB%9E%E6%8F%80%E9%82%8A%E5%80%8B%E5%95%B1%E6%88%91" target="_blank" rel="noopener">WhatsApp查詢 ›</a>
   </div>
 
