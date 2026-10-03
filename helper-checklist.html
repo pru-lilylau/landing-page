@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>請姐姐檢查清單｜會計師媽媽</title>
-<meta name="description" content="聘請外傭全攻略：黃金時機、面試必問情境、前僱主核實、日常時間表及中文／印尼文／菲律賓文三語家規範本，可逐項剔選及列印。">
+<meta name="description" content="聘請外傭全攻略：黃金時機、面試必問情境、前僱主核實、中文／印尼文／菲律賓文三語日常時間表及家規範本，可逐項剔選及列印。">
 <link rel="icon" href="assets/favicon.ico">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,9 +35,11 @@
     margin:0; background:var(--cream); color:var(--ink);
     font-family:'Noto Sans TC','Noto Sans CJK TC',-apple-system,sans-serif;
     font-size:15px; line-height:1.7;
-    line-break:strict; word-break:keep-all; overflow-wrap:break-word;
+    line-break:strict; word-break:normal; overflow-wrap:anywhere;
   }
   .nowrap{white-space:nowrap;}
+  p, li, .item-q, .item-hint, .tip, .warn, .good, .slot .d, .group-title, .rule-h, .phase{text-wrap:pretty;}
+  .item-body, .slot .d, .card-head h3, .cand-name input{min-width:0;}
   .wrap{max-width:680px; margin:0 auto; padding:0 16px;}
   @media (min-width:900px){ .wrap{max-width:780px; padding:0 32px;} }
 
@@ -58,7 +60,7 @@
   section{padding:26px 0 8px; scroll-margin-top:60px;}
   .sec-tag{font-size:14px; font-weight:900; color:var(--mint-deep); letter-spacing:1px; margin:0 0 4px;}
   h2{font-size:22px; font-weight:900; line-height:1.4; margin:0 0 14px; text-wrap:balance;}
-  h3{font-size:16.5px; font-weight:900; margin:0 0 8px; line-height:1.5;}
+  h3{font-size:16.5px; font-weight:900; margin:0 0 8px; line-height:1.5; text-wrap:balance;}
 
   .card{background:var(--white); border-radius:18px; border:1px solid var(--line); padding:18px; margin-bottom:12px; box-shadow:var(--shadow);}
   .card p{margin:0 0 8px;}
@@ -136,6 +138,9 @@
   .slot .t{flex:0 0 108px; font-weight:900; font-size:14px; color:var(--coral-deep); font-variant-numeric:tabular-nums;}
   .slot .d{flex:1; font-size:14.5px;}
   .slot .d ul{margin:4px 0 0; padding-left:18px;}
+  .slot .d p{margin:0 0 4px;}
+  .slot .d p:last-child{margin-bottom:0;}
+  .phase .sub{display:block; font-size:14px; font-weight:700; color:var(--ink-soft); letter-spacing:0;}
   .slot.rest{background:var(--mint);}
   .slot.rest .t{color:var(--mint-deep);}
   @media (max-width:420px){ .slot{flex-direction:column; gap:2px;} .slot .t{flex:none;} }
@@ -152,12 +157,12 @@
   .rule:first-of-type{border-top:none; padding-top:0;}
   .rule p{margin:0 0 4px; font-size:14.5px;}
   .rule p:last-child{margin-bottom:0;}
-  .rule .lang{display:inline-block; font-size:14px; font-weight:900; min-width:30px; margin-right:6px; border-radius:6px; padding:0 6px; text-align:center;}
+  .lang{display:inline-block; font-size:14px; font-weight:900; min-width:30px; margin-right:6px; border-radius:6px; padding:0 6px; text-align:center;}
   .lang-zh{background:var(--butter); color:var(--butter-deep);}
   .lang-id{background:var(--mint); color:var(--mint-deep);}
   .lang-tl{background:var(--lavender); color:var(--lavender-deep);}
   .rule .k{font-weight:900;}
-  body.mode-single .rule .lang{display:none;}
+  body.mode-single .lang{display:none;}
   .sign{background:var(--white); border:1px solid var(--line); border-radius:18px; padding:16px 18px;}
   .sign p{margin:0 0 6px; font-size:14.5px;}
   .sign-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px 18px; margin-top:22px;}
@@ -176,13 +181,18 @@
   .cta-btn.ghost{background:none; color:var(--white); border:1.5px solid var(--coral);}
   .disclaimer{font-size:14px; color:var(--ink-soft); line-height:1.7; padding:0 4px 40px;}
 
-  /* Print: house rules only */
+  /* Print: house rules or schedule only */
   @media print{
     @page{margin:14mm;}
     body{background:#fff; font-size:12pt;}
-    body.print-rules > *:not(.wrap){display:none !important;}
+    body.print-rules > *:not(.wrap), body.print-sched > *:not(.wrap){display:none !important;}
     body.print-rules .wrap > *:not(#rules){display:none !important;}
     body.print-rules #rules > *:not(.print-area){display:none !important;}
+    body.print-sched .wrap > *:not(#schedule){display:none !important;}
+    body.print-sched #schedule > *:not(.print-area){display:none !important;}
+    .slot, .phase{break-inside:avoid;}
+    #schedPrintTitle{font-size:14pt; line-height:1.5;}
+    .phase{break-after:avoid;}
     .print-title{display:block; font-size:18pt; font-weight:900; text-align:center; margin-bottom:10px;}
     .rule-sec, .sign{box-shadow:none; border:1px solid #bbb; break-inside:avoid;}
     .rule-sec.optional{border:1px solid #bbb;}
@@ -198,7 +208,7 @@
   <div class="hero">
     <span class="eyebrow">🧹 會計師媽媽・育兒實戰</span>
     <h1>請姐姐<span>檢查清單</span><br><span class="nowrap">一步步避伏攻略</span></h1>
-    <p>黃金時機、面試情境題、前僱主核實、<span class="nowrap">日常時間表</span>，<br>連<span class="nowrap">中文／印尼文／菲律賓文</span>三語家規範本，<br>逐項剔選，一頁搞掂。</p>
+    <p>黃金時機、面試情境題、前僱主核實，<br>連<span class="nowrap">中文／印尼文／菲律賓文</span>三語<span class="nowrap">時間表</span>及<span class="nowrap">家規範本</span>，<br>逐項剔選，一頁搞掂。</p>
   </div>
 </div>
 
@@ -220,7 +230,7 @@
   <section id="timing">
     <div class="sec-tag">STEP 1</div>
     <h2>聘請黃金時機與<span class="nowrap">薪酬避坑策略</span></h2>
-    <div class="tip">聘請外傭一般需要 <b>3 至 4 個月</b>辦理時間（包括領事館及入境處審批、體檢及簽證流程），所以要<b>倒數計</b>，預早規劃。</div>
+    <div class="tip">聘請外傭一般需要 <b><span class="nowrap">3 至 4 個月</span></b>辦理時間（包括領事館及入境處審批、體檢及簽證流程），所以要<b>倒數計</b>，預早規劃。</div>
 
     <div class="card">
       <div class="months" aria-label="月份建議">
@@ -246,19 +256,19 @@
     </div>
 
     <div class="card">
-      <div class="card-head"><span class="num">1</span><h3>避開「規定最低工資（MAW）」加薪公布期</h3></div>
+      <div class="card-head"><span class="num">1</span><h3>避開「規定最低工資（MAW）」<span class="nowrap">加薪公布期</span></h3></div>
       <ul>
-        <li><b>政策公布規律：</b>政府通常於每年 <b>9 月底至 10 月初</b>公布外傭規定最低工資（Minimum Allowable Wage, MAW）及膳食津貼的調整幅度。</li>
+        <li><b>政策公布規律：</b>政府通常於每年 <b><span class="nowrap">9 月底至 10 月初</span></b>公布外傭規定最低工資（<span class="nowrap">Minimum Allowable Wage, MAW</span>）及膳食津貼的調整幅度。</li>
         <li><b>簽約鎖定薪金：</b>薪金以<b>簽約遞交當日</b>的法定金額為準。只要僱傭合約在新工資生效日之前簽署並遞交入境處，兩年合約期內均按舊薪酬計算（政府中途加薪亦無須跟加）。</li>
-        <li><b>黃金辦理期：</b><b>6 月至 8 月</b>是遞交申請的黃金期，能確保鎖定現行薪金，避開 10 月後的加薪風險。</li>
+        <li><b>黃金辦理期：</b><b><span class="nowrap">6 月至 8 月</span></b>是遞交申請的黃金期，能確保鎖定現行薪金，避開 <span class="nowrap">10 月後</span>的加薪風險。</li>
       </ul>
     </div>
 
     <div class="card">
       <div class="card-head"><span class="num">2</span><h3>避開長假期與入境高峰期</h3></div>
       <ul>
-        <li><b>避開 12 月至 2 月：</b>聖誕節、農曆新年期間，外國領事館及本港政府部門假期較多，審批手續容易延誤；節日機票昂貴，姐姐亦可能要求留在原居地過年而延遲來港。</li>
-        <li><b>最佳入職月份：</b><b>4 月至 6 月</b>或 <b>9 月至 10 月</b>，政府機構運作順暢，審批與出簽速度最快。</li>
+        <li><b>避開 <span class="nowrap">12 月至 2 月</span>：</b>聖誕節、農曆新年期間，外國領事館及本港政府部門假期較多，審批手續容易延誤；節日機票昂貴，姐姐亦可能要求留在原居地過年而延遲來港。</li>
+        <li><b>最佳入職月份：</b><b><span class="nowrap">4 月至 6 月</span></b>或 <b><span class="nowrap">9 月至 10 月</span></b>，政府機構運作順暢，審批與出簽速度最快。</li>
       </ul>
     </div>
   </section>
@@ -279,7 +289,7 @@
   <section id="interview">
     <div class="sec-tag">STEP 2</div>
     <h2>面試四大必問情境與<span class="nowrap">實景測試</span></h2>
-    <div class="tip">切忌只問「是不是」（Yes/No）的引導式問題，應採用<b>開放式提問</b>與<b>情境模擬（Scenario Test）</b>。每條問題問完可以剔選，再按「📝 筆記」記低姐姐的答案。</div>
+    <div class="tip">切忌只問「是不是」（<span class="nowrap">Yes/No</span>）的引導式問題，應採用<b>開放式提問</b>與<b>情境模擬（<span class="nowrap">Scenario Test</span>）</b>。每條問題問完可以剔選，再按「📝 筆記」記低姐姐的答案。</div>
     <div id="interviewList"></div>
   </section>
 
@@ -287,7 +297,7 @@
   <section id="reference">
     <div class="sec-tag">STEP 3</div>
     <h2>推薦人（前僱主）<span class="nowrap">電話核實指南</span></h2>
-    <div class="warn"><b>電話核實是防伏最關鍵的一步。</b>切勿單憑完約信（Release Letter）或姐姐單方面說法，必須親自致電前僱主。</div>
+    <div class="warn"><b>電話核實是防伏最關鍵的一步。</b>切勿單憑完約信（<span class="nowrap">Release Letter</span>）或姐姐單方面說法，必須親自致電前僱主。</div>
     <div id="referenceList"></div>
   </section>
 
@@ -301,13 +311,24 @@
   <!-- 5. SCHEDULE -->
   <section id="schedule">
     <div class="sec-tag">STEP 5</div>
-    <h2>日常工作時間表範本</h2>
+    <h2>日常工作時間表範本<br><span class="nowrap">（中文・印尼文・菲律賓文）</span></h2>
     <div class="seg" id="schedSeg" role="tablist">
-      <button type="button" data-s="school" class="active">🎒 學童家庭</button>
-      <button type="button" data-s="baby">👶 嬰幼兒（0–2歲）</button>
+      <button type="button" data-s="school" class="active">🎒 學童</button>
+      <button type="button" data-s="baby">👶 0–2歲</button>
+      <button type="button" data-s="elder">👵 長者</button>
+    </div>
+    <div class="seg lang-seg">
+      <button type="button" data-l="tri" class="active">三語對照</button>
+      <button type="button" data-l="zh">中文</button>
+      <button type="button" data-l="id">Indonesia</button>
+      <button type="button" data-l="tl">Filipino</button>
     </div>
     <div id="schedNote"></div>
-    <div id="schedList"></div>
+    <div class="print-area">
+      <div class="print-title" id="schedPrintTitle"></div>
+      <div id="schedList"></div>
+    </div>
+    <button class="print-btn" type="button" id="schedPrintBtn">🖨️ 列印時間表／儲存 PDF</button>
   </section>
 
   <!-- 6. HOUSE RULES -->
@@ -316,7 +337,7 @@
     <h2>家規範本 House Rules<br><span class="nowrap">（中文・印尼文・菲律賓文）</span></h2>
     <div class="tip">建議在姐姐入職第一天，逐條與她核對及講解，然後請她在最後簽名作實。可以揀語言及加入額外條款，再按「列印家規」打印或儲存做 PDF。</div>
 
-    <div class="seg" id="langSeg">
+    <div class="seg lang-seg">
       <button type="button" data-l="tri" class="active">三語對照</button>
       <button type="button" data-l="zh">中文</button>
       <button type="button" data-l="id">Indonesia</button>
@@ -324,9 +345,10 @@
     </div>
     <div class="switches">
       <label class="switch"><input type="checkbox" id="optBaby">👶 加入「嬰幼兒照顧」條款</label>
+      <label class="switch"><input type="checkbox" id="optElder">👵 加入「長者照顧」條款</label>
       <label class="switch"><input type="checkbox" id="optG6pd">🫘 加入「蠶豆症（G6PD 缺乏症）」條款</label>
     </div>
-    <div class="warn" id="curfewWarn"><b>⚠️ 休息日條款提提你：</b>按《僱傭條例》，休息日是不少於連續 24 小時的休息時間，屬姐姐自己的時間。「歸家時間」及「不可外宿」建議以<b>雙方事先約定</b>的方式寫入，並在面試時講清楚，避免日後爭拗。</div>
+    <div class="warn" id="curfewWarn"><b>⚠️ 休息日條款提提你：</b>按《僱傭條例》，休息日是不少於連續 <span class="nowrap">24 小時</span>的休息時間，屬姐姐自己的時間。「歸家時間」及「不可外宿」建議以<b>雙方事先約定</b>的方式寫入，並在面試時講清楚，避免日後爭拗。</div>
 
     <div class="print-area">
       <div class="print-title" id="printTitle">家規 House Rules</div>
@@ -342,16 +364,16 @@
     <div class="sec-tag">STEP 7</div>
     <h2>僱主執行建議</h2>
     <div class="card">
-      <div class="card-head"><span class="num">1</span><h3>給予 2–3 週適應期</h3></div>
+      <div class="card-head"><span class="num">1</span><h3>給予 <span class="nowrap">2–3 週</span>適應期</h3></div>
       <p>新到港或新入職的姐姐需要時間適應家中的生活習慣，初期建議一邊帶領、一邊按時間表示範。</p>
     </div>
     <div class="card">
       <div class="card-head"><span class="num">2</span><h3>準備雙語對照</h3></div>
-      <p>家規最好備有姐姐母語版本（印尼文 Bahasa Indonesia／菲律賓文 Filipino），並請她在附錄上註明「已閱讀並同意遵守」及簽署作實。</p>
+      <p>家規最好備有姐姐母語版本（印尼文 <span class="nowrap">Bahasa Indonesia</span>／菲律賓文 Filipino），並請她在附錄上註明「已閱讀並同意遵守」及簽署作實。</p>
     </div>
     <div class="card">
       <div class="card-head"><span class="num">3</span><h3>嬰幼兒家庭：育兒與安全第一，家務第二</h3></div>
-      <p>寶寶清醒時，姐姐需投入 100% 注意力；較重型的家務（如拖地、消毒）應安排在寶寶午睡或僱主接手時進行。</p>
+      <p>寶寶清醒時，姐姐需投入 <span class="nowrap">100% 注意力</span>；較重型的家務（如拖地、消毒）應安排在寶寶午睡或僱主接手時進行。</p>
     </div>
     <div class="card">
       <div class="card-head"><span class="num">4</span><h3>僱主法律底線，切勿誤墮</h3></div>
@@ -382,17 +404,17 @@
 /* ---------- Data ---------- */
 const INTERVIEW = [
   {group:"1. 工作經驗與家務技能核實", items:[
-    {id:"i1", t:"工作流程描述", q:"「請詳細講述你上一份工，由朝早 6:30 起身到夜晚 10:00 休息的完整 Daily Routine。」"},
+    {id:"i1", t:"工作流程描述", q:"「請詳細講述你上一份工，由朝早 <span class=nowrap>6:30 起身</span>到夜晚 <span class=nowrap>10:00 休息</span>的完整 <span class=nowrap>Daily Routine</span>。」"},
     {id:"i2", t:"菜式與烹飪", q:"「你最擅長煮哪幾道中菜／粵菜？請講出蒸水蛋（或煲湯／蒸魚）的具體步驟同時間。」"},
     {id:"i3", t:"照顧經驗（按家庭需要）", q:"「你上一家照顧的小朋友幾多歲？平時點幫佢沖涼、安排作息、處理偏食？」"}
   ]},
-  {group:"2. 緊急情況與應變能力（Scenario Test）", items:[
+  {group:"2. 緊急情況與應變能力（<span class=nowrap>Scenario Test</span>）", items:[
     {id:"i4", t:"突發傷病處理", q:"「如果小朋友／長者在家跌親流血，或者突然發高燒，你第一至第三步會做甚麼？」", h:"考驗先後次序：應先止血／叫救護車，同時通知僱主，而非慌張失措。"},
     {id:"i5", t:"家居安全應變", q:"「如果家中突然漏水、跳掣，或者廚房著火，你會點處理？」"},
     {id:"i6", t:"外人敲門應對", q:"「如果僱主不在家，有陌生人或維修工人敲門，你會點做？」"}
   ]},
   {group:"3. 作息對接與家規條款", items:[
-    {id:"i7", t:"時間表對接", q:"清楚說明家中起床時間（如 6:30 AM）與休息時間（如 10:00 PM），確認對方能否適應。"},
+    {id:"i7", t:"時間表對接", q:"清楚說明家中起床時間（如 <span class=nowrap>6:30 AM</span>）與休息時間（如 <span class=nowrap>10:00 PM</span>），確認對方能否適應。"},
     {id:"i8", t:"手機使用規矩", q:"明確表明工作時間（特別是照顧小朋友、長者或煮食時）禁止頻密看手機，手機只可在休息時間使用。"},
     {id:"i9", t:"放假安排", q:"確認放假日子（星期六或星期日），以及長假期／過年期間的排假與留家安排。"}
   ]}
@@ -400,9 +422,9 @@ const INTERVIEW = [
 const REFERENCE = [
   {group:"1. 辨別真假前僱主", items:[
     {id:"r1", t:"主動核對", q:"致電時先請對方確認姓名，以及姐姐在其家中工作的具體年份與地點。"},
-    {id:"r2", t:"反問細節", q:"不要直接問「小妹是不是幫你照顧過 2 歲仔？」，而是問「請問小妹之前在你家主要照顧幾多歲的小朋友／長者？」", h:"如果對方回答模糊或與履歷不符，極可能是姐姐朋友假冒。"}
+    {id:"r2", t:"反問細節", q:"不要直接問「小妹是不是幫你照顧過 <span class=nowrap>2 歲仔</span>？」，而是問「請問小妹之前在你家主要照顧幾多歲的小朋友／長者？」", h:"如果對方回答模糊或與履歷不符，極可能是姐姐朋友假冒。"}
   ]},
-  {group:"2. Reference Check 必問問題", items:[
+  {group:"2. <span class=nowrap>Reference Check</span> 必問問題", items:[
     {id:"r3", t:"離職真實原因", q:"「請問小妹離職的真正原因是甚麼？是完約、僱主移民，還是表現問題？」"},
     {id:"r4", t:"工作態度與自律", q:"「佢平時工作是自動自發，還是要人追？脾氣如何？肯不肯聽意見？」"},
     {id:"r5", t:"誠實與財務狀況", q:"「佢有沒有試過未經同意拿家中物品？有沒有財務公司或借貸人士打來求證？」"},
@@ -413,62 +435,189 @@ const PROCESS = [
   {group:"按階段逐項完成", items:[
     {id:"p1", t:"面試前｜審視履歷時間線（CV Timeline）", q:"檢查履歷是否有無故中斷的「空白期」，面試時問清原因。"},
     {id:"p2", t:"面試中｜情境測試 + 記錄承諾", q:"清楚說明家庭規矩（飲食、房間分配、不可借貸、手機規矩）。"},
-    {id:"p3", t:"面試後｜致電 1–2 位前僱主核實", q:"寧願多花 10 分鐘打電話，也不要請錯人才後悔。"},
+    {id:"p3", t:"面試後｜致電 <span class=nowrap>1–2 位</span>前僱主核實", q:"寧願多花 <span class=nowrap>10 分鐘</span>打電話，也不要請錯人才後悔。"},
     {id:"p4", t:"簽約前｜擬定工作細則附錄（House Rules）", q:"將工作時間表、家規附錄、放假安排清楚附於合約後，雙方簽名作實。"}
   ]}
 ];
 
+/* Schedules: phase p = [emoji, zh, id, tl]; slot = [time, [zh, id, tl], cls] */
+const SCHED_TITLE = ["日常工作時間表","Jadwal Kerja Harian","Pang-araw-araw na Iskedyul ng Trabaho"];
 const SCHED = {
   school:{
+    label:["照顧學童家庭","Keluarga dengan Anak Sekolah","Pamilyang may Batang Nag-aaral"],
     note:'<div class="tip">以<b>照顧學童家庭</b>為例，可按學校上課時間及家中需要調整。</div>',
     phases:[
-      {p:"🌅 晨間程序 Morning Routine", s:[
-        ["06:30–07:15","起床、個人衛生、準備家庭早餐及小朋友上學水壺／餐盒。"],
-        ["07:15–07:45","協助叫醒小朋友、幫小朋友換校服及吃早餐。"],
-        ["07:45–08:15","陪伴／送小朋友上學或到校車站。"],
-        ["08:15–09:00","外傭吃早餐、清洗早餐碗碟及清理廚房。"]]},
-      {p:"🧺 日間家務與採購 Daytime Chores & Shopping", s:[
-        ["09:00–10:30","<b>家居日常清潔：</b>掃地、拖地、抹拭客廳及房間傢俬、清理垃圾桶。"],
-        ["10:30–11:30","<b>衣物處理：</b>洗衫、晾衫／乾衫、摺衫及分類收納（如有需要清潔浴室）。"],
-        ["11:30–12:30","前往街市／超市買菜（按每日菜單），準備午餐食材。"]]},
-      {p:"☀️ 下午程序 Afternoon Routine", s:[
-        ["12:30–13:30","外傭午餐及休息時間（Rest Time）。","rest"],
-        ["13:30–15:30","接小朋友放學；協助小朋友洗手、換衫、吃下午茶。"],
-        ["15:30–17:00","陪伴小朋友做功課／遊戲；準備晚餐食材（洗菜、切菜、解凍肉類）。"]]},
-      {p:"🌙 晚間程序 Evening Routine", s:[
-        ["17:00–18:30","烹煮晚餐。"],
-        ["18:30–19:30","家人享用晚餐；外傭協助照顧小朋友或進行其他家務。"],
-        ["19:30–20:30","外傭享用晚餐；清洗所有碗碟、深層清潔廚房（抹爐頭、抽油煙機、洗碗盆）。"],
-        ["20:30–21:30","協助小朋友沖涼、梳洗及準備入睡。"],
-        ["21:30–22:00","<b>睡前安全檢查：</b>清理家中垃圾並倒垃圾、檢查窗戶是否鎖好、關閉廚房煤氣及不必要電源。"],
-        ["22:00","休息及個人時間（Rest & Private Time）。","rest"]]}
+      {p:["🌅","晨間程序","Rutinitas Pagi","Rutina sa Umaga"], s:[
+        ["06:30–07:15",["起床、個人衛生、準備家庭早餐及小朋友上學水壺／餐盒。",
+          "Bangun, kebersihan diri, siapkan sarapan keluarga serta botol minum/kotak bekal anak untuk sekolah.",
+          "Gumising, maglinis ng sarili, ihanda ang almusal ng pamilya at ang baon at lalagyan ng tubig ng bata para sa eskuwela."]],
+        ["07:15–07:45",["協助叫醒小朋友、幫小朋友換校服及吃早餐。",
+          "Bantu membangunkan anak, bantu ganti seragam sekolah dan sarapan.",
+          "Tulungang gisingin ang bata, bihisan ng uniporme, at pakainin ng almusal."]],
+        ["07:45–08:15",["陪伴／送小朋友上學或到校車站。",
+          "Mengantar anak ke sekolah atau ke tempat menunggu bus sekolah.",
+          "Ihatid ang bata sa paaralan o sa sakayan ng school bus."]],
+        ["08:15–09:00",["外傭吃早餐、清洗早餐碗碟及清理廚房。",
+          "Sarapan untuk pekerja; cuci piring sarapan dan bersihkan dapur.",
+          "Almusal ng kasambahay; hugasan ang pinggan ng almusal at linisin ang kusina."]]]},
+      {p:["🧺","日間家務與採購","Pekerjaan Rumah & Belanja","Gawaing-bahay at Pamimili"], s:[
+        ["09:00–10:30",["<b>家居日常清潔：</b>掃地、拖地、抹拭客廳及房間傢俬、清理垃圾桶。",
+          "<b>Bersih-bersih harian:</b> menyapu, mengepel, mengelap perabot ruang tamu dan kamar, membersihkan tempat sampah.",
+          "<b>Araw-araw na paglilinis:</b> magwalis, mag-mop, punasan ang mga muwebles sa sala at mga kuwarto, linisin ang basurahan."]],
+        ["10:30–11:30",["<b>衣物處理：</b>洗衫、晾衫／乾衫、摺衫及分類收納（如有需要清潔浴室）。",
+          "<b>Pakaian:</b> mencuci, menjemur/mengeringkan, melipat dan merapikan pakaian (jika perlu, bersihkan kamar mandi).",
+          "<b>Labada:</b> maglaba, magsampay o magpatuyo, magtupi at mag-ayos ng damit (kung kailangan, linisin ang banyo)."]],
+        ["11:30–12:30",["前往街市／超市買菜（按每日菜單），準備午餐食材。",
+          "Belanja ke pasar/supermarket (sesuai menu harian), siapkan bahan makan siang.",
+          "Mamalengke o pumunta sa supermarket (ayon sa menu ng araw), ihanda ang mga sangkap para sa tanghalian."]]]},
+      {p:["☀️","下午程序","Rutinitas Siang & Sore","Rutina sa Hapon"], s:[
+        ["12:30–13:30",["外傭午餐及休息時間（<span class=nowrap>Rest Time</span>）。",
+          "Makan siang dan waktu istirahat pekerja (<span class=nowrap>Rest Time</span>).",
+          "Tanghalian at oras ng pahinga ng kasambahay (<span class=nowrap>Rest Time</span>)."],"rest"],
+        ["13:30–15:30",["接小朋友放學；協助小朋友洗手、換衫、吃下午茶。",
+          "Jemput anak pulang sekolah; bantu anak cuci tangan, ganti baju, dan makan camilan sore.",
+          "Sunduin ang bata sa paaralan; tulungan siyang maghugas ng kamay, magpalit ng damit, at mag-merienda."]],
+        ["15:30–17:00",["陪伴小朋友做功課／遊戲；準備晚餐食材（洗菜、切菜、解凍肉類）。",
+          "Temani anak mengerjakan PR/bermain; siapkan bahan makan malam (cuci dan potong sayur, cairkan daging beku).",
+          "Samahan ang bata sa homework o paglalaro; ihanda ang mga sangkap ng hapunan (hugasan at hiwain ang gulay, i-thaw ang karne)."]]]},
+      {p:["🌙","晚間程序","Rutinitas Malam","Rutina sa Gabi"], s:[
+        ["17:00–18:30",["烹煮晚餐。","Memasak makan malam.","Magluto ng hapunan."]],
+        ["18:30–19:30",["家人享用晚餐；外傭協助照顧小朋友或進行其他家務。",
+          "Keluarga makan malam; pekerja membantu menjaga anak atau mengerjakan pekerjaan rumah lain.",
+          "Naghahapunan ang pamilya; tumutulong ang kasambahay sa pag-aalaga ng bata o sa ibang gawaing-bahay."]],
+        ["19:30–20:30",["外傭享用晚餐；清洗所有碗碟、深層清潔廚房（抹爐頭、抽油煙機、洗碗盆）。",
+          "Pekerja makan malam; cuci semua piring, bersihkan dapur secara menyeluruh (lap kompor, penghisap asap/cooker hood, bak cuci piring).",
+          "Hapunan ng kasambahay; hugasan lahat ng pinggan, linisin nang mabuti ang kusina (punasan ang kalan, range hood, at lababo)."]],
+        ["20:30–21:30",["協助小朋友沖涼、梳洗及準備入睡。",
+          "Bantu anak mandi, sikat gigi, cuci muka, dan bersiap tidur.",
+          "Tulungan ang bata na maligo, mag-toothbrush, maghilamos, at maghanda sa pagtulog."]],
+        ["21:30–22:00",["<b>睡前安全檢查：</b>清理家中垃圾並倒垃圾、檢查窗戶是否鎖好、關閉廚房煤氣及不必要電源。",
+          "<b>Pemeriksaan keamanan sebelum tidur:</b> kumpulkan dan buang sampah, pastikan jendela terkunci, matikan gas dapur dan listrik yang tidak diperlukan.",
+          "<b>Safety check bago matulog:</b> ipunin at itapon ang basura, siguraduhing naka-lock ang mga bintana, patayin ang gas sa kusina at ang mga hindi kailangang kuryente."]],
+        ["22:00",["休息及個人時間（<span class=nowrap>Rest & Private Time</span>）。",
+          "Waktu istirahat dan waktu pribadi (<span class=nowrap>Rest & Private Time</span>).",
+          "Oras ng pahinga at personal na oras (<span class=nowrap>Rest & Private Time</span>)."],"rest"]]}
     ]
   },
   baby:{
-    note:'<div class="tip">以<b>日間由外傭主力照顧嬰幼兒、僱主晚間接手</b>為例。餵奶／副食品時間可按寶寶實際作息調整。</div><div class="good"><b>核心原則：育兒與安全第一，家務第二。</b>寶寶清醒時姐姐需投入 100% 注意力；重型家務安排在寶寶午睡或僱主接手時進行。</div>',
+    label:["照顧嬰幼兒（0–2歲）","Merawat Bayi & Balita (0–2 Tahun)","Pag-aalaga ng Sanggol (0–2 Taon)"],
+    note:'<div class="tip">以<b>日間由外傭主力照顧嬰幼兒、僱主晚間接手</b>為例。餵奶／副食品時間可按寶寶實際作息調整。</div><div class="good"><b>核心原則：育兒與安全第一，家務第二。</b>寶寶清醒時姐姐需投入 <span class=nowrap>100% 注意力</span>；重型家務安排在寶寶午睡或僱主接手時進行。</div>',
     phases:[
-      {p:"🌅 晨間與早餐 Morning Routine", s:[
-        ["06:30–07:00","起床、個人衛生、徹底洗手；準備寶寶早晨奶量或副食品（如粥仔／麥皮）。"],
-        ["07:00–08:00","<b>寶寶第一餐：</b>餵奶／吃早餐、換尿片、量體溫，記錄於「寶寶日誌」（Baby Log）。"],
-        ["08:00–09:00","外傭吃早餐；消毒奶樽／餐具（清洗奶樽、放入蒸氣／UV 消毒機）、簡單清理廚房。"]]},
-      {p:"🧸 上午照顧與早覺 Mid-Morning & Nap", s:[
-        ["09:00–10:30","<b>互動與放電：</b>陪寶寶做 Tummy Time（俯臥練習）、聽音樂、讀繪本，或推嬰兒車到附近公園散步曬太陽。"],
-        ["10:30–11:30","<b>寶寶早覺：</b>（若寶寶睡覺）外傭趁機手洗／分開清洗寶寶衣物、抹拭嬰兒床及玩具。"],
-        ["11:30–12:00","換尿片；準備寶寶午餐（副食品／糊仔／溫奶）。"]]},
-      {p:"🍚 中午午餐與午睡 Lunch & Afternoon Nap", s:[
-        ["12:00–13:00","<b>寶寶第二餐：</b>餵食副食品／奶、餵水、擦拭嘴巴及手腳。"],
-        ["13:00–14:00","外傭午餐及休息時間（Rest Time），安排於寶寶準備午睡時。","rest"],
-        ["14:00–15:30","<b>深層衛生與輕家務（寶寶午睡中）：</b><ul><li>消毒當天已使用的奶樽及餐具</li><li>用嬰兒適用消毒液拖地、抹餐椅及遊戲地墊（Playmat）</li><li>保持環境安靜，避免巨響驚醒寶寶</li></ul>"]]},
-      {p:"🍎 下午照顧與點心 Late Afternoon", s:[
-        ["15:30–16:30","寶寶醒來，換尿片；<b>寶寶第三餐：</b>下午茶點心（果蓉／餅乾）或下午奶。"],
-        ["16:30–17:30","陪寶寶自由玩耍；準備家人晚餐食材（洗菜、切菜等基本準備）。"]]},
-      {p:"🛁 晚間沖涼與睡前 Evening & Bedtime", s:[
-        ["17:30–18:30","<b>寶寶沖涼（Bath Time）：</b><ul><li>準備適溫洗澡水（37–38℃）</li><li>沖涼後塗保濕乳液／潤膚膏、換乾淨睡衣、清潔耳朵與鼻孔</li></ul>"],
-        ["18:30–19:30","餵寶寶晚餐（或睡前奶）；家人享用晚餐。"],
-        ["19:30–20:30","外傭享用晚餐；清理廚房、洗碗，進行當天最後一次奶樽消毒。"],
-        ["20:30–21:30","協助僱主安撫寶寶入睡（睡前音樂、講故事、換睡覺尿片）。"],
-        ["21:30–22:00","<b>晚間檢查與記錄：</b>倒垃圾、填寫寶寶日誌（確認當天總奶量、排便次數）、檢查窗戶及門鎖。"],
-        ["22:00","休息時間（Rest Time）。","rest"]]}
+      {p:["🌅","晨間與早餐","Pagi & Sarapan","Umaga at Almusal"], s:[
+        ["06:30–07:00",["起床、個人衛生、徹底洗手；準備寶寶早晨奶量或副食品（如粥仔／麥皮）。",
+          "Bangun, kebersihan diri, cuci tangan sampai bersih; siapkan susu pagi atau MPASI bayi (misalnya bubur/oatmeal).",
+          "Gumising, maglinis ng sarili, maghugas nang mabuti ng kamay; ihanda ang gatas sa umaga o solid food ng sanggol (hal. lugaw o oatmeal)."]],
+        ["07:00–08:00",["<b>寶寶第一餐：</b>餵奶／吃早餐、換尿片、量體溫，記錄於「寶寶日誌」（<span class=nowrap>Baby Log</span>）。",
+          "<b>Makan pertama bayi:</b> beri susu/sarapan, ganti popok, ukur suhu tubuh, lalu catat di <span class=nowrap>Baby Log</span>.",
+          "<b>Unang kain ng sanggol:</b> padedehin o pakainin ng almusal, palitan ng diaper, kunin ang temperatura, at isulat sa <span class=nowrap>Baby Log</span>."]],
+        ["08:00–09:00",["外傭吃早餐；消毒奶樽／餐具（清洗奶樽、放入蒸氣／UV 消毒機）、簡單清理廚房。",
+          "Sarapan pekerja; sterilkan botol susu/alat makan (cuci botol, masukkan ke sterilizer uap/UV), bersihkan dapur seperlunya.",
+          "Almusal ng kasambahay; i-sterilize ang bote at kubyertos (hugasan ang bote, ilagay sa steam o UV sterilizer), linisin nang bahagya ang kusina."]]]},
+      {p:["🧸","上午照顧與早覺","Pengasuhan Pagi & Tidur Pagi","Pag-aalaga at Tulog sa Umaga"], s:[
+        ["09:00–10:30",["<b>互動與放電：</b>陪寶寶做 <span class=nowrap>Tummy Time</span>（俯臥練習）、聽音樂、讀繪本，或推嬰兒車到附近公園散步曬太陽。",
+          "<b>Interaksi & bermain:</b> temani bayi <span class=nowrap>Tummy Time</span> (latihan tengkurap), dengarkan musik, bacakan buku cerita, atau ajak jalan-jalan dengan stroller ke taman terdekat untuk berjemur.",
+          "<b>Interaksyon at laro:</b> samahan ang sanggol sa <span class=nowrap>Tummy Time</span> (pagdapa), makinig ng musika, magbasa ng picture book, o ipasyal gamit ang stroller sa malapit na parke para magpaaraw."]],
+        ["10:30–11:30",["<b>寶寶早覺：</b>（若寶寶睡覺）外傭趁機手洗／分開清洗寶寶衣物、抹拭嬰兒床及玩具。",
+          "<b>Tidur pagi bayi:</b> (jika bayi tidur) cuci pakaian bayi dengan tangan/terpisah, lap tempat tidur bayi dan mainan.",
+          "<b>Tulog ng sanggol sa umaga:</b> (kung natutulog ang sanggol) labhan nang hiwalay o sa kamay ang damit ng sanggol, punasan ang crib at mga laruan."]],
+        ["11:30–12:00",["換尿片；準備寶寶午餐（副食品／糊仔／溫奶）。",
+          "Ganti popok; siapkan makan siang bayi (MPASI/bubur halus/susu hangat).",
+          "Palitan ng diaper; ihanda ang tanghalian ng sanggol (solid food, puree, o maligamgam na gatas)."]]]},
+      {p:["🍚","中午午餐與午睡","Makan Siang & Tidur Siang","Tanghalian at Tulog sa Hapon"], s:[
+        ["12:00–13:00",["<b>寶寶第二餐：</b>餵食副食品／奶、餵水、擦拭嘴巴及手腳。",
+          "<b>Makan kedua bayi:</b> suapi MPASI/susu, beri minum air, bersihkan mulut, tangan, dan kaki.",
+          "<b>Ikalawang kain ng sanggol:</b> pakainin ng solid food o gatas, painumin ng tubig, punasan ang bibig, kamay, at paa."]],
+        ["13:00–14:00",["外傭午餐及休息時間（<span class=nowrap>Rest Time</span>），安排於寶寶準備午睡時。",
+          "Makan siang dan waktu istirahat pekerja (<span class=nowrap>Rest Time</span>), saat bayi bersiap tidur siang.",
+          "Tanghalian at oras ng pahinga ng kasambahay (<span class=nowrap>Rest Time</span>), habang naghahanda ang sanggol sa pagtulog sa hapon."],"rest"],
+        ["14:00–15:30",["<b>深層衛生與輕家務（寶寶午睡中）：</b><ul><li>消毒當天已使用的奶樽及餐具</li><li>用嬰兒適用消毒液拖地、抹餐椅及遊戲地墊（Playmat）</li><li>保持環境安靜，避免巨響驚醒寶寶</li></ul>",
+          "<b>Kebersihan menyeluruh & pekerjaan ringan (saat bayi tidur siang):</b><ul><li>Sterilkan botol dan alat makan yang dipakai hari ini</li><li>Pel lantai dengan disinfektan yang aman untuk bayi, lap kursi makan dan matras bermain (Playmat)</li><li>Jaga suasana tetap tenang, hindari suara keras yang bisa membangunkan bayi</li></ul>",
+          "<b>Masusing paglilinis at magaang gawain (habang natutulog ang sanggol):</b><ul><li>I-sterilize ang mga bote at kubyertos na ginamit ngayong araw</li><li>Mag-mop gamit ang disinfectant na ligtas sa sanggol, punasan ang high chair at playmat</li><li>Panatilihing tahimik; iwasan ang malakas na ingay na makagigising sa sanggol</li></ul>"]]]},
+      {p:["🍎","下午照顧與點心","Pengasuhan Sore & Camilan","Pag-aalaga sa Hapon at Merienda"], s:[
+        ["15:30–16:30",["寶寶醒來，換尿片；<b>寶寶第三餐：</b>下午茶點心（果蓉／餅乾）或下午奶。",
+          "Bayi bangun, ganti popok; <b>makan ketiga bayi:</b> camilan sore (puree buah/biskuit) atau susu sore.",
+          "Paggising ng sanggol, palitan ng diaper; <b>ikatlong kain ng sanggol:</b> merienda (fruit puree o biskwit) o gatas sa hapon."]],
+        ["16:30–17:30",["陪寶寶自由玩耍；準備家人晚餐食材（洗菜、切菜等基本準備）。",
+          "Temani bayi bermain bebas; siapkan bahan makan malam keluarga (cuci dan potong sayur, persiapan dasar).",
+          "Samahan ang sanggol sa malayang paglalaro; ihanda ang mga sangkap ng hapunan ng pamilya (hugasan at hiwain ang gulay)."]]]},
+      {p:["🛁","晚間沖涼與睡前","Mandi & Persiapan Tidur","Paliligo at Paghahanda sa Pagtulog"], s:[
+        ["17:30–18:30",["<b>寶寶沖涼（Bath Time）：</b><ul><li>準備適溫洗澡水（<span class=nowrap>37–38℃</span>）</li><li>沖涼後塗保濕乳液／潤膚膏、換乾淨睡衣、清潔耳朵與鼻孔</li></ul>",
+          "<b>Waktu mandi bayi (Bath Time):</b><ul><li>Siapkan air mandi hangat (<span class=nowrap>37–38℃</span>)</li><li>Setelah mandi, oleskan losion/krim pelembap, ganti piyama bersih, bersihkan telinga dan hidung</li></ul>",
+          "<b>Paliligo ng sanggol (Bath Time):</b><ul><li>Ihanda ang maligamgam na tubig (<span class=nowrap>37–38℃</span>)</li><li>Pagkatapos maligo, pahiran ng moisturizing lotion o cream, bihisan ng malinis na pajama, linisin ang tainga at ilong</li></ul>"]],
+        ["18:30–19:30",["餵寶寶晚餐（或睡前奶）；家人享用晚餐。",
+          "Beri bayi makan malam (atau susu sebelum tidur); keluarga makan malam.",
+          "Pakainin ang sanggol ng hapunan (o gatas bago matulog); naghahapunan ang pamilya."]],
+        ["19:30–20:30",["外傭享用晚餐；清理廚房、洗碗，進行當天最後一次奶樽消毒。",
+          "Pekerja makan malam; bersihkan dapur, cuci piring, dan sterilkan botol untuk terakhir kali hari ini.",
+          "Hapunan ng kasambahay; linisin ang kusina, maghugas ng pinggan, at huling pag-sterilize ng bote ngayong araw."]],
+        ["20:30–21:30",["協助僱主安撫寶寶入睡（睡前音樂、講故事、換睡覺尿片）。",
+          "Bantu majikan menidurkan bayi (musik pengantar tidur, bercerita, ganti popok untuk tidur malam).",
+          "Tulungan ang amo na patulugin ang sanggol (musika bago matulog, pagkukuwento, palitan ng diaper pantulog)."]],
+        ["21:30–22:00",["<b>晚間檢查與記錄：</b>倒垃圾、填寫寶寶日誌（確認當天總奶量、排便次數）、檢查窗戶及門鎖。",
+          "<b>Pemeriksaan & catatan malam:</b> buang sampah, isi <span class=nowrap>Baby Log</span> (total susu hari ini, berapa kali BAB), periksa jendela dan kunci pintu.",
+          "<b>Pagsusuri at talaan sa gabi:</b> itapon ang basura, punan ang <span class=nowrap>Baby Log</span> (kabuuang gatas ngayong araw, ilang beses dumumi), i-check ang mga bintana at kandado ng pinto."]],
+        ["22:00",["休息時間（<span class=nowrap>Rest Time</span>）。","Waktu istirahat (<span class=nowrap>Rest Time</span>).","Oras ng pahinga (<span class=nowrap>Rest Time</span>)."],"rest"]]}
+    ]
+  },
+  elder:{
+    label:["照顧長者","Merawat Lansia","Pag-aalaga ng Matanda"],
+    note:'<div class="tip">以<b>長者能自行走動、但日常需要協助</b>為例。如長者長期臥床，需另外加入定時轉身、餵食及尿片護理等安排，請先向醫護人員請教。如長者夜間需要協助如廁，應預先與姐姐講清楚分工及補休安排。</div><div class="good"><b>核心原則：防跌第一、按時服藥、留意身體變化。</b>如長者跌倒、胸口痛、氣喘、突然口齒不清或單邊手腳無力，應立即致電 999 並通知僱主。</div>',
+    phases:[
+      {p:["🌅","晨間程序","Rutinitas Pagi","Rutina sa Umaga"], s:[
+        ["06:30–07:00",["起床、個人衛生、洗手；準備軟身易消化的早餐（如粥、麥皮、蒸水蛋）。",
+          "Bangun, kebersihan diri, cuci tangan; siapkan sarapan yang lembut dan mudah dicerna (misalnya bubur, oatmeal, telur kukus).",
+          "Gumising, maglinis ng sarili, maghugas ng kamay; ihanda ang malambot at madaling matunaw na almusal (hal. lugaw, oatmeal, steamed egg)."]],
+        ["07:00–08:00",["<b>協助長者起床：</b>扶長者起床、如廁、梳洗及更衣；量血壓／血糖，記錄於「健康紀錄簿」。",
+          "<b>Bantu lansia bangun:</b> bantu bangun dari tempat tidur, ke toilet, cuci muka, dan ganti baju; ukur tekanan darah/gula darah lalu catat di buku catatan kesehatan.",
+          "<b>Tulungang bumangon ang matanda:</b> alalayan sa pagbangon, sa banyo, sa paghihilamos, at sa pagbibihis; kunin ang blood pressure o blood sugar at isulat sa health record book."]],
+        ["08:00–08:45",["長者早餐；<b>按醫生指示及藥盒提醒長者服藥</b>，確認已吞服並記錄。",
+          "Sarapan lansia; <b>ingatkan minum obat sesuai petunjuk dokter dan kotak obat</b>, pastikan obat sudah ditelan lalu catat.",
+          "Almusal ng matanda; <b>ipaalala ang pag-inom ng gamot ayon sa bilin ng doktor at sa pill box</b>, siguraduhing nainom na ito at isulat."]],
+        ["08:45–09:30",["外傭早餐；清洗碗碟、整理長者床鋪及房間（保持通道暢通，地面無雜物、無水漬）。",
+          "Sarapan pekerja; cuci piring, rapikan tempat tidur dan kamar lansia (jalan harus bebas hambatan, lantai bebas dari barang dan air).",
+          "Almusal ng kasambahay; hugasan ang pinggan, ayusin ang kama at kuwarto ng matanda (walang harang sa daanan, walang kalat o basa sa sahig)."]]]},
+      {p:["🚶","上午活動與家務","Aktivitas Pagi & Pekerjaan Rumah","Aktibidad sa Umaga at Gawaing-bahay"], s:[
+        ["09:30–10:30",["<b>活動時間：</b>陪長者外出散步／曬太陽，或在家做簡單伸展運動（按物理治療師建議）。外出時必須全程攙扶或推輪椅，帶備水、藥物及聯絡卡。",
+          "<b>Waktu aktivitas:</b> temani lansia jalan-jalan/berjemur, atau lakukan peregangan ringan di rumah (sesuai saran fisioterapis). Saat keluar, selalu pegangi lansia atau dorong kursi roda, dan bawa air minum, obat, serta kartu kontak.",
+          "<b>Oras ng aktibidad:</b> samahan ang matanda na maglakad o magpaaraw, o gumawa ng simpleng stretching sa bahay (ayon sa payo ng physiotherapist). Kapag lumabas, laging alalayan o itulak ang wheelchair, at magdala ng tubig, gamot, at contact card."]],
+        ["10:30–11:00",["點心及飲水；提醒長者定時飲水，並記錄飲水量。",
+          "Camilan dan minum air; ingatkan lansia untuk minum secara teratur dan catat jumlahnya.",
+          "Merienda at pag-inom ng tubig; ipaalala sa matanda na uminom nang regular at isulat kung gaano karami."]],
+        ["11:00–12:00",["家居清潔（浴室及地面保持乾爽防滑）；準備午餐（切碎／軟身，按醫生或營養師要求少鹽、少糖、少油）。",
+          "Bersih-bersih rumah (kamar mandi dan lantai harus kering dan tidak licin); siapkan makan siang (dipotong kecil/lembut, rendah garam, gula, dan minyak sesuai anjuran dokter atau ahli gizi).",
+          "Paglilinis ng bahay (panatilihing tuyo at hindi madulas ang banyo at sahig); ihanda ang tanghalian (hiniwa nang maliit o malambot, kaunting asin, asukal, at mantika ayon sa payo ng doktor o dietitian)."]]]},
+      {p:["🍚","午餐與午睡","Makan Siang & Tidur Siang","Tanghalian at Tulog sa Hapon"], s:[
+        ["12:00–13:00",["長者午餐；按指示服藥並記錄；飯後協助漱口及如廁。",
+          "Makan siang lansia; beri obat sesuai petunjuk dan catat; setelah makan, bantu berkumur dan ke toilet.",
+          "Tanghalian ng matanda; ibigay ang gamot ayon sa bilin at isulat; pagkatapos kumain, tulungang magmumog at pumunta sa banyo."]],
+        ["13:00–14:00",["長者午睡；外傭午餐及休息時間（<span class=nowrap>Rest Time</span>）。長者房門保持半開，方便留意動靜。",
+          "Lansia tidur siang; makan siang dan waktu istirahat pekerja (<span class=nowrap>Rest Time</span>). Biarkan pintu kamar lansia sedikit terbuka agar mudah mendengar jika ada sesuatu.",
+          "Natutulog ang matanda; tanghalian at oras ng pahinga ng kasambahay (<span class=nowrap>Rest Time</span>). Iwanang bahagyang bukas ang pinto ng kuwarto ng matanda para marinig kung may mangyari."],"rest"],
+        ["14:00–15:30",["洗衫、摺衫（長者衣物及床單分開洗）。如有覆診，陪同長者看醫生／取藥，並把醫生指示轉告僱主。",
+          "Mencuci dan melipat pakaian (pakaian dan sprei lansia dicuci terpisah). Jika ada jadwal kontrol, temani lansia ke dokter/ambil obat, lalu sampaikan pesan dokter kepada majikan.",
+          "Maglaba at magtupi (labhan nang hiwalay ang damit at kumot ng matanda). Kung may follow-up check-up, samahan ang matanda sa doktor o sa pagkuha ng gamot, at sabihin sa amo ang bilin ng doktor."]]]},
+      {p:["☀️","下午程序","Rutinitas Sore","Rutina sa Hapon"], s:[
+        ["15:30–16:30",["長者起身、如廁；下午茶點心及飲水；陪長者傾談、玩益智遊戲、聽收音機或做手部運動，保持腦筋靈活。",
+          "Lansia bangun, ke toilet; camilan sore dan minum; ajak lansia mengobrol, main permainan asah otak, mendengarkan radio, atau senam tangan agar pikiran tetap aktif.",
+          "Paggising ng matanda, sa banyo; merienda at pag-inom ng tubig; kausapin ang matanda, maglaro ng brain games, makinig ng radyo, o mag-ehersisyo ng kamay para manatiling aktibo ang isip."]],
+        ["16:30–18:00",["準備及烹煮晚餐。","Menyiapkan dan memasak makan malam.","Ihanda at lutuin ang hapunan."]]]},
+      {p:["🌙","晚間程序","Rutinitas Malam","Rutina sa Gabi"], s:[
+        ["18:00–19:00",["長者晚餐；按指示服藥並記錄。",
+          "Makan malam lansia; beri obat sesuai petunjuk dan catat.",
+          "Hapunan ng matanda; ibigay ang gamot ayon sa bilin at isulat."]],
+        ["19:00–20:00",["外傭晚餐；清洗碗碟及清潔廚房。",
+          "Pekerja makan malam; cuci piring dan bersihkan dapur.",
+          "Hapunan ng kasambahay; hugasan ang pinggan at linisin ang kusina."]],
+        ["20:00–21:00",["<b>協助沖涼：</b><ul><li>使用沖涼椅及防滑墊，水溫適中，全程陪同</li><li>沖涼後更衣、塗潤膚膏，檢查皮膚有沒有損傷、瘀傷或紅腫</li></ul>",
+          "<b>Bantu mandi:</b><ul><li>Gunakan kursi mandi dan alas anti-selip, air hangat secukupnya, dan selalu dampingi</li><li>Setelah mandi, ganti baju dan oleskan losion; periksa apakah ada luka, memar, atau kemerahan di kulit</li></ul>",
+          "<b>Tulong sa paliligo:</b><ul><li>Gumamit ng shower chair at anti-slip mat, katamtamang init ng tubig, at samahan palagi</li><li>Pagkatapos maligo, bihisan at pahiran ng lotion; tingnan kung may sugat, pasa, o pamumula sa balat</li></ul>"]],
+        ["21:00–21:30",["協助長者如廁及準備就寢；床邊放好水杯、夜燈及叫人鐘／電話。",
+          "Bantu lansia ke toilet dan bersiap tidur; letakkan gelas air, lampu tidur, dan bel panggil/telepon di samping tempat tidur.",
+          "Tulungan ang matanda sa banyo at sa paghahanda sa pagtulog; ilagay sa tabi ng kama ang baso ng tubig, night light, at call bell o telepono."]],
+        ["21:30–22:00",["<b>睡前檢查與記錄：</b>倒垃圾、檢查門窗、關煤氣；填寫健康紀錄（血壓、服藥、飲食、大小便）。",
+          "<b>Pemeriksaan & catatan malam:</b> buang sampah, periksa pintu dan jendela, matikan gas; isi catatan kesehatan (tekanan darah, obat, makan, BAB/BAK).",
+          "<b>Pagsusuri at talaan sa gabi:</b> itapon ang basura, i-check ang pinto at bintana, patayin ang gas; punan ang health record (blood pressure, gamot, pagkain, pag-ihi at pagdumi)."]],
+        ["22:00",["休息時間（<span class=nowrap>Rest Time</span>）。","Waktu istirahat (<span class=nowrap>Rest Time</span>).","Oras ng pahinga (<span class=nowrap>Rest Time</span>)."],"rest"]]}
     ]
   }
 };
@@ -523,7 +672,7 @@ const RULES = [
      "Katapatan｜Kung may nabasag ka o nagkamali nang hindi sinasadya, sabihin nang tapat sa amo at huwag itago. Ang tapat na komunikasyon ang pinakamahalagang prinsipyo."]
   ]},
   {h:["5. 休息日與過夜安排","5. Hari Libur & Menginap","5. Day Off at Pagtulog sa Labas"], r:[
-    ["準時歸家｜逢休息日放假，請於雙方約定的歸家時間（例如晚上 9:00 前）返回家中。",
+    ["準時歸家｜逢休息日放假，請於雙方約定的歸家時間（例如<span class=nowrap>晚上 9:00 前</span>）返回家中。",
      "Pulang tepat waktu｜Pada hari libur, harap kembali ke rumah sebelum jam yang telah disepakati bersama (misalnya sebelum pukul 21.00).",
      "Umuwi sa oras｜Tuwing day off, umuwi bago ang oras na napagkasunduan ninyo (halimbawa, bago mag-9:00 ng gabi)."],
     ["外宿規定｜除非獲得僱主事前特別批准，否則休息日不可在外過夜。",
@@ -531,18 +680,38 @@ const RULES = [
      "Pagtulog sa labas｜Hindi maaaring matulog sa labas tuwing day off maliban kung may espesyal na paunang pahintulot ng amo."]
   ]},
   {opt:"baby", h:["6. 嬰幼兒照顧額外規定","6. Aturan Tambahan Merawat Bayi & Balita","6. Karagdagang Patakaran sa Pag-aalaga ng Sanggol"], r:[
-    ["寶寶日誌（Baby Log）｜每日記錄：餵奶／飲食時間與份量（如 07:15 180ml）；換尿片時間及排便狀況（顏色／形狀、有沒有尿布疹）；午睡時間長短與體溫。",
-     "Buku harian bayi (Baby Log)｜Setiap hari catat: waktu dan jumlah susu/makanan (mis. 07.15 180 ml); waktu ganti popok dan kondisi BAB (warna/bentuk, ada ruam popok atau tidak); lama tidur siang dan suhu tubuh.",
-     "Baby Log｜Araw-araw isulat: oras at dami ng gatas/pagkain (hal. 07:15 180ml); oras ng pagpapalit ng diaper at kalagayan ng dumi (kulay/hugis, may diaper rash o wala); haba ng tulog sa hapon at temperatura."],
+    ["寶寶日誌（<span class=nowrap>Baby Log</span>）｜每日記錄：餵奶／飲食時間與份量（如 07:15 180ml）；換尿片時間及排便狀況（顏色／形狀、有沒有尿布疹）；午睡時間長短與體溫。",
+     "Buku harian bayi (<span class=nowrap>Baby Log</span>)｜Setiap hari catat: waktu dan jumlah susu/makanan (mis. 07.15 180 ml); waktu ganti popok dan kondisi BAB (warna/bentuk, ada ruam popok atau tidak); lama tidur siang dan suhu tubuh.",
+     "<span class=nowrap>Baby Log</span>｜Araw-araw isulat: oras at dami ng gatas/pagkain (hal. 07:15 180ml); oras ng pagpapalit ng diaper at kalagayan ng dumi (kulay/hugis, may diaper rash o wala); haba ng tulog sa hapon at temperatura."],
     ["嚴格消毒｜寶寶衣物必須與成人衣物分開洗；奶樽洗淨後必須即時消毒，不可堆積在洗碗盆過夜。",
      "Sterilisasi｜Pakaian bayi harus dicuci terpisah dari pakaian orang dewasa; botol susu harus langsung dicuci dan disterilkan, tidak boleh ditumpuk di bak cuci semalaman.",
      "Pag-sterilize｜Labhan nang hiwalay ang damit ng sanggol sa damit ng matatanda; hugasan at i-sterilize agad ang bote ng gatas, huwag itong iwanan sa lababo nang magdamag."],
-    ["抱寶寶前必先洗手｜每次外出回家後、如廁後、處理垃圾後，抱寶寶前必須用梘液洗手至少 20 秒。",
+    ["抱寶寶前必先洗手｜每次外出回家後、如廁後、處理垃圾後，抱寶寶前必須用梘液洗手至少 <span class=nowrap>20 秒</span>。",
      "Cuci tangan sebelum menggendong｜Setiap pulang dari luar, setelah dari toilet, dan setelah membuang sampah, wajib cuci tangan dengan sabun minimal 20 detik sebelum menggendong bayi.",
      "Maghugas bago kargahin｜Pagkauwi galing sa labas, pagkatapos gumamit ng banyo, at pagkatapos humawak ng basura, maghugas ng kamay gamit ang sabon nang hindi bababa sa 20 segundo bago kargahin ang sanggol."],
     ["夜奶分工（Night Feed）｜如需姐姐負責夜奶，會清楚寫明每晚次數及補眠安排；若由僱主負責夜奶，請保持晚上家中安靜。",
      "Susu malam (Night Feed)｜Jika Anda diminta memberi susu malam, jumlahnya per malam dan waktu istirahat penggantinya akan ditulis dengan jelas. Jika majikan yang memberi susu malam, harap jaga rumah tetap tenang pada malam hari.",
      "Pagpapadede sa gabi (Night Feed)｜Kung ikaw ang magpapadede sa gabi, malinaw na isusulat kung ilang beses bawat gabi at kung kailan ka makakabawi ng tulog. Kung ang amo ang magpapadede sa gabi, panatilihing tahimik ang bahay sa gabi."]
+  ]},
+  {opt:"elder", h:["長者照顧額外規定","Aturan Tambahan Merawat Lansia","Karagdagang Patakaran sa Pag-aalaga ng Matanda"], r:[
+    ["藥物管理｜必須按醫生處方及藥盒指示提醒長者服藥，切勿自行加減藥量、停藥或補服漏服的藥物；如長者漏服、多服或拒絕服藥，必須即時通知僱主。",
+     "Manajemen obat｜Ingatkan lansia minum obat sesuai resep dokter dan kotak obat. Jangan menambah atau mengurangi dosis, menghentikan obat, atau mengganti dosis yang terlewat atas kemauan sendiri. Jika lansia lupa minum obat, minum terlalu banyak, atau menolak minum obat, segera beri tahu majikan.",
+     "Pamamahala ng gamot｜Ipaalala sa matanda ang pag-inom ng gamot ayon sa reseta ng doktor at sa pill box. Huwag kailanman dagdagan o bawasan ang dosis, itigil ang gamot, o kusang palitan ang nakaligtaang dosis. Kung nakalimutan, nasobrahan, o tumanggi ang matanda sa gamot, sabihan agad ang amo."],
+    ["不可自行給藥｜未經僱主或醫生同意，不可給長者服用任何其他藥物、中藥、保健品或偏方。",
+     "Jangan memberi obat sendiri｜Tanpa izin majikan atau dokter, jangan memberi lansia obat lain, jamu/obat herbal Tiongkok, suplemen, atau obat tradisional apa pun.",
+     "Huwag magbigay ng sariling gamot｜Nang walang pahintulot ng amo o doktor, huwag bigyan ang matanda ng ibang gamot, Chinese herbal medicine, supplement, o anumang gamot-pambahay."],
+    ["防跌規矩｜地面須保持乾爽，沒有雜物及電線；浴室必須使用防滑墊及沖涼椅；長者起身、行走、如廁及沖涼時，必須在旁攙扶，不可讓長者獨自留在浴室。",
+     "Pencegahan jatuh｜Lantai harus kering dan bebas dari barang maupun kabel; kamar mandi wajib memakai alas anti-selip dan kursi mandi; saat lansia bangun, berjalan, ke toilet, dan mandi, selalu dampingi dan pegangi, jangan biarkan lansia sendirian di kamar mandi.",
+     "Pag-iwas sa pagkahulog｜Panatilihing tuyo ang sahig at walang kalat o kable; laging gumamit ng anti-slip mat at shower chair sa banyo; alalayan ang matanda tuwing babangon, maglalakad, gagamit ng banyo, at maliligo, at huwag siyang iwanang mag-isa sa banyo."],
+    ["跌倒處理｜如長者跌倒，切勿強行扶起；先檢查有沒有受傷、出血或不能活動，再即時通知僱主；如頭部受撞擊、昏迷或劇痛，立即致電 999。",
+     "Jika lansia jatuh｜Jangan memaksa mengangkat lansia. Periksa dulu apakah ada luka, perdarahan, atau tidak bisa bergerak, lalu segera beri tahu majikan. Jika kepala terbentur, pingsan, atau sangat kesakitan, segera telepon 999.",
+     "Kapag nahulog ang matanda｜Huwag pilit na buhatin ang matanda. Tingnan muna kung may sugat, pagdurugo, o hindi siya makagalaw, saka sabihan agad ang amo. Kung tumama ang ulo, nawalan ng malay, o labis na nasasaktan, tumawag agad sa 999."],
+    ["留意警號｜如長者出現胸口痛、氣喘、突然口齒不清、單邊手腳無力、神志混亂或發燒，必須即時通知僱主；情況嚴重時致電 999。",
+     "Tanda bahaya｜Jika lansia mengalami nyeri dada, sesak napas, tiba-tiba bicara pelo, lemah di satu sisi tangan/kaki, kebingungan, atau demam, segera beri tahu majikan. Jika parah, telepon 999.",
+     "Mga babala｜Kung ang matanda ay may pananakit ng dibdib, hirap sa paghinga, biglang pagkautal sa pagsasalita, panghihina ng isang bahagi ng katawan, pagkalito, o lagnat, sabihan agad ang amo. Kung malala, tumawag sa 999."],
+    ["尊重與耐心｜照顧長者時須保持耐心及尊重，不可責罵或催逼；協助如廁及沖涼時，注意保護長者私隱。",
+     "Hormat & sabar｜Rawat lansia dengan sabar dan hormat, jangan memarahi atau menyuruh terburu-buru; jaga privasi lansia saat membantu ke toilet dan mandi.",
+     "Paggalang at pasensya｜Alagaan ang matanda nang may pasensya at paggalang; huwag siyang pagalitan o madaliin, at igalang ang kanyang privacy kapag tinutulungan sa banyo at paliligo."]
   ]},
   {opt:"g6pd", h:["7. 蠶豆症（G6PD 缺乏症）注意事項","7. Perhatian: Anak dengan Defisiensi G6PD","7. Paalala: Batang may G6PD Deficiency"], r:[
     ["嚴禁蠶豆｜小朋友不可進食蠶豆及任何蠶豆製品（包括零食）。",
@@ -579,7 +748,7 @@ const LANG_LABEL = {zh:"中",id:"ID",tl:"PH"};
 const KEY = "helperChecklist.v1";
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ return {}; } }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
-const state = Object.assign({cand:0, names:["姐姐 A","姐姐 B","姐姐 C"], data:[{},{},{}], lang:"tri", sched:"school", baby:false, g6pd:false}, load());
+const state = Object.assign({cand:0, names:["姐姐 A","姐姐 B","姐姐 C"], data:[{},{},{}], lang:"tri", sched:"school", baby:false, elder:false, g6pd:false}, load());
 
 /* ---------- Helpers ---------- */
 const $ = s => document.querySelector(s);
@@ -594,7 +763,7 @@ function renderChecklist(el, groups){
     ${g.items.map(i => `
       <div class="item" data-id="${i.id}">
         <div class="item-row">
-          <input type="checkbox" id="cb-${i.id}" aria-label="${esc(i.t)}">
+          <input type="checkbox" id="cb-${i.id}" aria-label="${esc(i.t.replace(/<[^>]+>/g, ""))}">
           <div class="item-body">
             <label class="item-title" for="cb-${i.id}">${i.t}</label>
             <div class="item-q">${i.q}</div>
@@ -634,10 +803,15 @@ function renderCands(){
 /* ---------- Schedule ---------- */
 function renderSchedule(){
   const s = SCHED[state.sched];
+  const langs = state.lang === "tri" ? LANGS : [state.lang];
+  const idx = l => LANGS.indexOf(l);
   $("#schedNote").innerHTML = s.note;
+  $("#schedPrintTitle").innerHTML = langs.map(l => l === "zh" ? `${SCHED_TITLE[0]}（${s.label[0]}）` : `${SCHED_TITLE[idx(l)]} (${s.label[idx(l)]})`).join("<br>");
   $("#schedList").innerHTML = s.phases.map(ph => `
-    <div class="phase">${ph.p}</div>
-    ${ph.s.map(([t,d,cls]) => `<div class="slot${cls?" "+cls:""}"><div class="t">${t}</div><div class="d">${d}</div></div>`).join("")}
+    <div class="phase">${ph.p[0]} ${ph.p[1 + idx(langs[0])]}${langs.slice(1).map(l => `<span class="sub">${ph.p[1 + idx(l)]}</span>`).join("")}</div>
+    ${ph.s.map(([t,d,cls]) => `<div class="slot${cls?" "+cls:""}"><div class="t">${t}</div><div class="d">${
+      langs.map(l => `<p><span class="lang lang-${l}">${LANG_LABEL[l]}</span>${d[idx(l)]}</p>`).join("")
+    }</div></div>`).join("")}
   `).join("");
   document.querySelectorAll("#schedSeg button").forEach(b => b.classList.toggle("active", b.dataset.s === state.sched));
 }
@@ -649,9 +823,10 @@ function renderRules(){
   document.body.classList.toggle("mode-single", state.lang !== "tri");
   $("#printTitle").textContent = langs.map(l => TITLE[idx(l)]).join(" / ");
   const secs = RULES.filter(s => !s.opt || state[s.opt]);
-  $("#rulesList").innerHTML = secs.map(s => `
+  const num = (s, i, l) => `${i + 1}. ${s.h[idx(l)].replace(/^\d+\.\s*/, "")}`;
+  $("#rulesList").innerHTML = secs.map((s, i) => `
     <div class="rule-sec${s.opt?" optional":""}">
-      <div class="rule-h">${s.h[idx(langs[0])]}${langs.slice(1).map(l => `<span class="sub">${s.h[idx(l)]}</span>`).join("")}</div>
+      <div class="rule-h">${num(s, i, langs[0])}${langs.slice(1).map(l => `<span class="sub">${num(s, i, l)}</span>`).join("")}</div>
       ${s.r.map(r => `<div class="rule">${langs.map(l => {
         const [k, body] = r[idx(l)].split("｜");
         return `<p><span class="lang lang-${l}">${LANG_LABEL[l]}</span><span class="k">${k}${l==="zh"?"：":": "}</span>${body}</p>`;
@@ -660,8 +835,9 @@ function renderRules(){
   $("#signBlock").innerHTML = `
     ${langs.map(l => `<p>✍️ ${SIGN.agree[idx(l)]}</p>`).join("")}
     <div class="sign-grid">${SIGN.lines.map(x => `<div class="sign-line">${langs.map(l => x[idx(l)]).join(" / ")}</div>`).join("")}</div>`;
-  document.querySelectorAll("#langSeg button").forEach(b => b.classList.toggle("active", b.dataset.l === state.lang));
+  document.querySelectorAll(".lang-seg button").forEach(b => b.classList.toggle("active", b.dataset.l === state.lang));
   $("#optBaby").checked = state.baby;
+  $("#optElder").checked = state.elder;
   $("#optG6pd").checked = state.g6pd;
 }
 
@@ -713,17 +889,20 @@ $("#schedSeg").addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   state.sched = b.dataset.s; save(); renderSchedule();
 });
-$("#langSeg").addEventListener("click", e => {
+document.querySelectorAll(".lang-seg").forEach(seg => seg.addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
-  state.lang = b.dataset.l; save(); renderRules();
-});
+  state.lang = b.dataset.l; save(); renderSchedule(); renderRules();
+}));
 $("#optBaby").addEventListener("change", e => { state.baby = e.target.checked; save(); renderRules(); });
+$("#optElder").addEventListener("change", e => { state.elder = e.target.checked; save(); renderRules(); });
 $("#optG6pd").addEventListener("change", e => { state.g6pd = e.target.checked; save(); renderRules(); });
-$("#printBtn").addEventListener("click", () => {
-  document.body.classList.add("print-rules");
+function printOnly(cls){
+  document.body.classList.add(cls);
   window.print();
-});
-window.addEventListener("afterprint", () => document.body.classList.remove("print-rules"));
+}
+$("#printBtn").addEventListener("click", () => printOnly("print-rules"));
+$("#schedPrintBtn").addEventListener("click", () => printOnly("print-sched"));
+window.addEventListener("afterprint", () => document.body.classList.remove("print-rules", "print-sched"));
 
 /* Highlight current section in nav */
 const navLinks = [...document.querySelectorAll("#nav a")];
