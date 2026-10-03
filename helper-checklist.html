@@ -311,8 +311,9 @@
     <div class="sec-tag">STEP 5</div>
     <h2>日常工作時間表範本<br><span class="nowrap">（中文・印尼文・菲律賓文）</span></h2>
     <div class="seg" id="schedSeg" role="tablist">
-      <button type="button" data-s="school" class="active">🎒 學童家庭</button>
-      <button type="button" data-s="baby">👶 嬰幼兒（0–2歲）</button>
+      <button type="button" data-s="school" class="active">🎒 學童</button>
+      <button type="button" data-s="baby">👶 0–2歲</button>
+      <button type="button" data-s="elder">👵 長者</button>
     </div>
     <div class="seg lang-seg">
       <button type="button" data-l="tri" class="active">三語對照</button>
@@ -552,6 +553,67 @@ const SCHED = {
         ["21:30–22:00",["<b>晚間檢查與記錄：</b>倒垃圾、填寫寶寶日誌（確認當天總奶量、排便次數）、檢查窗戶及門鎖。",
           "<b>Pemeriksaan & catatan malam:</b> buang sampah, isi Baby Log (total susu hari ini, berapa kali BAB), periksa jendela dan kunci pintu.",
           "<b>Pagsusuri at talaan sa gabi:</b> itapon ang basura, punan ang Baby Log (kabuuang gatas ngayong araw, ilang beses dumumi), i-check ang mga bintana at kandado ng pinto."]],
+        ["22:00",["休息時間（Rest Time）。","Waktu istirahat (Rest Time).","Oras ng pahinga (Rest Time)."],"rest"]]}
+    ]
+  },
+  elder:{
+    label:["照顧長者","Merawat Lansia","Pag-aalaga ng Matanda"],
+    note:'<div class="tip">以<b>長者能自行走動、但日常需要協助</b>為例。如長者長期臥床，需另外加入定時轉身、餵食及尿片護理等安排，請先向醫護人員請教。如長者夜間需要協助如廁，應預先與姐姐講清楚分工及補休安排。</div><div class="good"><b>核心原則：防跌第一、按時服藥、留意身體變化。</b>如長者跌倒、胸口痛、氣喘、突然口齒不清或單邊手腳無力，應立即致電 999 並通知僱主。</div>',
+    phases:[
+      {p:["🌅","晨間程序","Rutinitas Pagi","Rutina sa Umaga"], s:[
+        ["06:30–07:00",["起床、個人衛生、洗手；準備軟身易消化的早餐（如粥、麥皮、蒸水蛋）。",
+          "Bangun, kebersihan diri, cuci tangan; siapkan sarapan yang lembut dan mudah dicerna (misalnya bubur, oatmeal, telur kukus).",
+          "Gumising, maglinis ng sarili, maghugas ng kamay; ihanda ang malambot at madaling matunaw na almusal (hal. lugaw, oatmeal, steamed egg)."]],
+        ["07:00–08:00",["<b>協助長者起床：</b>扶長者起床、如廁、梳洗及更衣；量血壓／血糖，記錄於「健康紀錄簿」。",
+          "<b>Bantu lansia bangun:</b> bantu bangun dari tempat tidur, ke toilet, cuci muka, dan ganti baju; ukur tekanan darah/gula darah lalu catat di buku catatan kesehatan.",
+          "<b>Tulungang bumangon ang matanda:</b> alalayan sa pagbangon, sa banyo, sa paghihilamos, at sa pagbibihis; kunin ang blood pressure o blood sugar at isulat sa health record book."]],
+        ["08:00–08:45",["長者早餐；<b>按醫生指示及藥盒提醒長者服藥</b>，確認已吞服並記錄。",
+          "Sarapan lansia; <b>ingatkan minum obat sesuai petunjuk dokter dan kotak obat</b>, pastikan obat sudah ditelan lalu catat.",
+          "Almusal ng matanda; <b>ipaalala ang pag-inom ng gamot ayon sa bilin ng doktor at sa pill box</b>, siguraduhing nainom na ito at isulat."]],
+        ["08:45–09:30",["外傭早餐；清洗碗碟、整理長者床鋪及房間（保持通道暢通，地面無雜物、無水漬）。",
+          "Sarapan pekerja; cuci piring, rapikan tempat tidur dan kamar lansia (jalan harus bebas hambatan, lantai bebas dari barang dan air).",
+          "Almusal ng kasambahay; hugasan ang pinggan, ayusin ang kama at kuwarto ng matanda (walang harang sa daanan, walang kalat o basa sa sahig)."]]]},
+      {p:["🚶","上午活動與家務","Aktivitas Pagi & Pekerjaan Rumah","Aktibidad sa Umaga at Gawaing-bahay"], s:[
+        ["09:30–10:30",["<b>活動時間：</b>陪長者外出散步／曬太陽，或在家做簡單伸展運動（按物理治療師建議）。外出時必須全程攙扶或推輪椅，帶備水、藥物及聯絡卡。",
+          "<b>Waktu aktivitas:</b> temani lansia jalan-jalan/berjemur, atau lakukan peregangan ringan di rumah (sesuai saran fisioterapis). Saat keluar, selalu pegangi lansia atau dorong kursi roda, dan bawa air minum, obat, serta kartu kontak.",
+          "<b>Oras ng aktibidad:</b> samahan ang matanda na maglakad o magpaaraw, o gumawa ng simpleng stretching sa bahay (ayon sa payo ng physiotherapist). Kapag lumabas, laging alalayan o itulak ang wheelchair, at magdala ng tubig, gamot, at contact card."]],
+        ["10:30–11:00",["點心及飲水；提醒長者定時飲水，並記錄飲水量。",
+          "Camilan dan minum air; ingatkan lansia untuk minum secara teratur dan catat jumlahnya.",
+          "Merienda at pag-inom ng tubig; ipaalala sa matanda na uminom nang regular at isulat kung gaano karami."]],
+        ["11:00–12:00",["家居清潔（浴室及地面保持乾爽防滑）；準備午餐（切碎／軟身，按醫生或營養師要求少鹽、少糖、少油）。",
+          "Bersih-bersih rumah (kamar mandi dan lantai harus kering dan tidak licin); siapkan makan siang (dipotong kecil/lembut, rendah garam, gula, dan minyak sesuai anjuran dokter atau ahli gizi).",
+          "Paglilinis ng bahay (panatilihing tuyo at hindi madulas ang banyo at sahig); ihanda ang tanghalian (hiniwa nang maliit o malambot, kaunting asin, asukal, at mantika ayon sa payo ng doktor o dietitian)."]]]},
+      {p:["🍚","午餐與午睡","Makan Siang & Tidur Siang","Tanghalian at Tulog sa Hapon"], s:[
+        ["12:00–13:00",["長者午餐；按指示服藥並記錄；飯後協助漱口及如廁。",
+          "Makan siang lansia; beri obat sesuai petunjuk dan catat; setelah makan, bantu berkumur dan ke toilet.",
+          "Tanghalian ng matanda; ibigay ang gamot ayon sa bilin at isulat; pagkatapos kumain, tulungang magmumog at pumunta sa banyo."]],
+        ["13:00–14:00",["長者午睡；外傭午餐及休息時間（Rest Time）。長者房門保持半開，方便留意動靜。",
+          "Lansia tidur siang; makan siang dan waktu istirahat pekerja (Rest Time). Biarkan pintu kamar lansia sedikit terbuka agar mudah mendengar jika ada sesuatu.",
+          "Natutulog ang matanda; tanghalian at oras ng pahinga ng kasambahay (Rest Time). Iwanang bahagyang bukas ang pinto ng kuwarto ng matanda para marinig kung may mangyari."],"rest"],
+        ["14:00–15:30",["洗衫、摺衫（長者衣物及床單分開洗）。如有覆診，陪同長者看醫生／取藥，並把醫生指示轉告僱主。",
+          "Mencuci dan melipat pakaian (pakaian dan sprei lansia dicuci terpisah). Jika ada jadwal kontrol, temani lansia ke dokter/ambil obat, lalu sampaikan pesan dokter kepada majikan.",
+          "Maglaba at magtupi (labhan nang hiwalay ang damit at kumot ng matanda). Kung may follow-up check-up, samahan ang matanda sa doktor o sa pagkuha ng gamot, at sabihin sa amo ang bilin ng doktor."]]]},
+      {p:["☀️","下午程序","Rutinitas Sore","Rutina sa Hapon"], s:[
+        ["15:30–16:30",["長者起身、如廁；下午茶點心及飲水；陪長者傾談、玩益智遊戲、聽收音機或做手部運動，保持腦筋靈活。",
+          "Lansia bangun, ke toilet; camilan sore dan minum; ajak lansia mengobrol, main permainan asah otak, mendengarkan radio, atau senam tangan agar pikiran tetap aktif.",
+          "Paggising ng matanda, sa banyo; merienda at pag-inom ng tubig; kausapin ang matanda, maglaro ng brain games, makinig ng radyo, o mag-ehersisyo ng kamay para manatiling aktibo ang isip."]],
+        ["16:30–18:00",["準備及烹煮晚餐。","Menyiapkan dan memasak makan malam.","Ihanda at lutuin ang hapunan."]]]},
+      {p:["🌙","晚間程序","Rutinitas Malam","Rutina sa Gabi"], s:[
+        ["18:00–19:00",["長者晚餐；按指示服藥並記錄。",
+          "Makan malam lansia; beri obat sesuai petunjuk dan catat.",
+          "Hapunan ng matanda; ibigay ang gamot ayon sa bilin at isulat."]],
+        ["19:00–20:00",["外傭晚餐；清洗碗碟及清潔廚房。",
+          "Pekerja makan malam; cuci piring dan bersihkan dapur.",
+          "Hapunan ng kasambahay; hugasan ang pinggan at linisin ang kusina."]],
+        ["20:00–21:00",["<b>協助沖涼：</b><ul><li>使用沖涼椅及防滑墊，水溫適中，全程陪同</li><li>沖涼後更衣、塗潤膚膏，檢查皮膚有沒有損傷、瘀傷或紅腫</li></ul>",
+          "<b>Bantu mandi:</b><ul><li>Gunakan kursi mandi dan alas anti-selip, air hangat secukupnya, dan selalu dampingi</li><li>Setelah mandi, ganti baju dan oleskan losion; periksa apakah ada luka, memar, atau kemerahan di kulit</li></ul>",
+          "<b>Tulong sa paliligo:</b><ul><li>Gumamit ng shower chair at anti-slip mat, katamtamang init ng tubig, at samahan palagi</li><li>Pagkatapos maligo, bihisan at pahiran ng lotion; tingnan kung may sugat, pasa, o pamumula sa balat</li></ul>"]],
+        ["21:00–21:30",["協助長者如廁及準備就寢；床邊放好水杯、夜燈及叫人鐘／電話。",
+          "Bantu lansia ke toilet dan bersiap tidur; letakkan gelas air, lampu tidur, dan bel panggil/telepon di samping tempat tidur.",
+          "Tulungan ang matanda sa banyo at sa paghahanda sa pagtulog; ilagay sa tabi ng kama ang baso ng tubig, night light, at call bell o telepono."]],
+        ["21:30–22:00",["<b>睡前檢查與記錄：</b>倒垃圾、檢查門窗、關煤氣；填寫健康紀錄（血壓、服藥、飲食、大小便）。",
+          "<b>Pemeriksaan & catatan malam:</b> buang sampah, periksa pintu dan jendela, matikan gas; isi catatan kesehatan (tekanan darah, obat, makan, BAB/BAK).",
+          "<b>Pagsusuri at talaan sa gabi:</b> itapon ang basura, i-check ang pinto at bintana, patayin ang gas; punan ang health record (blood pressure, gamot, pagkain, pag-ihi at pagdumi)."]],
         ["22:00",["休息時間（Rest Time）。","Waktu istirahat (Rest Time).","Oras ng pahinga (Rest Time)."],"rest"]]}
     ]
   }
